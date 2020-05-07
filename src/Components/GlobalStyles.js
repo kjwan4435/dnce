@@ -17,19 +17,6 @@ const globalStyles = createGlobalStyle`
         color: white;
         padding-top: 70px;
     }
-    select{
-        width: 300px;
-  padding: 10px 5px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
-  border-style: none;
-  color: black;
-  text-align: center;
-  font-size: 15px;
-  font-weight: 400;
-  margin-bottom: 20px;
-
-    }
 `;
 
 export default globalStyles;

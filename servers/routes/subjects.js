@@ -8,16 +8,19 @@ subRouter.route("/").get((req, res) => {
 });
 
 subRouter.route("/add").post((req, res) => {
+  console.log(req.body);
+
   const name = req.body.name;
-  const age = req.body.age;
+  const age = Number(req.body.age);
+  const email = req.body.email;
   const sex = req.body.sex;
   const education = req.body.education;
 
-  const newSubject = new Subject({ name, age, sex, education });
+  const newSubject = new Subject({ name, age, email, sex, education });
 
   newSubject
     .save()
-    .then((subjects) => res.json("New Subject Joined"))
+    .then(() => res.json(newSubject.id))
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 

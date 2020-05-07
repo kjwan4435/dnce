@@ -6,20 +6,24 @@ const subjectSchema = new Schema(
   {
     name: {
       type: String,
-      required: "Text is required",
+      required: "Text is required"
     },
     age: {
       type: Number,
-      required: "Type your age",
+      required: "Type your age"
+    },
+    email: {
+      type: String,
+      required: "Type your E-mail"
     },
     sex: {
       type: String,
-      required: "Choose your sex",
+      required: "Choose your sex"
     },
     education: {
       type: String,
-      required: "Choose your education",
-    },
+      required: "Choose your education"
+    }
   },
   { timestamps: true }
 );

@@ -67,22 +67,31 @@ const ButtonContainer = styled.div`
 `;
 
 const QuestionPresenter = ({
+  name,
   age,
+  email,
   sex,
-  country,
-  chickenGame,
-  username,
+  education,
   handleChange,
-  handleSubmit,
+  handleSubmit
 }) => (
   <Container>
-    <h1>{username ? `Hello ${username}` : "Hello World"}</h1>
     <UserInfo>Let me know who you are!</UserInfo>
     <Form onSubmit={handleSubmit}>
       <Quest>
         <Info
           required
+          type="text"
+          placeholder="Name"
+          onChange={handleChange}
+          value={name}
+          name="name"
+        ></Info>
+      </Quest>
+      <Quest>
+        <Info
           type="number"
+          required
           placeholder="Age"
           onChange={handleChange}
           value={age}
@@ -91,12 +100,12 @@ const QuestionPresenter = ({
       </Quest>
       <Quest>
         <Info
-          type="text"
+          type="email"
           required
-          placeholder="Country"
+          placeholder="E-mail"
           onChange={handleChange}
-          value={country}
-          name="country"
+          value={email}
+          name="email"
         ></Info>
       </Quest>
       <Quest>
@@ -119,8 +128,8 @@ const QuestionPresenter = ({
           required
           placeholder="Have you heard about chicken game?"
           onChange={handleChange}
-          value={chickenGame}
-          name="chickenGame"
+          value={education}
+          name="education"
         >
           <option>Have you heard about chicken game?</option>
           <option>Yes</option>
@@ -128,21 +137,10 @@ const QuestionPresenter = ({
         </Select>
       </Quest>
       <ButtonContainer>
-        <Submit type="submit" action="/experiment">
-          Game Start
-        </Submit>
+        <Submit type="submit">Game Start</Submit>
       </ButtonContainer>
     </Form>
   </Container>
 );
-
-// QuestionPresenter.propTypes = {
-//   age: PropTypes.number.isRequired,
-//   sex: PropTypes.string.isRequired,
-//   country: PropTypes.string.isRequired,
-//   chickenGame: PropTypes.string.isRequired,
-//   handleChange: PropTypes.func.isRequired,
-//   handleSubmit: PropTypes.func.isRequired,
-// };
 
 export default QuestionPresenter;

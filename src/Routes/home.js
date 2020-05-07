@@ -60,17 +60,10 @@ export default class extends Component {
   render = () => {
     return (
       <Container>
-        <GameInfo>
-          <p>
-            This game is for 3 persons batting game.<br></br>
-            What we want to see is your behavior pattern especially related to
-            chicken game.
-          </p>
-        </GameInfo>
         <Mission>Your Mission is Being Winner.</Mission>
         <ButtonContainer>
-          <Link to="/questions">
-            <Start> Let's Start</Start>
+          <Link to="/explain">
+            <Start> Game Rule </Start>
           </Link>
         </ButtonContainer>
         <GameInfo>

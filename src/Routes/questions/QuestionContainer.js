@@ -1,55 +1,62 @@
 import React, { Component } from "react";
 import QuestionPresenter from "./QuestionPresenter";
-
-//beomy.tistory.com/33 [beomy]
+import axios from "axios";
+import qs from "qs";
 
 export default class extends Component {
   state = {
-    age: null,
-    sex: null,
-    country: null,
-    chickenGame: null,
-    username: null,
+    name: "",
+    age: "",
+    sex: "",
+    education: "",
+    email: "",
+    id: ""
   };
 
   handleChange = (e) => {
     const {
-      target: { value, name },
+      target: { value, name }
     } = e;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     // 페이지 리로딩 방지
     e.preventDefault();
     // 상태값을 onCreate 를 통하여 부모에게 전달
-    console.log(this.state);
-    // 상태 초기화
-    this.setState({
-      age: "",
-      sex: "",
-      country: "",
-      chickenGame: "",
-    });
-  };
+    const subject = {
+      name: this.state.name,
+      age: Number(this.state.age),
+      sex: this.state.sex,
+      education: this.state.education,
+      email: this.state.email
+    };
 
-  componentDidMount = async () => {
-    await fetch("api")
-      .then((res) => res.json())
-      .then((data) => this.setState({ username: data.username }));
+    console.log(subject);
+
+    axios
+      .post("http://localhost:8080/subjects/add", qs.stringify(subject))
+      .then(async (res) => {
+        console.log(res.data);
+        await this.setState({ id: res.data });
+        window.location = `/experiment/${this.state.id}/model1`;
+      })
+      .catch((response) => {
+        console.log(response);
+      });
   };
 
   render = () => {
-    const { age, sex, country, chickenGame, username } = this.state;
+    const { name, age, sex, education, email } = this.state;
     return (
       <QuestionPresenter
+        name={name}
         age={age}
         sex={sex}
-        country={country}
-        chickenGame={chickenGame}
-        username={username}
+        education={education}
+        email={email}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />

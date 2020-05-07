@@ -4,35 +4,42 @@ const Schema = mongoose.Schema;
 
 const answerSchema = new Schema(
   {
+    bot_model: {
+      type: String,
+      required: "bot model is undefined"
+    },
     sub_id: {
       type: String,
-      required: "your ID is unidentifed",
+      required: "your ID is unidentifed"
     },
     decision_sub: {
       type: String,
-      required: "Go or Swerve?",
+      required: "Go or Swerve?"
     },
     decision_bot1: {
       type: String,
-      required: true,
+      required: true
     },
     decision_bot2: {
       type: String,
-      required: true,
+      required: true
     },
     remain_sub: {
       type: Number,
-      required: true,
+      required: true
     },
     remain_bot1: {
       type: Number,
-      required: true,
+      required: true
     },
     remain_bot2: {
       type: Number,
-      required: true,
+      required: true
     },
-    duration: { type: Number },
+    trial: {
+      type: String,
+      required: true
+    }
   },
   { timestamps: true }
 );

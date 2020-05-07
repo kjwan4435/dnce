@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const cors = require("cors");
 
 const db = require("./db");
 
@@ -11,8 +12,10 @@ const subjectRouter = require("./routes/subjects");
 const app = express();
 const port = process.env.PORT || 8080;
 
+app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api", route);
 app.use("/answers", answerRouter);
