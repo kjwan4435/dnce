@@ -11,7 +11,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Game_Info = styled.div`
+const GameInfo = styled.div`
   padding: 18px;
   font-size: 18px;
   display: block;
@@ -29,7 +29,7 @@ const Mission = styled.div`
   color: #ffcc00;
 `;
 
-const Button_Container = styled.div`
+const ButtonContainer = styled.div`
   padding: 30px;
   text-align: center;
 `;
@@ -60,23 +60,23 @@ export default class extends Component {
   render = () => {
     return (
       <Container>
-        <Game_Info>
+        <GameInfo>
           <p>
             This game is for 3 persons batting game.<br></br>
             What we want to see is your behavior pattern especially related to
             chicken game.
           </p>
-        </Game_Info>
+        </GameInfo>
         <Mission>Your Mission is Being Winner.</Mission>
-        <Button_Container>
+        <ButtonContainer>
           <Link to="/questions">
             <Start> Let's Start</Start>
           </Link>
-        </Button_Container>
-        <Game_Info>
+        </ButtonContainer>
+        <GameInfo>
           Only winner can get extra reward which is proportional to gap between
           other competitors.
-        </Game_Info>
+        </GameInfo>
         <Extra>
           * What is Chicken game?
           <br></br>

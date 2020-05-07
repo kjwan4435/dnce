@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import QuestionPresenter from "./QuestionPresenter";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+
+//beomy.tistory.com/33 [beomy]
 
 export default class extends Component {
   state = {
@@ -9,6 +9,7 @@ export default class extends Component {
     sex: null,
     country: null,
     chickenGame: null,
+    username: null,
   };
 
   handleChange = (e) => {
@@ -34,14 +35,21 @@ export default class extends Component {
     });
   };
 
+  componentDidMount = async () => {
+    await fetch("api")
+      .then((res) => res.json())
+      .then((data) => this.setState({ username: data.username }));
+  };
+
   render = () => {
-    const { age, sex, country, chickenGame } = this.state;
+    const { age, sex, country, chickenGame, username } = this.state;
     return (
       <QuestionPresenter
         age={age}
         sex={sex}
         country={country}
         chickenGame={chickenGame}
+        username={username}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />

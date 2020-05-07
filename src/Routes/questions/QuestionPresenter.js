@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
+
 const Container = styled.div`
   padding: 20px;
 `;
@@ -15,7 +15,7 @@ const UserInfo = styled.div`
 
 const Quest = styled.div``;
 
-const Form_ = styled.form`
+const Form = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -62,7 +62,7 @@ const Submit = styled.button`
   font-weight: 700;
 `;
 
-const Button_Container = styled.div`
+const ButtonContainer = styled.div`
   text-align: center;
 `;
 
@@ -71,15 +71,18 @@ const QuestionPresenter = ({
   sex,
   country,
   chickenGame,
+  username,
   handleChange,
   handleSubmit,
 }) => (
   <Container>
+    <h1>{username ? `Hello ${username}` : "Hello World"}</h1>
     <UserInfo>Let me know who you are!</UserInfo>
-    <Form_ onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Quest>
         <Info
           required
+          type="number"
           placeholder="Age"
           onChange={handleChange}
           value={age}
@@ -88,6 +91,7 @@ const QuestionPresenter = ({
       </Quest>
       <Quest>
         <Info
+          type="text"
           required
           placeholder="Country"
           onChange={handleChange}
@@ -97,6 +101,7 @@ const QuestionPresenter = ({
       </Quest>
       <Quest>
         <Select
+          type="text"
           required
           placeholder="Male/Female"
           onChange={handleChange}
@@ -110,6 +115,7 @@ const QuestionPresenter = ({
       </Quest>
       <Quest>
         <Select
+          type="text"
           required
           placeholder="Have you heard about chicken game?"
           onChange={handleChange}
@@ -121,20 +127,22 @@ const QuestionPresenter = ({
           <option>No</option>
         </Select>
       </Quest>
-      <Button_Container>
-        <Submit type="submit">Game Start</Submit>
-      </Button_Container>
-    </Form_>
+      <ButtonContainer>
+        <Submit type="submit" action="/experiment">
+          Game Start
+        </Submit>
+      </ButtonContainer>
+    </Form>
   </Container>
 );
 
-QuestionPresenter.propTypes = {
-  age: PropTypes.number.isRequired,
-  sex: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired,
-  chickenGame: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-};
+// QuestionPresenter.propTypes = {
+//   age: PropTypes.number.isRequired,
+//   sex: PropTypes.string.isRequired,
+//   country: PropTypes.string.isRequired,
+//   chickenGame: PropTypes.string.isRequired,
+//   handleChange: PropTypes.func.isRequired,
+//   handleSubmit: PropTypes.func.isRequired,
+// };
 
 export default QuestionPresenter;
