@@ -37,7 +37,7 @@ export default class extends Component {
     console.log(subject);
 
     axios
-      .post("http://localhost:8080/subjects/add", qs.stringify(subject))
+      .post("/subjects/add", qs.stringify(subject))
       .then(async (res) => {
         console.log(res.data);
         await this.setState({ id: res.data });

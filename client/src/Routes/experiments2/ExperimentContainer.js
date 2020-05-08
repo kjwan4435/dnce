@@ -105,7 +105,7 @@ export default class extends Component {
     await console.log(answer);
 
     const res = await axios.post(
-      `http://localhost:8080/answers/${this.state.sub_id}/${this.state.bot_model}`,
+      `/answers/${this.state.sub_id}/${this.state.bot_model}`,
       qs.stringify(answer)
     );
     console.log(res.data);
@@ -199,7 +199,7 @@ export default class extends Component {
     await console.log(answer);
 
     const res = await axios.post(
-      `http://localhost:8080/answers/${this.state.sub_id}/${this.state.bot_model}`,
+      `/answers/${this.state.sub_id}/${this.state.bot_model}`,
       qs.stringify(answer)
     );
     await console.log(res.data);
