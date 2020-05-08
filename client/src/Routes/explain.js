@@ -47,9 +47,7 @@ const Start = styled.button`
 
 const Extra = styled.div`
   margin-top: 10px;
-  text-align: center;
   display: block;
-  width: 70%;
   padding: 10px;
   color: rgba(255, 255, 255, 0.8);
   font-size: 15px;
@@ -75,9 +73,6 @@ export default class extends Component {
           <br></br> Also, You might be coward(chicken)
         </GameInfo>
         <Extra>
-          *Score Information
-          <br></br>
-          <br></br>
           If you choose "Go", and others also choose "Go" => you get -100,
           others also get -100 <br></br>
           If you choose "Go", and one choose "Go" and the other choose "Swerve"

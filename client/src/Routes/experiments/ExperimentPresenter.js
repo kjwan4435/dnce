@@ -68,7 +68,7 @@ const ButtonContainer = styled.div`
 `;
 
 const Submit = styled.button`
-  width: 300px;
+  width: 150px;
   padding: 10px 5px;
   background-color: #ffcc00;
   border-radius: 8px;

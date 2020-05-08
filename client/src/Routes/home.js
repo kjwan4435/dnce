@@ -46,10 +46,9 @@ const Start = styled.button`
 `;
 
 const Extra = styled.div`
-  margin-top: 50px;
+  margin-top: 30px;
   text-align: center;
   display: block;
-  width: 70%;
   padding: 15px;
   color: rgba(255, 255, 255, 0.8);
   font-size: 15px;
