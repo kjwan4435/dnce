@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "Routes/home";
-import explain from "Routes/explain";
-import experiments from "Routes/experiments";
-import experiments2 from "Routes/experiments2";
-import finish from "Routes/finish";
-import questions from "Routes/questions";
-import Header from "Components/Header";
+import Home from "../Routes/home";
+import explain from "../Routes/explain";
+import experiments from "../Routes/experiments";
+import experiments2 from "../Routes/experiments2";
+import finish from "../Routes/finish";
+import questions from "../Routes/questions";
+import Header from "./Header";
 
 export default () => (
   <Router>
