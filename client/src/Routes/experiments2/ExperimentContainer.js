@@ -31,8 +31,8 @@ export default class extends Component {
 
     await this.setState({ decision_sub: "GO" });
 
-    const number1 = (await Math.floor(Math.random() * 10)) + 1;
-    const number2 = (await Math.floor(Math.random() * 10)) + 1;
+    const number1 = (await Math.floor(Math.random() * 1000)) + 1;
+    const number2 = (await Math.floor(Math.random() * 1000)) + 1;
     if (number1 >= 5) {
       await this.setState({ decision_bot1: "GO" });
     } else {

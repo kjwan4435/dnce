@@ -1,68 +1,28 @@
 {
   "name": "capstone_bci",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "client-install": "cd client && yarn install",
+    "start": "node ./servers/server.js",
+    "server": "nodemon --exec node ./servers/server.js --delay 2",
+    "client": "cd client && yarn start",
+    "dev": "concurrently \"yarn server\" \"yarn client\" ",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --preifx client"
+  },
+  "repository": "https://github.com/kjwan4435/capstone_bci.git",
+  "author": "kjwan4435 <kjwan4435@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/register": "^7.9.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "aws-sdk": "^2.659.0",
-    "axios": "^0.19.2",
-    "babel-core": "^6.26.3",
-    "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.19.0",
-    "bootstrap": "^4.4.1",
+    "concurrently": "^5.2.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "eslint": "^6.8.0",
     "express": "^4.17.1",
-    "gh-pages": "^2.2.0",
-    "http-proxy-middleware": "^1.0.3",
-    "ignore-styles": "^5.0.1",
     "mongoose": "^5.9.12",
-    "moongoose": "^0.0.5",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.3",
-    "npm-run-all": "^4.1.5",
-    "prop-types": "^15.7.2",
-    "qs": "^6.9.4",
-    "react": "^16.13.1",
-    "react-bootstrap": "^1.0.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
-    "styled-components": "^5.1.0",
-    "styled-reset": "^4.1.3",
-    "yarn-run-all": "^3.1.1"
+    "morgan": "^1.10.0"
   },
-  "scripts": {
-    "start": "npm-run-all --parallel start:**",
-    "start:client": "react-scripts start",
-    "start:server": "nodemon --exec node ./servers/server.js --delay 2",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build",
-    "predeploy": "yarn run build"
-  },
-  "homepage": "https://kjwan4435.github.io/capstone_bci",
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }

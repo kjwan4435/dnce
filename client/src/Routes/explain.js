@@ -21,7 +21,7 @@ const GameInfo = styled.div`
 `;
 
 const Mission = styled.div`
-  padding-top: 30px;
+  padding: 10px;
   display: block;
   text-align: center;
   font-size: 25px;
@@ -60,9 +60,9 @@ export default class extends Component {
   render = () => {
     return (
       <Container>
-        <GameInfo>
+        <Mission>
           The only thing you need to do is choose between "Go" and "Swerve"
-        </GameInfo>
+        </Mission>
         <GameInfo>
           If only you choose "Go" and others choose "Swerve", you can get
           points.
