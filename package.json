@@ -7,7 +7,7 @@
     "start": "node ./servers/server.js",
     "server": "nodemon --exec node ./servers/server.js --delay 2",
     "client": "cd client && npm start",
-    "dev": "concurrently \"yarn server\" \"yarn client\" ",
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --preifx client"
   },
   "repository": "https://github.com/kjwan4435/capstone_bci.git",
