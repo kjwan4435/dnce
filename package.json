@@ -8,7 +8,7 @@
     "server": "nodemon --exec node ./servers/server.js --delay 2",
     "client": "cd client && yarn start",
     "dev": "concurrently \"yarn server\" \"yarn client\" ",
-    "heroku-postbuild": "YARN_PRODUCTION=false cd client && yarn install && yarn build"
+    "heroku-postbuild": "YARN_PRODUCTION=false cd client && yarn install && cd client yarn build"
   },
   "repository": "https://github.com/kjwan4435/capstone_bci.git",
   "author": "kjwan4435 <kjwan4435@gmail.com>",
