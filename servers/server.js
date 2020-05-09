@@ -6,7 +6,6 @@ const path = require("path");
 
 const db = require("./db");
 
-const route = require("./routes/index");
 const answerRouter = require("./routes/answers");
 const subjectRouter = require("./routes/subjects");
 
@@ -18,7 +17,6 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/api", route);
 app.use("/answers", answerRouter);
 app.use("/subjects", subjectRouter);
 
