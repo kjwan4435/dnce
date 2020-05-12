@@ -36,6 +36,18 @@ const answerSchema = new Schema(
       type: Number,
       required: true
     },
+    rank_sub: {
+      type: Number,
+      required: true
+    },
+    rank_bot1: {
+      type: Number,
+      required: true
+    },
+    rank_bot2: {
+      type: Number,
+      required: true
+    },
     trial: {
       type: String,
       required: true

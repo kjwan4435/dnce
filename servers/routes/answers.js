@@ -22,6 +22,9 @@ answerRouter.route("/:id/:bot_model").post((req, res) => {
   const remain_sub = req.body.remain_sub;
   const remain_bot1 = req.body.remain_bot1;
   const remain_bot2 = req.body.remain_bot2;
+  const rank_sub = req.body.rank_sub;
+  const rank_bot1 = req.body.rank_bot1;
+  const rank_bot2 = req.body.rank_bot2;
   const trial = req.body.trial;
 
   const newAnswer = new Answer({
@@ -33,6 +36,9 @@ answerRouter.route("/:id/:bot_model").post((req, res) => {
     remain_sub,
     remain_bot1,
     remain_bot2,
+    rank_sub,
+    rank_bot1,
+    rank_bot2,
     trial
   });
 

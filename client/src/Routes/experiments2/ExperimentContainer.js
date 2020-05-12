@@ -25,29 +25,42 @@ export default class extends Component {
     });
   };
 
-  handleGoSubmit = async (e) => {
-    // 페이지 리로딩 방지
-    e.preventDefault();
-
+  setBotDecisionGo = async () => {
     await this.setState({ decision_sub: "GO" });
 
-    const number1 = (await Math.floor(Math.random() * 1000)) + 1;
-    const number2 = (await Math.floor(Math.random() * 1000)) + 1;
-    if (number1 >= 5) {
+    const number1 = (await Math.floor(Math.random() * 10)) + 1;
+    const number2 = (await Math.floor(Math.random() * 10)) + 1;
+
+    if (number1 >= 6) {
       await this.setState({ decision_bot1: "GO" });
     } else {
       await this.setState({ decision_bot1: "SWERVE" });
     }
-    if (number2 >= 5) {
+    if (number2 >= 6) {
       await this.setState({ decision_bot2: "GO" });
     } else {
       await this.setState({ decision_bot2: "SWERVE" });
     }
+  };
 
-    const decision_sub = await this.state.decision_sub;
-    const decision_bot1 = await this.state.decision_bot1;
-    const decision_bot2 = await this.state.decision_bot2;
+  setBotDecisionSwerve = async () => {
+    await this.setState({ decision_sub: "SWERVE" });
 
+    const number1 = (await Math.floor(Math.random() * 10)) + 1;
+    const number2 = (await Math.floor(Math.random() * 10)) + 1;
+    if (number1 >= 6) {
+      await this.setState({ decision_bot1: "GO" });
+    } else {
+      await this.setState({ decision_bot1: "SWERVE" });
+    }
+    if (number2 >= 6) {
+      await this.setState({ decision_bot2: "GO" });
+    } else {
+      await this.setState({ decision_bot2: "SWERVE" });
+    }
+  };
+
+  calculatePoint = async (decision_sub, decision_bot1, decision_bot2) => {
     if (
       decision_sub === "GO" &&
       decision_bot1 === "GO" &&
@@ -88,61 +101,7 @@ export default class extends Component {
         remain_bot1: this.state.remain_bot1 - 60,
         remain_bot2: this.state.remain_bot2 - 60
       });
-    }
-
-    const answer = {
-      sub_id: this.state.sub_id,
-      bot_model: this.state.bot_model,
-      decision_sub: this.state.decision_sub,
-      decision_bot1: this.state.decision_bot1,
-      decision_bot2: this.state.decision_bot2,
-      remain_sub: this.state.remain_sub,
-      remain_bot1: this.state.remain_bot1,
-      remain_bot2: this.state.remain_bot2,
-      trial: this.state.trial
-    };
-
-    await console.log(answer);
-
-    const res = await axios.post(
-      `/answers/${this.state.sub_id}/${this.state.bot_model}`,
-      qs.stringify(answer)
-    );
-    console.log(res.data);
-
-    if (this.state.trial < 50) {
-      await this.setState({
-        trial: this.state.trial + 1
-      });
-    } else {
-      window.location = "/finish";
-    }
-  };
-
-  handleSwerveSubmit = async (e) => {
-    // 페이지 리로딩 방지
-    e.preventDefault();
-
-    await this.setState({ decision_sub: "SWERVE" });
-
-    const number1 = (await Math.floor(Math.random() * 10)) + 1;
-    const number2 = (await Math.floor(Math.random() * 10)) + 1;
-    if (number1 >= 5) {
-      await this.setState({ decision_bot1: "GO" });
-    } else {
-      await this.setState({ decision_bot1: "SWERVE" });
-    }
-    if (number2 >= 5) {
-      await this.setState({ decision_bot2: "GO" });
-    } else {
-      await this.setState({ decision_bot2: "SWERVE" });
-    }
-
-    const decision_sub = await this.state.decision_sub;
-    const decision_bot1 = await this.state.decision_bot1;
-    const decision_bot2 = await this.state.decision_bot2;
-
-    if (
+    } else if (
       decision_sub === "SWERVE" &&
       decision_bot1 === "GO" &&
       decision_bot2 === "GO"
@@ -183,6 +142,30 @@ export default class extends Component {
         remain_bot2: this.state.remain_bot2
       });
     }
+  };
+
+  hideComponent = () => {
+    document.getElementById("hideSubmit").style.display = "none";
+    document.getElementById("hideInfo").style.display = "none";
+  };
+
+  showComponent = () => {
+    document.getElementById("hideSubmit").style.display = "flex";
+    document.getElementById("hideInfo").style.display = "block";
+  };
+
+  handleGoSubmit = async (e) => {
+    // 페이지 리로딩 방지
+    e.preventDefault();
+
+    this.hideComponent();
+    await this.setBotDecisionGo();
+
+    const decision_sub = await this.state.decision_sub;
+    const decision_bot1 = await this.state.decision_bot1;
+    const decision_bot2 = await this.state.decision_bot2;
+
+    await this.calculatePoint(decision_sub, decision_bot1, decision_bot2);
 
     const answer = {
       sub_id: this.state.sub_id,
@@ -196,7 +179,51 @@ export default class extends Component {
       trial: this.state.trial
     };
 
-    await console.log(answer);
+    await console.log(this.state);
+
+    const res = await axios.post(
+      `/answers/${this.state.sub_id}/${this.state.bot_model}`,
+      qs.stringify(answer)
+    );
+    console.log(res.data);
+    this.showComponent();
+
+    if (this.state.trial < 50) {
+      await this.setState({
+        trial: this.state.trial + 1
+      });
+    } else {
+      window.location = `/experiment/${this.state.sub_id}/model2`;
+    }
+  };
+
+  handleSwerveSubmit = async (e) => {
+    // 페이지 리로딩 방지
+    e.preventDefault();
+
+    this.hideComponent();
+
+    await this.setBotDecisionSwerve();
+
+    const decision_sub = await this.state.decision_sub;
+    const decision_bot1 = await this.state.decision_bot1;
+    const decision_bot2 = await this.state.decision_bot2;
+
+    await this.calculatePoint(decision_sub, decision_bot1, decision_bot2);
+
+    const answer = {
+      sub_id: this.state.sub_id,
+      bot_model: this.state.bot_model,
+      decision_sub: this.state.decision_sub,
+      decision_bot1: this.state.decision_bot1,
+      decision_bot2: this.state.decision_bot2,
+      remain_sub: this.state.remain_sub,
+      remain_bot1: this.state.remain_bot1,
+      remain_bot2: this.state.remain_bot2,
+      trial: this.state.trial
+    };
+
+    await console.log(this.state);
 
     const res = await axios.post(
       `/answers/${this.state.sub_id}/${this.state.bot_model}`,
@@ -204,12 +231,14 @@ export default class extends Component {
     );
     await console.log(res.data);
 
+    this.showComponent();
+
     if (this.state.trial < 50) {
       await this.setState({
         trial: this.state.trial + 1
       });
     } else {
-      window.location = `/finish`;
+      window.location = `/experiment/${this.state.sub_id}/model2`;
     }
   };
 

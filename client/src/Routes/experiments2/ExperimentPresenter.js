@@ -101,7 +101,7 @@ const QuestionPresenter = ({
   handleSwerveSubmit
 }) => (
   <Container>
-    <Round>ROUND 2</Round>
+    <Round>ROUND 1</Round>
     <BotPointCont>
       <BotPoint>
         <h4>BOT 1 Points: {remain_bot1}</h4>
@@ -118,7 +118,7 @@ const QuestionPresenter = ({
         <h4>Previous Decision: {decision_sub}</h4>
       </SubPoint>
     </SubPointCont>
-    <FormContCont>
+    <FormContCont id="hideSubmit">
       <FormContainer>
         <Form onSubmit={handleGoSubmit}>
           <ButtonContainer>
@@ -136,7 +136,7 @@ const QuestionPresenter = ({
         </Form>
       </FormContainer>
     </FormContCont>
-    <Extra>
+    <Extra id="hideInfo">
       If you choose "Go", and others also choose "Go" => you get -100, others
       also get -100 <br></br>
       If you choose "Go", and one choose "Go" and the other choose "Swerve" =>

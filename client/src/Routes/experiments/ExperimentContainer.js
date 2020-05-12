@@ -12,6 +12,11 @@ export default class extends Component {
     remain_sub: 5000,
     remain_bot1: 5000,
     remain_bot2: 5000,
+    rank_sub: 1,
+    rank_bot1: 1,
+    rank_bot2: 1,
+    do_rank_bot1: 1,
+    do_rank_bot2: 1,
     bot_model: "",
     trial: 1
   };
@@ -25,29 +30,41 @@ export default class extends Component {
     });
   };
 
-  handleGoSubmit = async (e) => {
-    // 페이지 리로딩 방지
-    e.preventDefault();
-
+  setBotDecisionGo = async () => {
     await this.setState({ decision_sub: "GO" });
 
     const number1 = (await Math.floor(Math.random() * 10)) + 1;
     const number2 = (await Math.floor(Math.random() * 10)) + 1;
-    if (number1 >= 5) {
+    if (number1 >= 6) {
       await this.setState({ decision_bot1: "GO" });
     } else {
       await this.setState({ decision_bot1: "SWERVE" });
     }
-    if (number2 >= 5) {
+    if (number2 >= 6) {
       await this.setState({ decision_bot2: "GO" });
     } else {
       await this.setState({ decision_bot2: "SWERVE" });
     }
+  };
 
-    const decision_sub = await this.state.decision_sub;
-    const decision_bot1 = await this.state.decision_bot1;
-    const decision_bot2 = await this.state.decision_bot2;
+  setBotDecisionSwerve = async () => {
+    await this.setState({ decision_sub: "SWERVE" });
 
+    const number1 = (await Math.floor(Math.random() * 10)) + 1;
+    const number2 = (await Math.floor(Math.random() * 10)) + 1;
+    if (number1 >= 6) {
+      await this.setState({ decision_bot1: "GO" });
+    } else {
+      await this.setState({ decision_bot1: "SWERVE" });
+    }
+    if (number2 >= 6) {
+      await this.setState({ decision_bot2: "GO" });
+    } else {
+      await this.setState({ decision_bot2: "SWERVE" });
+    }
+  };
+
+  calculatePoint = async (decision_sub, decision_bot1, decision_bot2) => {
     if (
       decision_sub === "GO" &&
       decision_bot1 === "GO" &&
@@ -88,61 +105,7 @@ export default class extends Component {
         remain_bot1: this.state.remain_bot1 - 60,
         remain_bot2: this.state.remain_bot2 - 60
       });
-    }
-
-    const answer = {
-      sub_id: this.state.sub_id,
-      bot_model: this.state.bot_model,
-      decision_sub: this.state.decision_sub,
-      decision_bot1: this.state.decision_bot1,
-      decision_bot2: this.state.decision_bot2,
-      remain_sub: this.state.remain_sub,
-      remain_bot1: this.state.remain_bot1,
-      remain_bot2: this.state.remain_bot2,
-      trial: this.state.trial
-    };
-
-    await console.log(this.state);
-
-    const res = await axios.post(
-      `/answers/${this.state.sub_id}/${this.state.bot_model}`,
-      qs.stringify(answer)
-    );
-    console.log(res.data);
-
-    if (this.state.trial < 50) {
-      await this.setState({
-        trial: this.state.trial + 1
-      });
-    } else {
-      window.location = `/experiment/${this.state.sub_id}/model2`;
-    }
-  };
-
-  handleSwerveSubmit = async (e) => {
-    // 페이지 리로딩 방지
-    e.preventDefault();
-
-    await this.setState({ decision_sub: "SWERVE" });
-
-    const number1 = (await Math.floor(Math.random() * 10)) + 1;
-    const number2 = (await Math.floor(Math.random() * 10)) + 1;
-    if (number1 >= 5) {
-      await this.setState({ decision_bot1: "GO" });
-    } else {
-      await this.setState({ decision_bot1: "SWERVE" });
-    }
-    if (number2 >= 5) {
-      await this.setState({ decision_bot2: "GO" });
-    } else {
-      await this.setState({ decision_bot2: "SWERVE" });
-    }
-
-    const decision_sub = await this.state.decision_sub;
-    const decision_bot1 = await this.state.decision_bot1;
-    const decision_bot2 = await this.state.decision_bot2;
-
-    if (
+    } else if (
       decision_sub === "SWERVE" &&
       decision_bot1 === "GO" &&
       decision_bot2 === "GO"
@@ -183,7 +146,42 @@ export default class extends Component {
         remain_bot2: this.state.remain_bot2
       });
     }
+  };
 
+  hideComponent = () => {
+    document.getElementById("hideSubmit").style.display = "none";
+    document.getElementById("hideInfo").style.display = "none";
+  };
+
+  showComponent = () => {
+    document.getElementById("hideSubmit").style.display = "flex";
+    document.getElementById("hideInfo").style.display = "block";
+  };
+
+  calculateRank = async () => {
+    let points = [
+      this.state.remain_sub,
+      this.state.remain_bot1,
+      this.state.remain_bot2
+    ];
+    await points.sort(function (a, b) {
+      return b - a;
+    });
+
+    this.setState({
+      rank_sub: points.indexOf(this.state.remain_sub) + 1,
+      rank_bot1: points.indexOf(this.state.remain_bot1) + 1,
+      rank_bot2: points.indexOf(this.state.remain_bot2) + 1,
+      do_rank_bot1: points.indexOf(this.state.remain_bot1) + 1,
+      do_rank_bot2: points.indexOf(this.state.remain_bot2) + 1
+    });
+
+    if (this.state.do_rank_bot1 === this.state.do_rank_bot2) {
+      this.setState({ do_rank_bot2: this.state.do_rank_bot1 + 1 });
+    }
+  };
+
+  setAnswer = () => {
     const answer = {
       sub_id: this.state.sub_id,
       bot_model: this.state.bot_model,
@@ -193,16 +191,74 @@ export default class extends Component {
       remain_sub: this.state.remain_sub,
       remain_bot1: this.state.remain_bot1,
       remain_bot2: this.state.remain_bot2,
+      rank_sub: this.state.rank_sub,
+      rank_bot1: this.state.rank_bot1,
+      rank_bot2: this.state.rank_bot2,
       trial: this.state.trial
     };
+    return answer;
+  };
 
-    await console.log(this.state);
+  handleGoSubmit = async (e) => {
+    // 페이지 리로딩 방지
+    e.preventDefault();
+
+    this.hideComponent();
+    await this.setBotDecisionGo();
+
+    const decision_sub = await this.state.decision_sub;
+    const decision_bot1 = await this.state.decision_bot1;
+    const decision_bot2 = await this.state.decision_bot2;
+
+    await this.calculatePoint(decision_sub, decision_bot1, decision_bot2);
+    await this.calculateRank();
+
+    const answer = await this.setAnswer();
+
+    console.log(answer);
+
+    const res = await axios.post(
+      `/answers/${this.state.sub_id}/${this.state.bot_model}`,
+      qs.stringify(answer)
+    );
+    console.log(res.data);
+
+    this.showComponent();
+
+    if (this.state.trial < 50) {
+      await this.setState({
+        trial: this.state.trial + 1
+      });
+    } else {
+      window.location = `/experiment/${this.state.sub_id}/model2`;
+    }
+  };
+
+  handleSwerveSubmit = async (e) => {
+    // 페이지 리로딩 방지
+    e.preventDefault();
+
+    this.hideComponent();
+    await this.setBotDecisionSwerve();
+
+    const decision_sub = await this.state.decision_sub;
+    const decision_bot1 = await this.state.decision_bot1;
+    const decision_bot2 = await this.state.decision_bot2;
+
+    await this.calculatePoint(decision_sub, decision_bot1, decision_bot2);
+    await this.calculateRank();
+
+    const answer = await this.setAnswer();
+
+    console.log(answer);
 
     const res = await axios.post(
       `/answers/${this.state.sub_id}/${this.state.bot_model}`,
       qs.stringify(answer)
     );
     await console.log(res.data);
+
+    this.showComponent();
 
     if (this.state.trial < 50) {
       await this.setState({
