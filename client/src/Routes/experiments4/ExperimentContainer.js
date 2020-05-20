@@ -32,9 +32,9 @@ export default class extends Component {
 
   adj_control = (diff_bot) => {
     if (diff_bot >= 200) {
-      return 40;
+      return 30;
     } else if (diff_bot > 0) {
-      return 40 * (diff_bot / 200);
+      return 30 * (diff_bot / 200);
     } else {
       return 0;
     }
@@ -42,50 +42,46 @@ export default class extends Component {
 
   bot1_decision = (number, adj) => {
     if (this.state.rank_bot1 === 1) {
-      if (number >= 51) {
+      if (number >= 61) {
         this.setState({ decision_bot1: "GO" });
       } else {
         this.setState({ decision_bot1: "SWERVE" });
       }
     } else if (this.state.rank_bot1 === 2) {
-      if (number >= 51 - adj) {
+      if (number >= 61 - adj) {
         this.setState({ decision_bot1: "GO" });
       } else {
         this.setState({ decision_bot1: "SWERVE" });
       }
     } else {
-      if (number >= 51 + adj) {
+      if (number >= 61 + adj) {
         this.setState({ decision_bot1: "GO" });
       } else {
         this.setState({ decision_bot1: "SWERVE" });
       }
     }
-
-    console.log(`bot1:${number}, ${51 - adj}`);
   };
 
   bot2_decision = (number, adj) => {
     if (this.state.rank_bot2 === 1) {
-      if (number >= 51) {
+      if (number >= 61) {
         this.setState({ decision_bot2: "GO" });
       } else {
         this.setState({ decision_bot2: "SWERVE" });
       }
     } else if (this.state.rank_bot2 === 2) {
-      if (number >= 51 - adj) {
+      if (number >= 61 - adj) {
         this.setState({ decision_bot2: "GO" });
       } else {
         this.setState({ decision_bot2: "SWERVE" });
       }
     } else {
-      if (number >= 51 + adj) {
+      if (number >= 61 + adj) {
         this.setState({ decision_bot2: "GO" });
       } else {
         this.setState({ decision_bot2: "SWERVE" });
       }
     }
-
-    console.log(`bot2:${number}, ${51 - adj}`);
   };
 
   setBotDecisionGo = async () => {
@@ -294,7 +290,7 @@ export default class extends Component {
         trial: this.state.trial + 1
       });
     } else {
-      window.location = `/experiment/${this.state.sub_id}/model3`;
+      window.location = `/finish`;
     }
   };
 
@@ -329,7 +325,7 @@ export default class extends Component {
         trial: this.state.trial + 1
       });
     } else {
-      window.location = `/experiment/${this.state.sub_id}/model3`;
+      window.location = `/finish`;
     }
   };
 

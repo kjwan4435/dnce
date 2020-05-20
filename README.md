@@ -1,15 +1,15 @@
-## N person's chicken game using React and Node with Amazon M turk
+## N person's chicken game using React and Node
 
 - [O] Home 화면 (실험 설명)
 - [O] 설문조사 화면 (form input 받기)
 - [O] 실험 안내 (실험 시 유의 사항 등)
-- [ ] 실험시작
+- [O] 실험시작
   > [O] input data 모델 만들기  
-  > [ ] input data를 활용하여 웹에 띄우기  
-  > [ ] 사용자 게임 동작 구현하기  
-  > [ ] 사용자의 반응에 따른 input data 수정하기  
-  > [ ] 사용자의 반응/ 당시 봇의 반응/ database에 저장하기
-- [ ] 실험종료 안내
+  > [O] input data를 활용하여 웹에 띄우기  
+  > [O] 사용자 게임 동작 구현하기  
+  > [O] 사용자의 반응에 따른 input data 수정하기  
+  > [O] 사용자의 반응/ 당시 봇의 반응/ database에 저장하기
+- [O] 실험종료 안내
 - [ ] 추가 설문조사
 
 ### About Programming

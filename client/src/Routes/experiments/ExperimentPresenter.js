@@ -83,6 +83,8 @@ const Extra = styled.div`
   margin-top: 10px;
   text-align: left;
   display: block;
+  position: absolute;
+  bottom: 30px;
   padding: 10px;
   color: rgba(255, 255, 255, 0.8);
   font-size: 15px;
@@ -136,7 +138,7 @@ const QuestionPresenter = ({
         </Form>
       </FormContainer>
     </FormContCont>
-    <Extra id="hideInfo">
+    <Extra>
       If you choose "Go", and others also choose "Go" => you get -100, others
       also get -100 <br></br>
       If you choose "Go", and one choose "Go" and the other choose "Swerve" =>

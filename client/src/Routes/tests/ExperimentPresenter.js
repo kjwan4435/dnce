@@ -103,7 +103,7 @@ const QuestionPresenter = ({
   handleSwerveSubmit
 }) => (
   <Container>
-    <Round>ROUND 2</Round>
+    <Round>Warming Up | TEST GAME</Round>
     <BotPointCont>
       <BotPoint>
         <h4>BOT 1 Points: {remain_bot1}</h4>

@@ -102,8 +102,8 @@ export default class extends Component {
     ) {
       await this.setState({
         remain_sub: this.state.remain_sub + 20,
-        remain_bot1: this.state.remain_bot1 - 60,
-        remain_bot2: this.state.remain_bot2 - 60
+        remain_bot1: this.state.remain_bot1 - 20,
+        remain_bot2: this.state.remain_bot2 - 20
       });
     } else if (
       decision_sub === "SWERVE" &&
@@ -150,12 +150,10 @@ export default class extends Component {
 
   hideComponent = () => {
     document.getElementById("hideSubmit").style.display = "none";
-    document.getElementById("hideInfo").style.display = "none";
   };
 
   showComponent = () => {
     document.getElementById("hideSubmit").style.display = "flex";
-    document.getElementById("hideInfo").style.display = "block";
   };
 
   calculateRank = async () => {
@@ -181,7 +179,7 @@ export default class extends Component {
     }
   };
 
-  setAnswer = () => {
+  setAnswer = async () => {
     const answer = {
       sub_id: this.state.sub_id,
       bot_model: this.state.bot_model,
@@ -223,7 +221,7 @@ export default class extends Component {
     );
     console.log(res.data);
 
-    this.showComponent();
+    setTimeout(this.showComponent, 100);
 
     if (this.state.trial < 50) {
       await this.setState({
@@ -258,7 +256,7 @@ export default class extends Component {
     );
     await console.log(res.data);
 
-    this.showComponent();
+    setTimeout(this.showComponent, 100);
 
     if (this.state.trial < 50) {
       await this.setState({

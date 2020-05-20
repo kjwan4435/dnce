@@ -41,7 +41,7 @@ export default class extends Component {
       .then(async (res) => {
         console.log(res.data);
         await this.setState({ id: res.data });
-        window.location = `/experiment/${this.state.id}/model1`;
+        window.location = `/experiment/${this.state.id}/tests`;
       })
       .catch((response) => {
         console.log(response);

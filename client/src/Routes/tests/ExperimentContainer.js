@@ -30,104 +30,38 @@ export default class extends Component {
     });
   };
 
-  adj_control = (diff_bot) => {
-    if (diff_bot >= 200) {
-      return 40;
-    } else if (diff_bot > 0) {
-      return 40 * (diff_bot / 200);
-    } else {
-      return 0;
-    }
-  };
-
-  bot1_decision = (number, adj) => {
-    if (this.state.rank_bot1 === 1) {
-      if (number >= 51) {
-        this.setState({ decision_bot1: "GO" });
-      } else {
-        this.setState({ decision_bot1: "SWERVE" });
-      }
-    } else if (this.state.rank_bot1 === 2) {
-      if (number >= 51 - adj) {
-        this.setState({ decision_bot1: "GO" });
-      } else {
-        this.setState({ decision_bot1: "SWERVE" });
-      }
-    } else {
-      if (number >= 51 + adj) {
-        this.setState({ decision_bot1: "GO" });
-      } else {
-        this.setState({ decision_bot1: "SWERVE" });
-      }
-    }
-
-    console.log(`bot1:${number}, ${51 - adj}`);
-  };
-
-  bot2_decision = (number, adj) => {
-    if (this.state.rank_bot2 === 1) {
-      if (number >= 51) {
-        this.setState({ decision_bot2: "GO" });
-      } else {
-        this.setState({ decision_bot2: "SWERVE" });
-      }
-    } else if (this.state.rank_bot2 === 2) {
-      if (number >= 51 - adj) {
-        this.setState({ decision_bot2: "GO" });
-      } else {
-        this.setState({ decision_bot2: "SWERVE" });
-      }
-    } else {
-      if (number >= 51 + adj) {
-        this.setState({ decision_bot2: "GO" });
-      } else {
-        this.setState({ decision_bot2: "SWERVE" });
-      }
-    }
-
-    console.log(`bot2:${number}, ${51 - adj}`);
-  };
-
   setBotDecisionGo = async () => {
     await this.setState({ decision_sub: "GO" });
 
-    const number1 = (await Math.floor(Math.random() * 100)) + 1;
-    const number2 = (await Math.floor(Math.random() * 100)) + 1;
-    const remains = [
-      this.state.remain_sub,
-      this.state.remain_bot1,
-      this.state.remain_bot2
-    ];
-    const max_remains = await Math.max.apply(null, remains);
-    const diff_bot1 = max_remains - this.state.remain_bot1;
-    const diff_bot2 = max_remains - this.state.remain_bot2;
-
-    const adj_bot1 = await this.adj_control(diff_bot1);
-    const adj_bot2 = await this.adj_control(diff_bot2);
-
-    await this.bot1_decision(number1, adj_bot1);
-    await this.bot2_decision(number2, adj_bot2);
+    const number1 = (await Math.floor(Math.random() * 10)) + 1;
+    const number2 = (await Math.floor(Math.random() * 10)) + 1;
+    if (number1 >= 6) {
+      await this.setState({ decision_bot1: "GO" });
+    } else {
+      await this.setState({ decision_bot1: "SWERVE" });
+    }
+    if (number2 >= 6) {
+      await this.setState({ decision_bot2: "GO" });
+    } else {
+      await this.setState({ decision_bot2: "SWERVE" });
+    }
   };
 
   setBotDecisionSwerve = async () => {
     await this.setState({ decision_sub: "SWERVE" });
 
-    const number1 = (await Math.floor(Math.random() * 100)) + 1;
-    const number2 = (await Math.floor(Math.random() * 100)) + 1;
-    const remains = [
-      this.state.remain_sub,
-      this.state.remain_bot1,
-      this.state.remain_bot2
-    ];
-    const max_remains = await Math.max.apply(null, remains);
-    const diff_bot1 = max_remains - this.state.remain_bot1;
-    const diff_bot2 = max_remains - this.state.remain_bot2;
-
-    const adj_bot1 = await this.adj_control(diff_bot1);
-    const adj_bot2 = await this.adj_control(diff_bot2);
-
-    await this.bot1_decision(number1, adj_bot1);
-    await this.bot2_decision(number2, adj_bot2);
+    const number1 = (await Math.floor(Math.random() * 10)) + 1;
+    const number2 = (await Math.floor(Math.random() * 10)) + 1;
+    if (number1 >= 6) {
+      await this.setState({ decision_bot1: "GO" });
+    } else {
+      await this.setState({ decision_bot1: "SWERVE" });
+    }
+    if (number2 >= 6) {
+      await this.setState({ decision_bot2: "GO" });
+    } else {
+      await this.setState({ decision_bot2: "SWERVE" });
+    }
   };
 
   calculatePoint = async (decision_sub, decision_bot1, decision_bot2) => {
@@ -270,9 +204,9 @@ export default class extends Component {
     this.hideComponent();
     await this.setBotDecisionGo();
 
-    const decision_sub = this.state.decision_sub;
-    const decision_bot1 = this.state.decision_bot1;
-    const decision_bot2 = this.state.decision_bot2;
+    const decision_sub = await this.state.decision_sub;
+    const decision_bot1 = await this.state.decision_bot1;
+    const decision_bot2 = await this.state.decision_bot2;
 
     await this.calculatePoint(decision_sub, decision_bot1, decision_bot2);
     await this.calculateRank();
@@ -289,12 +223,12 @@ export default class extends Component {
 
     setTimeout(this.showComponent, 100);
 
-    if (this.state.trial < 50) {
+    if (this.state.trial < 10) {
       await this.setState({
         trial: this.state.trial + 1
       });
     } else {
-      window.location = `/experiment/${this.state.sub_id}/model3`;
+      window.location = `/experiment/${this.state.sub_id}/model1`;
     }
   };
 
@@ -305,9 +239,9 @@ export default class extends Component {
     this.hideComponent();
     await this.setBotDecisionSwerve();
 
-    const decision_sub = this.state.decision_sub;
-    const decision_bot1 = this.state.decision_bot1;
-    const decision_bot2 = this.state.decision_bot2;
+    const decision_sub = await this.state.decision_sub;
+    const decision_bot1 = await this.state.decision_bot1;
+    const decision_bot2 = await this.state.decision_bot2;
 
     await this.calculatePoint(decision_sub, decision_bot1, decision_bot2);
     await this.calculateRank();
@@ -324,12 +258,12 @@ export default class extends Component {
 
     setTimeout(this.showComponent, 100);
 
-    if (this.state.trial < 50) {
+    if (this.state.trial < 10) {
       await this.setState({
         trial: this.state.trial + 1
       });
     } else {
-      window.location = `/experiment/${this.state.sub_id}/model3`;
+      window.location = `/experiment/${this.state.sub_id}/model1`;
     }
   };
 
