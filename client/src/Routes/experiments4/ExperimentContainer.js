@@ -5,6 +5,7 @@ import qs from "qs";
 
 export default class extends Component {
   state = {
+    showTime: "",
     sub_id: "",
     decision_sub: "",
     decision_bot1: "",
@@ -216,6 +217,20 @@ export default class extends Component {
 
   showComponent = () => {
     document.getElementById("hideSubmit").style.display = "flex";
+    const timestamp = +new Date();
+    this.setState({
+      showTime: timestamp
+    });
+  };
+
+  nextRound = async () => {
+    if (this.state.trial < 50) {
+      await this.setState({
+        trial: this.state.trial + 1
+      });
+    } else {
+      window.location = `/finish`;
+    }
   };
 
   calculateRank = async () => {
@@ -241,7 +256,7 @@ export default class extends Component {
     }
   };
 
-  setAnswer = async () => {
+  setAnswer = async (res_time) => {
     const answer = {
       sub_id: this.state.sub_id,
       bot_model: this.state.bot_model,
@@ -254,7 +269,8 @@ export default class extends Component {
       rank_sub: this.state.rank_sub,
       rank_bot1: this.state.rank_bot1,
       rank_bot2: this.state.rank_bot2,
-      trial: this.state.trial
+      trial: this.state.trial,
+      res_time
     };
     return answer;
   };
@@ -262,6 +278,8 @@ export default class extends Component {
   handleGoSubmit = async (e) => {
     // 페이지 리로딩 방지
     e.preventDefault();
+    const timestamp = +new Date();
+    const res_time = timestamp - this.state.showTime;
 
     this.hideComponent();
     await this.setBotDecisionGo();
@@ -273,7 +291,7 @@ export default class extends Component {
     await this.calculatePoint(decision_sub, decision_bot1, decision_bot2);
     await this.calculateRank();
 
-    const answer = await this.setAnswer();
+    const answer = await this.setAnswer(res_time);
 
     console.log(answer);
 
@@ -283,20 +301,15 @@ export default class extends Component {
     );
     console.log(res.data);
 
-    setTimeout(this.showComponent, 100);
-
-    if (this.state.trial < 50) {
-      await this.setState({
-        trial: this.state.trial + 1
-      });
-    } else {
-      window.location = `/finish`;
-    }
+    setTimeout(this.showComponent, 2000);
+    this.nextRound();
   };
 
   handleSwerveSubmit = async (e) => {
     // 페이지 리로딩 방지
     e.preventDefault();
+    const timestamp = +new Date();
+    const res_time = timestamp - this.state.showTime;
 
     this.hideComponent();
     await this.setBotDecisionSwerve();
@@ -308,7 +321,7 @@ export default class extends Component {
     await this.calculatePoint(decision_sub, decision_bot1, decision_bot2);
     await this.calculateRank();
 
-    const answer = await this.setAnswer();
+    const answer = await this.setAnswer(res_time);
 
     console.log(answer);
 
@@ -318,22 +331,17 @@ export default class extends Component {
     );
     await console.log(res.data);
 
-    setTimeout(this.showComponent, 100);
-
-    if (this.state.trial < 50) {
-      await this.setState({
-        trial: this.state.trial + 1
-      });
-    } else {
-      window.location = `/finish`;
-    }
+    setTimeout(this.showComponent, 2000);
+    this.nextRound();
   };
 
   componentDidMount = async () => {
     const href = await window.location.href.split("/");
+    const timestamp = +new Date();
     await this.setState({
       sub_id: href[href.length - 2],
-      bot_model: href[href.length - 1]
+      bot_model: href[href.length - 1],
+      showTime: timestamp
     });
   };
 
@@ -345,7 +353,10 @@ export default class extends Component {
       decision_bot2,
       remain_sub,
       remain_bot1,
-      remain_bot2
+      remain_bot2,
+      rank_sub,
+      rank_bot1,
+      rank_bot2
     } = this.state;
     return (
       <ExperimentPresenter
@@ -356,6 +367,9 @@ export default class extends Component {
         remain_sub={remain_sub}
         remain_bot1={remain_bot1}
         remain_bot2={remain_bot2}
+        rank_sub={rank_sub}
+        rank_bot1={rank_bot1}
+        rank_bot2={rank_bot2}
         handleGoSubmit={this.handleGoSubmit}
         handleSwerveSubmit={this.handleSwerveSubmit}
       />

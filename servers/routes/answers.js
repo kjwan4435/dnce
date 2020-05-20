@@ -26,6 +26,7 @@ answerRouter.route("/:id/:bot_model").post((req, res) => {
   const rank_bot1 = req.body.rank_bot1;
   const rank_bot2 = req.body.rank_bot2;
   const trial = req.body.trial;
+  const res_time = req.body.res_time;
 
   const newAnswer = new Answer({
     sub_id,
@@ -39,7 +40,8 @@ answerRouter.route("/:id/:bot_model").post((req, res) => {
     rank_sub,
     rank_bot1,
     rank_bot2,
-    trial
+    trial,
+    res_time
   });
 
   newAnswer

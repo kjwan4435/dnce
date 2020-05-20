@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import ExperimentPresenter from "./ExperimentPresenter";
-import axios from "axios";
-import qs from "qs";
 
 export default class extends Component {
   state = {
@@ -215,13 +213,7 @@ export default class extends Component {
 
     console.log(answer);
 
-    const res = await axios.post(
-      `/answers/${this.state.sub_id}/${this.state.bot_model}`,
-      qs.stringify(answer)
-    );
-    console.log(res.data);
-
-    setTimeout(this.showComponent, 100);
+    setTimeout(this.showComponent, 2000);
 
     if (this.state.trial < 10) {
       await this.setState({
@@ -250,13 +242,7 @@ export default class extends Component {
 
     console.log(answer);
 
-    const res = await axios.post(
-      `/answers/${this.state.sub_id}/${this.state.bot_model}`,
-      qs.stringify(answer)
-    );
-    await console.log(res.data);
-
-    setTimeout(this.showComponent, 100);
+    setTimeout(this.showComponent, 2000);
 
     if (this.state.trial < 10) {
       await this.setState({
@@ -283,7 +269,10 @@ export default class extends Component {
       decision_bot2,
       remain_sub,
       remain_bot1,
-      remain_bot2
+      remain_bot2,
+      rank_sub,
+      rank_bot1,
+      rank_bot2
     } = this.state;
     return (
       <ExperimentPresenter
@@ -294,6 +283,9 @@ export default class extends Component {
         remain_sub={remain_sub}
         remain_bot1={remain_bot1}
         remain_bot2={remain_bot2}
+        rank_sub={rank_sub}
+        rank_bot1={rank_bot1}
+        rank_bot2={rank_bot2}
         handleGoSubmit={this.handleGoSubmit}
         handleSwerveSubmit={this.handleSwerveSubmit}
       />

@@ -51,6 +51,9 @@ const answerSchema = new Schema(
     trial: {
       type: String,
       required: true
+    },
+    res_time: {
+      type: Number
     }
   },
   { timestamps: true }

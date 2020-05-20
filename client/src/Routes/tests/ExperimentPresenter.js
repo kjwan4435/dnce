@@ -8,7 +8,7 @@ const Container = styled.div`
 `;
 
 const BotPointCont = styled.div`
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -17,6 +17,9 @@ const BotPointCont = styled.div`
 const BotPoint = styled.div`
   border: medium groove white;
   border-radius: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
   padding: 10px;
 `;
 
@@ -30,12 +33,15 @@ const SubPoint = styled.div`
   border: medium groove white;
   width: 50%;
   border-radius: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
   padding: 10px;
   text-align: center;
 `;
 
 const Round = styled.div`
-  padding: 20px;
+  padding: 10px;
   display: block;
   text-align: center;
   font-size: 20px;
@@ -43,7 +49,7 @@ const Round = styled.div`
 `;
 
 const FormContCont = styled.div`
-  margin-top: 50px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 `;
@@ -83,8 +89,6 @@ const Extra = styled.div`
   margin-top: 10px;
   text-align: left;
   display: block;
-  position: absolute;
-  bottom: 30px;
   padding: 10px;
   color: rgba(255, 255, 255, 0.8);
   font-size: 15px;
@@ -99,23 +103,29 @@ const QuestionPresenter = ({
   remain_sub,
   remain_bot1,
   remain_bot2,
+  rank_sub,
+  rank_bot1,
+  rank_bot2,
   handleGoSubmit,
   handleSwerveSubmit
 }) => (
   <Container>
-    <Round>Warming Up | TEST GAME</Round>
+    <Round>WARMING UP! | TEST GAME for 10 set</Round>
     <BotPointCont>
       <BotPoint>
+        <h4>BOT 1 Rank: {rank_bot1}</h4>
         <h4>BOT 1 Points: {remain_bot1}</h4>
         <h4>Previous Decision: {decision_bot1}</h4>
       </BotPoint>
       <BotPoint>
+        <h4>BOT 2 Rank: {rank_bot2}</h4>
         <h4>BOT 2 Points: {remain_bot2}</h4>
         <h4>Previous Decision: {decision_bot2}</h4>
       </BotPoint>
     </BotPointCont>
     <SubPointCont>
       <SubPoint>
+        <h4>YOUR Rank: {rank_sub}</h4>
         <h4>YOUR Points: {remain_sub}</h4>
         <h4>Previous Decision: {decision_sub}</h4>
       </SubPoint>
