@@ -95,6 +95,20 @@ const Extra = styled.div`
   line-height: 20px;
 `;
 
+const Loader = styled.div`
+  padding: 40px;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+`;
+
+const Yellow = styled.span`
+  color: #ffcc00;
+  font-weight: 500;
+`;
+
 const QuestionPresenter = ({
   sub_id,
   decision_sub,
@@ -113,23 +127,46 @@ const QuestionPresenter = ({
     <Round>ROUND 1</Round>
     <BotPointCont>
       <BotPoint>
-        <h4>BOT 1 Rank: {rank_bot1}</h4>
-        <h4>BOT 1 Points: {remain_bot1}</h4>
-        <h4>Previous Decision: {decision_bot1}</h4>
+        <h4>
+          BOT 1 Rank: <Yellow>{rank_bot1}</Yellow>
+        </h4>
+        <h4>
+          BOT 1 Points: <Yellow>{remain_bot1}</Yellow>
+        </h4>
+        <h4>
+          Previous Decision: <Yellow>{decision_bot1}</Yellow>
+        </h4>
       </BotPoint>
       <BotPoint>
-        <h4>BOT 2 Rank: {rank_bot2}</h4>
-        <h4>BOT 2 Points: {remain_bot2}</h4>
-        <h4>Previous Decision: {decision_bot2}</h4>
+        <h4>
+          BOT 2 Rank: <Yellow>{rank_bot2}</Yellow>
+        </h4>
+        <h4>
+          BOT 2 Points: <Yellow>{remain_bot2}</Yellow>
+        </h4>
+        <h4>
+          Previous Decision: <Yellow>{decision_bot2}</Yellow>
+        </h4>
       </BotPoint>
     </BotPointCont>
     <SubPointCont>
       <SubPoint>
-        <h4>YOUR Rank: {rank_sub}</h4>
-        <h4>YOUR Points: {remain_sub}</h4>
-        <h4>Previous Decision: {decision_sub}</h4>
+        <h4>
+          YOUR Rank: <Yellow>{rank_sub}</Yellow>
+        </h4>
+        <h4>
+          YOUR Points: <Yellow>{remain_sub}</Yellow>
+        </h4>
+        <h4>
+          Previous Decision: <Yellow>{decision_sub}</Yellow>
+        </h4>
       </SubPoint>
     </SubPointCont>
+    <Loader id="loader">
+      <span role="img" aria-label="Loading">
+        <i className="fas fa-spinner fa-spin"></i>
+      </span>
+    </Loader>
     <FormContCont id="hideSubmit">
       <FormContainer>
         <Form onSubmit={handleGoSubmit}>

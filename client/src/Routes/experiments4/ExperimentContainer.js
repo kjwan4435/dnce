@@ -213,10 +213,12 @@ export default class extends Component {
 
   hideComponent = () => {
     document.getElementById("hideSubmit").style.display = "none";
+    document.getElementById("loader").style.display = "flex";
   };
 
   showComponent = () => {
     document.getElementById("hideSubmit").style.display = "flex";
+    document.getElementById("loader").style.display = "none";
     const timestamp = +new Date();
     this.setState({
       showTime: timestamp
