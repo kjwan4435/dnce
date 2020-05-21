@@ -241,7 +241,7 @@ export default class extends Component {
     );
     console.log(res.data);
 
-    setTimeout(this.showComponent, 2000);
+    setTimeout(this.showComponent, 1000);
     this.nextRound();
   };
 
@@ -271,7 +271,7 @@ export default class extends Component {
     );
     await console.log(res.data);
 
-    setTimeout(this.showComponent, 2000);
+    setTimeout(this.showComponent, 1000);
     this.nextRound();
   };
 
