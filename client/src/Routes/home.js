@@ -59,8 +59,11 @@ export default class extends Component {
   render = () => {
     return (
       <Container>
-        <Mission>Your Mission is Being Winner.</Mission>
-        <ButtonContainer>
+        <Mission>
+          Thank you for your interests. <br></br>
+          <br></br> Recruitment has expired.
+        </Mission>
+        {/* <ButtonContainer>
           <Link to="/explain">
             <Start> Game Rule </Start>
           </Link>
@@ -81,7 +84,7 @@ export default class extends Component {
           to increase the risk of shame in yielding. However, when one player
           yields, the conflict is avoided, and the game is for the most part
           over.
-        </Extra>
+        </Extra> */}
       </Container>
     );
   };
