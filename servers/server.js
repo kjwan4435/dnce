@@ -8,6 +8,7 @@ const db = require("./db");
 
 const answerRouter = require("./routes/answers");
 const subjectRouter = require("./routes/subjects");
+const expRouter = require("./routes/exp");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/answers", answerRouter);
 app.use("/subjects", subjectRouter);
+app.use("/exp", expRouter);
 
 // serve static assets if in production
 if (process.env.NODE_ENV === "production") {

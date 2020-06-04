@@ -13,8 +13,9 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(30, 30, 30, 1);
-  box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.6);
+  color: black;
+  background-color: rgba(220, 220, 220, 1);
+  box-shadow: 0px 1px 5px 2px rgba(140, 140, 140, 0.6);
   z-index: 1;
 `;
 
@@ -30,7 +31,7 @@ export default () => (
   <Header>
     <List>
       <Item>
-        <Slink to="/">N Person's Chicken Game</Slink>
+        <Slink to="/">DNCE WEB EXPERIMENT</Slink>
       </Item>
     </List>
   </Header>

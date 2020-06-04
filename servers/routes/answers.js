@@ -13,40 +13,34 @@ answerRouter.route("/:id").get((req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-answerRouter.route("/:id/:bot_model").post((req, res) => {
-  const sub_id = req.params.id;
-  const bot_model = req.params.bot_model;
-  const decision_sub = req.body.decision_sub;
-  const decision_bot1 = req.body.decision_bot1;
-  const decision_bot2 = req.body.decision_bot2;
-  const remain_sub = req.body.remain_sub;
-  const remain_bot1 = req.body.remain_bot1;
-  const remain_bot2 = req.body.remain_bot2;
-  const rank_sub = req.body.rank_sub;
-  const rank_bot1 = req.body.rank_bot1;
-  const rank_bot2 = req.body.rank_bot2;
+answerRouter.route("/exp1").post((req, res) => {
   const trial = req.body.trial;
-  const res_time = req.body.res_time;
+  const l_num = req.body.l_num;
+  const l_prob = req.body.l_prob;
+  const r_num = req.body.r_num;
+  const r_prob = req.body.r_prob;
+  const l_click = req.body.l_click;
+  const r_click = req.body.r_click;
+  const time_click = req.body.time_click;
+  const time_click_array = req.body.time_click_array;
+  const time_next = req.body.time_next;
 
   const newAnswer = new Answer({
-    sub_id,
-    bot_model,
-    decision_sub,
-    decision_bot1,
-    decision_bot2,
-    remain_sub,
-    remain_bot1,
-    remain_bot2,
-    rank_sub,
-    rank_bot1,
-    rank_bot2,
     trial,
-    res_time
+    l_num,
+    l_prob,
+    r_num,
+    r_prob,
+    l_click,
+    r_click,
+    time_click,
+    time_click_array,
+    time_next
   });
 
   newAnswer
     .save()
-    .then(() => res.json(newAnswer.sub_id))
+    .then(() => res.json(newAnswer))
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 

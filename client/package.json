@@ -1,5 +1,5 @@
 {
-  "name": "capstone_bci",
+  "name": "DNCE",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +7,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
+    "fs": "^0.0.1-security",
     "gh-pages": "^2.2.0",
     "ignore-styles": "^5.0.1",
     "npm-run-all": "^4.1.5",
@@ -25,7 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://stark-headland-01794.herokuapp.com/",
+  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": "react-app"
   },
