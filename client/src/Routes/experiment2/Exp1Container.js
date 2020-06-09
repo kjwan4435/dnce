@@ -18,7 +18,86 @@ export default class extends Component {
     time_click: 0,
     time_click_array: [],
     time_next: 0,
-    bonus: 0
+    bonus: 0,
+
+    people1: 0,
+    people2: 0,
+    people3: 0,
+    people4: 0,
+    people5: 0,
+    people6: 0
+  };
+
+  setCharBorder = async () => {
+    let people1 = await document.getElementsByClassName("people1");
+    let people2 = await document.getElementsByClassName("people2");
+    let people3 = await document.getElementsByClassName("people3");
+    let people4 = await document.getElementsByClassName("people4");
+    let people5 = await document.getElementsByClassName("people5");
+    let people6 = await document.getElementsByClassName("people6");
+
+    if (this.state.people1 === 1) {
+      for (var i = 0; i < people1.length; i++) {
+        people1[i].style.border = "5px solid green";
+      }
+    } else if (this.state.people2 === 1) {
+      for (var i = 0; i < people2.length; i++) {
+        people2[i].style.border = "5px solid green";
+      }
+    } else if (this.state.people3 === 1) {
+      for (var i = 0; i < people3.length; i++) {
+        people3[i].style.border = "5px solid green";
+      }
+    } else if (this.state.people4 === 1) {
+      for (var i = 0; i < people4.length; i++) {
+        people4[i].style.border = "5px solid green";
+      }
+    } else if (this.state.people5 === 1) {
+      for (var i = 0; i < people5.length; i++) {
+        people5[i].style.border = "5px solid green";
+      }
+    } else if (this.state.people6 === 1) {
+      for (var i = 0; i < people6.length; i++) {
+        people6[i].style.border = "5px solid green";
+      }
+    }
+  };
+
+  clickPeople1 = async () => {
+    await this.setState({ people1: 1 });
+    console.log(this.state);
+    await this.setCharBorder();
+    await this.handleNext();
+  };
+  clickPeople2 = async () => {
+    await this.setState({ people2: 1 });
+    console.log(this.state);
+    await this.setCharBorder();
+    await this.handleNext();
+  };
+  clickPeople3 = async () => {
+    await this.setState({ people3: 1 });
+    console.log(this.state);
+    await this.setCharBorder();
+    await this.handleNext();
+  };
+  clickPeople4 = async () => {
+    await this.setState({ people4: 1 });
+    console.log(this.state);
+    await this.setCharBorder();
+    await this.handleNext();
+  };
+  clickPeople5 = async () => {
+    await this.setState({ people5: 1 });
+    console.log(this.state);
+    await this.setCharBorder();
+    await this.handleNext();
+  };
+  clickPeople6 = async () => {
+    await this.setState({ people6: 1 });
+    console.log(this.state);
+    await this.setCharBorder();
+    await this.handleNext();
   };
 
   setBorder = async () => {
@@ -77,6 +156,23 @@ export default class extends Component {
     while (new Date().getTime() < start + delay);
   };
 
+  bonusHandler = async () => {
+    if (this.state.lclick === 1) {
+      const number1 = (await Math.floor(Math.random() * 100)) + 1;
+      if (number1 <= this.state.l_prob * 100) {
+        this.setState({ bonus: this.state.bonus + this.state.l_num });
+      }
+    } else if (this.state.rclick === 1) {
+      const number2 = (await Math.floor(Math.random() * 100)) + 1;
+      console.log(number2);
+      if (number2 <= this.state.r_prob * 100) {
+        this.setState({ bonus: this.state.bonus + this.state.r_num });
+      }
+      console.log(this.state.bonus + this.state.r_num);
+      console.log(this.state.bonus);
+    }
+  };
+
   setAnswer = async () => {
     const answer = {
       trial: this.state.step,
@@ -88,17 +184,19 @@ export default class extends Component {
       r_click: this.state.rclick,
       time_click: this.state.time_click,
       time_click_array: this.state.time_click_array,
-      time_next: this.state.time_next
+      time_next: this.state.time_next,
+      bonus: this.state.bonus
     };
     return answer;
   };
 
   handleNext = async () => {
-    if (this.state.step > 0) {
+    if (this.state.step > 5) {
       const time_next = +new Date();
       await this.setState({
         time_next: time_next - this.state.time_show
       });
+      await this.bonusHandler();
       const answer = await this.setAnswer();
       const res = await axios.post(`/answers/exp1`, qs.stringify(answer));
       console.log(res.data);
@@ -115,6 +213,10 @@ export default class extends Component {
     this.setBorder();
 
     if (this.state.step === 1) {
+      document.getElementById(`${this.state.step - 1}`).style.display = "none";
+      document.getElementById(`${this.state.step}`).style.display = "flex";
+    }
+    if (this.state.step === 2) {
       document.getElementById(`${this.state.step - 1}`).style.display = "none";
       document.getElementById(`${this.state.step}`).style.display = "flex";
     }
@@ -146,7 +248,7 @@ export default class extends Component {
   componentDidMount = async () => {
     if (this.state.step === 0) {
       document.getElementById(`${this.state.step}`).style.display = "flex";
-      await this.getExp(1);
+      await this.getExp(2);
       this.sleep(2000);
       const array = Object.keys(this.state.data[0]);
       await this.setState({ column: array });
@@ -165,6 +267,13 @@ export default class extends Component {
         clickLeft={this.clickLeft}
         clickRight={this.clickRight}
         handleNext={this.handleNext}
+        setCharBorder={this.setCharBorder}
+        clickPeople1={this.clickPeople1}
+        clickPeople2={this.clickPeople2}
+        clickPeople3={this.clickPeople3}
+        clickPeople4={this.clickPeople4}
+        clickPeople5={this.clickPeople5}
+        clickPeople6={this.clickPeople6}
       />
     );
   };

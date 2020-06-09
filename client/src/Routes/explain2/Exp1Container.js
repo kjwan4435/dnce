@@ -134,12 +134,12 @@ export default class extends Component {
   repeat = async () => {
     await this.setState({ step: 1 });
     document.getElementById(`${this.state.step}`).style.display = "flex";
-    document.getElementById(`9`).style.display = "none";
+    document.getElementById(`25`).style.display = "none";
   };
 
   handleNext = async () => {
     await this.setState({ step: this.state.step + 1 });
-    if (this.state.step === 5 || this.state.step === 9) {
+    if (this.state.step === 15 || this.state.step === 20) {
       await this.setState({ lclick: 0, rclick: 0 });
       await this.setBorder();
     }
@@ -153,6 +153,14 @@ export default class extends Component {
     if (this.state.step === 1) {
       document.getElementById(`${this.state.step}`).style.display = "flex";
     }
+    let slider = document.getElementById("myRange");
+    let output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+      output.innerHTML = this.value;
+      slider.value = this.value;
+    };
   };
 
   render = () => {

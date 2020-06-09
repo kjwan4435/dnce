@@ -43,6 +43,10 @@ const answer1Schema = new Schema(
     time_next: {
       type: Number,
       required: true
+    },
+    bonus: {
+      type: Number,
+      required: true
     }
   },
   { timestamps: true }

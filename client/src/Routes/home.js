@@ -13,13 +13,13 @@ const Container = styled.div`
 
 const GameInfo = styled.div`
   padding: 18px;
-  font-size: 25px;
+  font-size: 20px;
   display: block;
   color: black;
   font-weight: 600;
   text-align: center;
   width: 100%;
-  line-height: 50px;
+  line-height: 40px;
 `;
 
 const ButtonContainer = styled.div`
@@ -33,7 +33,7 @@ const Button = styled.button`
   border-style: none;
   color: rgba(0, 0, 0, 0.9);
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 900;
   box-shadow: 0px 1px 5px 2px rgba(140, 140, 140, 0.4);
 `;

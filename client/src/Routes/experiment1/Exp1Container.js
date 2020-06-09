@@ -77,6 +77,23 @@ export default class extends Component {
     while (new Date().getTime() < start + delay);
   };
 
+  bonusHandler = async () => {
+    if (this.state.lclick === 1) {
+      const number1 = (await Math.floor(Math.random() * 100)) + 1;
+      if (number1 <= this.state.l_prob * 100) {
+        this.setState({ bonus: this.state.bonus + this.state.l_num });
+      }
+    } else if (this.state.rclick === 1) {
+      const number2 = (await Math.floor(Math.random() * 100)) + 1;
+      console.log(number2);
+      if (number2 <= this.state.r_prob * 100) {
+        this.setState({ bonus: this.state.bonus + this.state.r_num });
+      }
+      console.log(this.state.bonus + this.state.r_num);
+      console.log(this.state.bonus);
+    }
+  };
+
   setAnswer = async () => {
     const answer = {
       trial: this.state.step,
@@ -88,7 +105,8 @@ export default class extends Component {
       r_click: this.state.rclick,
       time_click: this.state.time_click,
       time_click_array: this.state.time_click_array,
-      time_next: this.state.time_next
+      time_next: this.state.time_next,
+      bonus: this.state.bonus
     };
     return answer;
   };
@@ -99,6 +117,7 @@ export default class extends Component {
       await this.setState({
         time_next: time_next - this.state.time_show
       });
+      await this.bonusHandler();
       const answer = await this.setAnswer();
       const res = await axios.post(`/answers/exp1`, qs.stringify(answer));
       console.log(res.data);

@@ -24,6 +24,7 @@ answerRouter.route("/exp1").post((req, res) => {
   const time_click = req.body.time_click;
   const time_click_array = req.body.time_click_array;
   const time_next = req.body.time_next;
+  const bonus = req.body.bonus;
 
   const newAnswer = new Answer({
     trial,
@@ -35,7 +36,8 @@ answerRouter.route("/exp1").post((req, res) => {
     r_click,
     time_click,
     time_click_array,
-    time_next
+    time_next,
+    bonus
   });
 
   newAnswer

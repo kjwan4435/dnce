@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const ImageCont = styled.div`
-  padding: 50px;
+  padding: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -21,14 +21,14 @@ const ImageCont = styled.div`
 `;
 
 const LeftImg = styled.div`
-  width: 400px;
-  height: 400px;
+  width: 250px;
+  height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
 `;
 const RightImg = styled.div`
-  width: 400px;
-  height: 400px;
+  width: 250px;
+  height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
 `;
@@ -48,39 +48,39 @@ const Div = styled.div`
 
 const Inst = styled.div`
   padding: 18px;
-  font-size: 30px;
+  font-size: 24px;
   display: block;
   color: black;
   font-weight: 600;
   text-align: center;
   width: 100%;
-  line-height: 50px;
+  line-height: 40px;
 `;
 
 const GameInfo = styled.div`
   padding: 18px;
-  font-size: 25px;
+  font-size: 20px;
   display: block;
   color: rgb(68, 114, 196);
   font-weight: 600;
   text-align: center;
   width: 100%;
-  line-height: 50px;
+  line-height: 40px;
 `;
 
 const ButtonContainer = styled.div`
-  padding: 30px;
+  padding: 20px;
   text-align: center;
 `;
 
 const Button = styled.button`
   padding: 10px 15px;
-  margin: 0px 30px;
+  margin: 0px 20px;
   border-radius: 8px;
   border-style: none;
   color: rgb(68, 114, 196);
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 900;
   box-shadow: 0px 1px 5px 2px rgba(68, 114, 196, 0.4);
 `;
