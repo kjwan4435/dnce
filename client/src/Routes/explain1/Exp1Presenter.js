@@ -37,21 +37,6 @@ const RightImg = styled.div`
   background-size: cover;
   background-image: url(${rightimage});
 `;
-
-const PeopleImg = styled.div`
-  width: 160px;
-  height: 160px;
-  background-repeat: no-repeat;
-  background-size: cover;
-`;
-const PeopleImg2 = styled.div`
-  width: 160px;
-  height: 160px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 5px solid black;
-`;
-
 const LeftImg2 = styled.div`
   width: 250px;
   height: 250px;

@@ -21,66 +21,30 @@ export default class extends Component {
     let people4 = await document.getElementsByClassName("people4");
     let people5 = await document.getElementsByClassName("people5");
     let people6 = await document.getElementsByClassName("people6");
-    console.log(people1);
-    console.log(people6);
 
     if (this.state.people1 === 1) {
       for (var i = 0; i < people1.length; i++) {
         people1[i].style.border = "5px solid green";
-        // people2[i].style.border = "0px";
-        // people3[i].style.border = "0px";
-        // people4[i].style.border = "0px";
-        // people5[i].style.border = "0px";
-        // people6[i].style.border = "0px";
       }
     } else if (this.state.people2 === 1) {
       for (var i = 0; i < people2.length; i++) {
-        people1[i].style.border = "0px";
         people2[i].style.border = "5px solid green";
-        people3[i].style.border = "0px";
-        people4[i].style.border = "0px";
-        people5[i].style.border = "0px";
-        people6[i].style.border = "0px";
       }
     } else if (this.state.people3 === 1) {
       for (var i = 0; i < people3.length; i++) {
-        people1[i].style.border = "0px";
-        people2[i].style.border = "0px";
         people3[i].style.border = "5px solid green";
-        people4[i].style.border = "0px";
-        people5[i].style.border = "0px";
-        people6[i].style.border = "0px";
       }
     } else if (this.state.people4 === 1) {
       for (var i = 0; i < people4.length; i++) {
-        people1[i].style.border = "0px";
-        people2[i].style.border = "0px";
-        people3[i].style.border = "0px";
         people4[i].style.border = "5px solid green";
-        people5[i].style.border = "0px";
-        people6[i].style.border = "0px";
       }
     } else if (this.state.people5 === 1) {
       for (var i = 0; i < people5.length; i++) {
-        people1[i].style.border = "0px";
-        people2[i].style.border = "0px";
-        people3[i].style.border = "0px";
-        people4[i].style.border = "0px";
         people5[i].style.border = "5px solid green";
-        people6[i].style.border = "0px";
       }
     } else if (this.state.people6 === 1) {
       for (var i = 0; i < people6.length; i++) {
         people6[i].style.border = "5px solid green";
-      }
-    } else {
-      for (var i = 0; i < people1.length; i++) {
-        people1[i].style.border = "0px";
-        people2[i].style.border = "0px";
-        people3[i].style.border = "0px";
-        people4[i].style.border = "0px";
-        people5[i].style.border = "0px";
-        people6[i].style.border = "0px";
       }
     }
   };

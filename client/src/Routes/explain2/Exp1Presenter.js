@@ -538,7 +538,7 @@ const Exp1Presenter = ({
         <Inst>
           여기까지가 두 번째 게임에 대한 설명입니다<br></br>
           <br></br>
-          이해하셨으면 ‘이해했습니다’ 버튼을 눌러주세요.<br></br>첫 번째 본
+          이해하셨으면 ‘이해했습니다’ 버튼을 눌러주세요.<br></br>두 번째 본
           게임이 곧 시작됩니다.<br></br>
         </Inst>
         <ButtonContainer>

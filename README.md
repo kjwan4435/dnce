@@ -1,16 +1,17 @@
-## N person's chicken game using React and Node
+## DNCE WEB EXPERIMENT
 
-- [O] Home 화면 (실험 설명)
-- [O] 설문조사 화면 (form input 받기)
-- [O] 실험 안내 (실험 시 유의 사항 등)
-- [O] 실험시작
-  > [O] input data 모델 만들기  
-  > [O] input data를 활용하여 웹에 띄우기  
-  > [O] 사용자 게임 동작 구현하기  
-  > [O] 사용자의 반응에 따른 input data 수정하기  
-  > [O] 사용자의 반응/ 당시 봇의 반응/ database에 저장하기
+- [O] 실험1
+  > [O] 실험설명화면 만들기
+  > [O] 실험 진행 flow 짜기
+  > [O] DB 생성 및 저장
+  > [O] BONUS POINT 저장
+- [ ] 실험2
+  > [O] 실험설명화면 만들기
+  > [ ] 실험 진행 flow 짜기
+  > [ ] DB 생성 및 저장
+  > [ ] BONUS POINT 저장
 - [O] 실험종료 안내
-- [ ] 추가 설문조사
+
 
 ### About Programming
 
