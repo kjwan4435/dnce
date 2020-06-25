@@ -8,9 +8,6 @@ import experiment1 from "../Routes/experiment1";
 import experiment2 from "../Routes/experiment2";
 import experiment3 from "../Routes/experiment3";
 
-import finish from "../Routes/finish";
-import questions from "../Routes/questions";
-
 export default () => (
   <Router>
     <>
@@ -21,8 +18,6 @@ export default () => (
       <Route path="/:id/experiment1" exact component={experiment1} />
       <Route path="/:id/experiment2" exact component={experiment2} />
       <Route path="/:id/experiment3" exact component={experiment3} />
-      <Route path="/:id/questions" exact component={questions} />
-      <Route path="/:id/finish" exact component={finish} />
     </>
   </Router>
 );

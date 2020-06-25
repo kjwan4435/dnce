@@ -7,7 +7,6 @@ const path = require("path");
 const db = require("./db");
 
 const answerRouter = require("./routes/answers");
-const subjectRouter = require("./routes/subjects");
 const expRouter = require("./routes/exp");
 
 const app = express();
