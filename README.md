@@ -5,13 +5,12 @@
   > [O] 실험 진행 flow 짜기
   > [O] DB 생성 및 저장
   > [O] BONUS POINT 저장
-- [ ] 실험2
+- [O] 실험2
   > [O] 실험설명화면 만들기
-  > [ ] 실험 진행 flow 짜기
-  > [ ] DB 생성 및 저장
-  > [ ] BONUS POINT 저장
+  > [O] 실험 진행 flow 짜기
+  > [O] DB 생성 및 저장
+  > [O] BONUS POINT 저장
 - [O] 실험종료 안내
-
 
 ### About Programming
 
@@ -22,15 +21,6 @@
 > yarn add react-router-dom // react에서의 라우터 설정
 > yarn add styled-components
 > yarn add styled-reset // style component 초기화
-
-CSS 적용을 하는 방법
-
-1. styles.css를 import 시키는 일반적인 방법.
-2. Header.module.css 등의 형태로 각각의 폴더에 js와 css파일을 몰아넣은 뒤 각 js파일에서
-   import styles from "./Header.module.css"로 임포트 한 뒤, className={styles.navList} 같은 형태로 적용.
-3. yarn add styled-components
-
----
 
 ## Available Scripts
 
