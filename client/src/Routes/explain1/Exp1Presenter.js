@@ -104,7 +104,13 @@ const Button = styled.button`
   box-shadow: 0px 1px 5px 2px rgba(68, 114, 196, 0.4);
 `;
 
-const Exp1Presenter = ({ repeat, handleNext, clickLeft, clickRight }) => (
+const Exp1Presenter = ({
+  sub_id,
+  repeat,
+  handleNext,
+  clickLeft,
+  clickRight
+}) => (
   <Container>
     <Div id="1">
       <ImageCont>
@@ -212,7 +218,7 @@ const Exp1Presenter = ({ repeat, handleNext, clickLeft, clickRight }) => (
       </Inst>
       <ButtonContainer>
         <Button onClick={repeat}> 설명문 다시 읽기. </Button>
-        <Link to="/experiment1">
+        <Link to={`/${sub_id}/experiment1`}>
           <Button> 이해했습니다. </Button>
         </Link>
       </ButtonContainer>

@@ -5,7 +5,14 @@ import qs from "qs";
 
 export default class extends Component {
   state = {
-    step: 0,
+    sub_id: "",
+    character: 1,
+    partner1: 1,
+    partner2: 1,
+    partner: 0,
+    partner_c: -1,
+    partner_p: "open_door",
+    step: -3,
     lclick: 0,
     rclick: 0,
     data: {},
@@ -18,32 +25,34 @@ export default class extends Component {
     time_click: 0,
     time_click_array: [],
     time_next: 0,
-    bonus: 0
+    bonus1: 0,
+    bonus2: 0,
+    bonus3: 0
   };
 
   setBorder = async () => {
     let leftArray = await document.getElementsByClassName("left");
     let rightArray = await document.getElementsByClassName("right");
     if (this.state.lclick === 1) {
-      for (var i = 0; i < leftArray.length; i++) {
+      for (let i = 0; i < leftArray.length; i++) {
         leftArray[i].style.border = "5px solid";
       }
-      for (var i = 0; i < rightArray.length; i++) {
-        rightArray[i].style.border = "0px";
+      for (let j = 0; j < rightArray.length; j++) {
+        rightArray[j].style.border = "0px";
       }
     } else if (this.state.rclick === 1) {
-      for (var i = 0; i < leftArray.length; i++) {
+      for (let i = 0; i < leftArray.length; i++) {
         leftArray[i].style.border = "0px";
       }
-      for (var i = 0; i < rightArray.length; i++) {
-        rightArray[i].style.border = "5px solid";
+      for (let j = 0; j < rightArray.length; j++) {
+        rightArray[j].style.border = "5px solid";
       }
     } else {
-      for (var i = 0; i < leftArray.length; i++) {
+      for (let i = 0; i < leftArray.length; i++) {
         leftArray[i].style.border = "0px";
       }
-      for (var i = 0; i < rightArray.length; i++) {
-        rightArray[i].style.border = "0px";
+      for (let j = 0; j < rightArray.length; j++) {
+        rightArray[j].style.border = "0px";
       }
     }
   };
@@ -77,8 +86,53 @@ export default class extends Component {
     while (new Date().getTime() < start + delay);
   };
 
+  bonusHandler = async () => {
+    if (this.state.lclick === 1) {
+      const number1 = (await Math.floor(Math.random() * 100)) + 1;
+      if (number1 <= this.state.l_prob * 100) {
+        this.setState({ bonus: this.state.l_num * 3 });
+      }
+    } else if (this.state.rclick === 1) {
+      const number2 = (await Math.floor(Math.random() * 100)) + 1;
+      if (number2 <= this.state.r_prob * 100) {
+        this.setState({ bonus: this.state.r_num * 3 });
+      }
+    }
+  };
+
+  setPartner = async () => {
+    let partner = this.state.data[this.state.step - 1][this.state.column[5]];
+    if (partner === 1) {
+      await this.setState({
+        partner: this.state.partner1,
+        partner_p: `door_avatar_${this.state.partner1}`
+      });
+    } else if (partner === 2) {
+      await this.setState({
+        partner: this.state.partner2,
+        partner_p: `door_avatar_${this.state.partner2}`
+      });
+    } else {
+      await this.setState({
+        partner: 0,
+        partner_p: "open_door"
+      });
+    }
+    let partner_c = this.state.data[this.state.step - 1][this.state.column[6]];
+    if (partner_c === 0 || partner_c === 1) {
+      this.setState({
+        partner_c: this.state.data[this.state.step - 1][this.state.column[6]]
+      });
+    } else {
+      this.setState({
+        partner_c: -99
+      });
+    }
+  };
+
   setAnswer = async () => {
     const answer = {
+      sub_id: this.state.sub_id,
       trial: this.state.step,
       l_num: this.state.l_num,
       l_prob: this.state.l_prob,
@@ -86,51 +140,126 @@ export default class extends Component {
       r_prob: this.state.r_prob,
       l_click: this.state.lclick,
       r_click: this.state.rclick,
+      partner: this.state.partner,
+      partner1: this.state.partner1,
+      partner2: this.state.partner2,
+      partner_c: this.state.partner_c,
       time_click: this.state.time_click,
       time_click_array: this.state.time_click_array,
-      time_next: this.state.time_next
+      time_next: this.state.time_next,
+      bonus: this.state.bonus
     };
     return answer;
   };
 
+  showComponent = async () => {
+    document.getElementById(`1-1`).style.display = "none";
+    document.getElementById(`1-2`).style.display = "flex";
+  };
+
   handleNext = async () => {
-    if (this.state.step > 0) {
+    if (this.state.step > 0 && this.state.step < 91) {
+      document.getElementById("hideNext").style.display = "none";
+      document.getElementById("loader").style.display = "flex";
       const time_next = +new Date();
       await this.setState({
         time_next: time_next - this.state.time_show
       });
+      await this.bonusHandler();
       const answer = await this.setAnswer();
-      const res = await axios.post(`/answers/exp1`, qs.stringify(answer));
+      const res = await axios.post(`/answers/exp3`, qs.stringify(answer));
       console.log(res.data);
+      document.getElementById("hideNext").style.display = "flex";
+      document.getElementById("loader").style.display = "none";
     }
 
     await this.setState({
       step: this.state.step + 1,
       lclick: 0,
       rclick: 0,
+      bonus: 0,
+      partner_c: -1,
       time_click_array: []
     });
 
     this.sleep(500);
     this.setBorder();
 
-    if (this.state.step === 1) {
+    if (
+      this.state.step === -2 ||
+      this.state.step === -1 ||
+      this.state.step === 0
+    ) {
       document.getElementById(`${this.state.step - 1}`).style.display = "none";
       document.getElementById(`${this.state.step}`).style.display = "flex";
+      setTimeout(this.handleNext, 2000);
     }
-    if (this.state.step === 6) {
-      document.getElementById(`${1}`).style.display = "none";
-      document.getElementById(`${2}`).style.display = "flex";
+
+    if (this.state.step === 1) {
+      document.getElementById(`${this.state.step - 1}`).style.display = "none";
     }
-    const l_num = this.state.data[this.state.step][this.state.column[1]];
-    const l_prob = this.state.data[this.state.step][this.state.column[2]];
-    const r_num = this.state.data[this.state.step][this.state.column[3]];
-    const r_prob = this.state.data[this.state.step][this.state.column[4]];
-    await this.setState({ l_num, l_prob, r_num, r_prob });
-    const time_show = +new Date();
-    this.setState({
-      time_show: time_show
-    });
+
+    if (this.state.step > 0 && this.state.step < 91) {
+      document.getElementById(`1-1`).style.display = "flex";
+      document.getElementById(`1-2`).style.display = "none";
+
+      await setTimeout(this.showComponent, 1000);
+    }
+    if (this.state.step === 91) {
+      document.getElementById(`1-2`).style.display = "none";
+      document.getElementById(`1`).style.display = "flex";
+      try {
+        const bonus1 = await axios.get(
+          `/answers/exp/bonus/${this.state.sub_id}`
+        );
+        await this.setState({
+          bonus1: bonus1.data.bonus
+        });
+      } catch (error) {
+        console.error(error);
+      }
+      try {
+        const bonus2 = await axios.get(
+          `/answers/exp2/bonus/${this.state.sub_id}`
+        );
+        await this.setState({
+          bonus2: bonus2.data.bonus
+        });
+      } catch (error) {
+        console.error(error);
+      }
+      try {
+        const bonus3 = await axios.get(
+          `/answers/exp3/bonus/${this.state.sub_id}`
+        );
+        await this.setState({
+          bonus3: bonus3.data.bonus
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    if (this.state.step === 92) {
+      document.getElementById(`1`).style.display = "none";
+      document.getElementById(`2`).style.display = "flex";
+    }
+    if (this.state.step === 93) {
+      document.getElementById(`2`).style.display = "none";
+      document.getElementById(`3`).style.display = "flex";
+    }
+
+    if (this.state.step > 0 && this.state.step < 91) {
+      const l_num = this.state.data[this.state.step - 1][this.state.column[1]];
+      const l_prob = this.state.data[this.state.step - 1][this.state.column[2]];
+      const r_num = this.state.data[this.state.step - 1][this.state.column[3]];
+      const r_prob = this.state.data[this.state.step - 1][this.state.column[4]];
+      await this.setPartner();
+      await this.setState({ l_num, l_prob, r_num, r_prob });
+      const time_show = +new Date();
+      this.setState({
+        time_show: time_show
+      });
+    }
   };
 
   getExp = async (round) => {
@@ -141,12 +270,26 @@ export default class extends Component {
     } catch (error) {
       console.error(error);
     }
+    try {
+      const answer2 = await axios.get(`/answers/exp2/${this.state.sub_id}`);
+      await this.setState({
+        character: answer2.data.character,
+        partner1: answer2.data.partner1,
+        partner2: answer2.data.partner2
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   componentDidMount = async () => {
-    if (this.state.step === 0) {
+    const href = await window.location.href.split("/");
+    await this.setState({
+      sub_id: href[href.length - 2]
+    });
+    if (this.state.step === -3) {
       document.getElementById(`${this.state.step}`).style.display = "flex";
-      await this.getExp(1);
+      await this.getExp(3);
       this.sleep(2000);
       const array = Object.keys(this.state.data[0]);
       await this.setState({ column: array });
@@ -157,10 +300,19 @@ export default class extends Component {
   render = () => {
     return (
       <Exp1Presenter
+        character={this.state.character}
+        partner={this.state.partner}
+        partner_p={this.state.partner_p}
+        partner1={this.state.partner1}
+        partner2={this.state.partner2}
+        sub_id={this.state.sub_id}
         l_num={this.state.l_num}
         r_num={this.state.r_num}
         l_prob={this.state.l_prob}
         r_prob={this.state.r_prob}
+        bonus3={this.state.bonus}
+        bonus1={this.state.bonus1}
+        bonus2={this.state.bonus2}
         repeat={this.repeat}
         clickLeft={this.clickLeft}
         clickRight={this.clickRight}

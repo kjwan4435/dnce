@@ -3,9 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import leftimage from "../../images/lottery_png/h20_p100.png";
 import rightimage from "../../images/lottery_png/h34_p25.png";
-import leftimage2 from "../../images/lottery_png/h13_p100.png";
-import rightimage2 from "../../images/lottery_png/h23_p75.png";
-import middle from "../../images/focus_I.png";
 
 const Container = styled.div`
   padding: 20px;
@@ -25,16 +22,9 @@ const ImageCont = styled.div`
 
 const PeopleImg = styled.div`
   width: 160px;
-  height: 160px;
+  height: 180px;
   background-repeat: no-repeat;
   background-size: cover;
-`;
-const PeopleImg2 = styled.div`
-  width: 160px;
-  height: 160px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 5px solid black;
 `;
 
 const LeftImg = styled.div`
@@ -51,34 +41,18 @@ const RightImg = styled.div`
   background-size: cover;
   background-image: url(${rightimage});
 `;
-const LeftImg2 = styled.div`
-  width: 250px;
-  height: 250px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(${leftimage2});
-`;
-const RightImg2 = styled.div`
-  width: 250px;
-  height: 250px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(${rightimage2});
-`;
 const Middle = styled.div`
-  width: 100px;
+  width: 120px;
   height: 100px;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 10px;
 `;
-
 const Div = styled.div`
   display: none;
   flex-direction: column;
   align-items: center;
 `;
-
 const Inst = styled.div`
   padding: 18px;
   font-size: 24px;
@@ -89,7 +63,6 @@ const Inst = styled.div`
   width: 100%;
   line-height: 40px;
 `;
-
 const Inst2 = styled.div`
   font-size: 13px;
   display: block;
@@ -137,6 +110,7 @@ const RangeCont = styled.div`
 const RangeInput = styled.input``;
 
 const Exp1Presenter = ({
+  sub_id,
   repeat,
   handleNext,
   clickLeft,
@@ -160,6 +134,18 @@ const Exp1Presenter = ({
   };
   const people6 = {
     backgroundImage: `url(${require(`../../images/avatars/instruction/avataaars_inst6.png`)})`
+  };
+  const partner1 = {
+    backgroundImage: `url(${require(`../../images/avatars/instruction/partner1.png`)})`
+  };
+  const partner2 = {
+    backgroundImage: `url(${require(`../../images/avatars/instruction/partner2.png`)})`
+  };
+  const partner1_small = {
+    backgroundImage: `url(${require(`../../images/avatars/instruction/partner1_small.png`)})`
+  };
+  const partner2_small = {
+    backgroundImage: `url(${require(`../../images/avatars/instruction/partner2_small.png`)})`
   };
   return (
     <Container>
@@ -249,17 +235,14 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="7">
-        <Inst>파트너들을 찾았습니다.</Inst>
-        <ImageCont>
-          <PeopleImg2 className="people1" style={people1}></PeopleImg2>
-          <PeopleImg2 className="people2" style={people2}></PeopleImg2>
-          <PeopleImg className="people3" style={people3}></PeopleImg>
-          <PeopleImg className="people4" style={people4}></PeopleImg>
-          <PeopleImg className="people5" style={people5}></PeopleImg>
-          <PeopleImg className="people6" style={people6}></PeopleImg>
-        </ImageCont>
+        <Inst>
+          파트너들이 입장하셨습니다.<br></br>
+          <br></br>
+          파트너가 어떤 캐릭터를 골랐는지는 <br></br>
+          보여드리지 않습니다<br></br>
+        </Inst>
         <GameInfo>
-          검은색 테두리로 표시된 두 명이 파트너가 되었습니다.
+          파트너들이 게임에 입장하시면 나타나는 안내문 입니다.
           <br></br>
         </GameInfo>
         <ButtonContainer>
@@ -267,13 +250,13 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="8">
-        <Inst>파트너가 입장했습니다.</Inst>
+        <Inst>두 명의 파트너는 아래의 그림으로 구분하실 수 있습니다.</Inst>
         <ImageCont>
-          <PeopleImg className="people2" style={people2}></PeopleImg>
-          <PeopleImg className="people1" style={people1}></PeopleImg>
+          <PeopleImg style={partner1}></PeopleImg>
+          <PeopleImg style={partner2}></PeopleImg>
         </ImageCont>
         <GameInfo>
-          파트너들이 게임에 입장하여 파트너 1, 파트너 2로 결정되었습니다
+          파트너들이 게임에 입장하여 파트너 A, 파트너 B로 결정되었습니다
           <br></br>
         </GameInfo>
         <ButtonContainer>
@@ -296,10 +279,10 @@ const Exp1Presenter = ({
       </Div>
       <Div id="10">
         <ImageCont>
-          <PeopleImg className="people2" style={people2}></PeopleImg>
+          <PeopleImg style={partner1}></PeopleImg>
         </ImageCont>
         <Inst>
-          파트너 1이 어떤 복권을 선택했을 지 맞혀주세요
+          위의 파트너가 어떤 복권을 선택했을 지 맞혀주세요
           <br></br>
         </Inst>
         <GameInfo>
@@ -315,18 +298,18 @@ const Exp1Presenter = ({
       <Div id="11">
         <ImageCont>
           <LeftImg onClick={clickLeft} className="left"></LeftImg>
-          <Middle style={people2}></Middle>
+          <Middle style={partner1_small}></Middle>
           <RightImg className="right"></RightImg>
         </ImageCont>
         <GameInfo>
-          두 복권 중 파트너 1이 어떤 것을 선택했는지 고르시면 됩니다.<br></br>
+          두 복권 중 파트너가 어떤 것을 선택했는지 고르시면 됩니다.<br></br>
           왼쪽 복권을 클릭해보세요<br></br>
         </GameInfo>
       </Div>
       <Div id="12">
         <ImageCont>
           <LeftImg className="left"></LeftImg>
-          <Middle style={people2}></Middle>
+          <Middle style={partner1_small}></Middle>
           <RightImg className="right"></RightImg>
         </ImageCont>
         <GameInfo>
@@ -344,7 +327,7 @@ const Exp1Presenter = ({
             className="left"
             style={{ outline: "10px solid lightgreen" }}
           ></LeftImg>
-          <Middle style={people2}></Middle>
+          <Middle style={partner1_small}></Middle>
           <RightImg className="right"></RightImg>
         </ImageCont>
         <GameInfo>
@@ -359,14 +342,14 @@ const Exp1Presenter = ({
       </Div>
       <Div id="14">
         <ImageCont>
-          <PeopleImg className="people1" style={people1}></PeopleImg>
+          <PeopleImg className="people1" style={partner2}></PeopleImg>
         </ImageCont>
         <Inst>
-          파트너 2가 어떤 복권을 선택했을 지 맞혀주세요
+          위의 파트너가 어떤 복권을 선택했을 지 맞혀주세요
           <br></br>
         </Inst>
         <GameInfo>
-          이번에는 파트너 2가 어떤 복권을 선택 했는지 맞히면 됩니다.
+          이번에는 파트너가 어떤 복권을 선택 했는지 맞히면 됩니다.
           <br></br>
         </GameInfo>
         <ButtonContainer>
@@ -376,18 +359,18 @@ const Exp1Presenter = ({
       <Div id="15">
         <ImageCont>
           <LeftImg onClick={clickLeft} className="left"></LeftImg>
-          <Middle style={people1}></Middle>
+          <Middle style={partner2_small}></Middle>
           <RightImg className="right"></RightImg>
         </ImageCont>
         <GameInfo>
-          두 복권 중 파트너 2가 어떤 것을 선택했는지 고르시면 됩니다.<br></br>
+          두 복권 중 파트너가 어떤 것을 선택했는지 고르시면 됩니다.<br></br>
           왼쪽 복권을 클릭해보세요<br></br>
         </GameInfo>
       </Div>
       <Div id="16">
         <ImageCont>
           <LeftImg className="left"></LeftImg>
-          <Middle style={people1}></Middle>
+          <Middle style={partner2_small}></Middle>
           <RightImg className="right"></RightImg>
         </ImageCont>
         <GameInfo>
@@ -402,7 +385,7 @@ const Exp1Presenter = ({
       <Div id="17">
         <ImageCont>
           <LeftImg className="left"></LeftImg>
-          <Middle style={people1}></Middle>
+          <Middle style={partner2_small}></Middle>
           <RightImg
             className="right"
             style={{ outline: "10px solid lightgreen" }}
@@ -434,10 +417,10 @@ const Exp1Presenter = ({
       </Div>
       <Div id="19">
         <ImageCont>
-          <PeopleImg className="people2" style={people2}></PeopleImg>
+          <PeopleImg style={partner1}></PeopleImg>
         </ImageCont>
         <Inst>
-          파트너 1이 어떤 복권을 선택했을 지 맞혀주세요
+          위의 파트너가 어떤 복권을 선택했을 지 맞혀주세요
           <br></br>
         </Inst>
         <GameInfo>
@@ -452,18 +435,18 @@ const Exp1Presenter = ({
       <Div id="20">
         <ImageCont>
           <LeftImg onClick={clickLeft} className="left"></LeftImg>
-          <Middle style={people2}></Middle>
+          <Middle style={partner1_small}></Middle>
           <RightImg className="right"></RightImg>
         </ImageCont>
         <GameInfo>
-          두 복권 중 파트너 1이 어떤 것을 선택했는지 고르시면 됩니다.<br></br>
+          두 복권 중 파트너가 어떤 것을 선택했는지 고르시면 됩니다.<br></br>
           왼쪽 복권을 클릭해보세요<br></br>
         </GameInfo>
       </Div>
       <Div id="21">
         <ImageCont>
           <LeftImg className="left"></LeftImg>
-          <Middle style={people2}></Middle>
+          <Middle style={partner1_small}></Middle>
           <RightImg className="right"></RightImg>
         </ImageCont>
         <GameInfo>
@@ -492,11 +475,21 @@ const Exp1Presenter = ({
           ></RangeInput>
         </div>
         <RangeCont>
-          <Inst2>⬅️ 전혀 확실하지 않다.</Inst2>
+          <Inst2>
+            <span role="img" aria-label="arrow">
+              ⬅️
+            </span>{" "}
+            전혀 확실하지 않다.
+          </Inst2>
           <Inst>
             <span id="demo"></span>
           </Inst>
-          <Inst2>확실히 맞혔을 것이다 ➡️</Inst2>
+          <Inst2>
+            확실히 맞혔을 것이다{" "}
+            <span role="img" aria-label="arrow">
+              ➡️
+            </span>
+          </Inst2>
         </RangeCont>
         <GameInfo>슬라이더바를 움직여보세요.</GameInfo>
         <ButtonContainer>
@@ -543,7 +536,7 @@ const Exp1Presenter = ({
         </Inst>
         <ButtonContainer>
           <Button onClick={repeat}> 설명문 다시 읽기. </Button>
-          <Link to="/experiment2">
+          <Link to={`/${sub_id}/experiment2`}>
             <Button> 이해했습니다. </Button>
           </Link>
         </ButtonContainer>

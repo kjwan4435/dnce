@@ -10,7 +10,7 @@
     "dev": "concurrently \"yarn server\" \"yarn client\" ",
     "heroku-postbuild": "YARN_PRODUCTION=false cd client && yarn install && yarn build"
   },
-  "repository": "https://github.com/kjwan4435/capstone_bci.git",
+  "repository": "https://github.com/kjwan4435/DNCE.git",
   "author": "kjwan4435 <kjwan4435@gmail.com>",
   "license": "MIT",
   "dependencies": {

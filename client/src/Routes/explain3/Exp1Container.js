@@ -3,6 +3,7 @@ import Exp1Presenter from "./Exp1Presenter";
 
 export default class extends Component {
   state = {
+    sub_id: "",
     step: 1,
     lclick: 0,
     rclick: 0,
@@ -23,27 +24,27 @@ export default class extends Component {
     let people6 = await document.getElementsByClassName("people6");
 
     if (this.state.people1 === 1) {
-      for (var i = 0; i < people1.length; i++) {
+      for (let i = 0; i < people1.length; i++) {
         people1[i].style.border = "5px solid green";
       }
     } else if (this.state.people2 === 1) {
-      for (var i = 0; i < people2.length; i++) {
+      for (let i = 0; i < people2.length; i++) {
         people2[i].style.border = "5px solid green";
       }
     } else if (this.state.people3 === 1) {
-      for (var i = 0; i < people3.length; i++) {
+      for (let i = 0; i < people3.length; i++) {
         people3[i].style.border = "5px solid green";
       }
     } else if (this.state.people4 === 1) {
-      for (var i = 0; i < people4.length; i++) {
+      for (let i = 0; i < people4.length; i++) {
         people4[i].style.border = "5px solid green";
       }
     } else if (this.state.people5 === 1) {
-      for (var i = 0; i < people5.length; i++) {
+      for (let i = 0; i < people5.length; i++) {
         people5[i].style.border = "5px solid green";
       }
     } else if (this.state.people6 === 1) {
-      for (var i = 0; i < people6.length; i++) {
+      for (let i = 0; i < people6.length; i++) {
         people6[i].style.border = "5px solid green";
       }
     }
@@ -53,24 +54,24 @@ export default class extends Component {
     let leftArray = await document.getElementsByClassName("left");
     let rightArray = await document.getElementsByClassName("right");
     if (this.state.lclick === 1) {
-      for (var i = 0; i < leftArray.length; i++) {
+      for (let i = 0; i < leftArray.length; i++) {
         leftArray[i].style.border = "5px solid black";
       }
-      for (var i = 0; i < rightArray.length; i++) {
+      for (let i = 0; i < rightArray.length; i++) {
         rightArray[i].style.border = "0px";
       }
     } else if (this.state.rclick === 1) {
-      for (var i = 0; i < leftArray.length; i++) {
+      for (let i = 0; i < leftArray.length; i++) {
         leftArray[i].style.border = "0px";
       }
-      for (var i = 0; i < rightArray.length; i++) {
+      for (let i = 0; i < rightArray.length; i++) {
         rightArray[i].style.border = "5px solid black";
       }
     } else {
-      for (var i = 0; i < leftArray.length; i++) {
+      for (let i = 0; i < leftArray.length; i++) {
         leftArray[i].style.border = "0px";
       }
-      for (var i = 0; i < rightArray.length; i++) {
+      for (let i = 0; i < rightArray.length; i++) {
         rightArray[i].style.border = "0px";
       }
     }
@@ -113,7 +114,11 @@ export default class extends Component {
     }
   };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
+    const href = await window.location.href.split("/");
+    await this.setState({
+      sub_id: href[href.length - 2]
+    });
     if (this.state.step === 1) {
       document.getElementById(`${this.state.step}`).style.display = "flex";
     }
@@ -122,6 +127,7 @@ export default class extends Component {
   render = () => {
     return (
       <Exp1Presenter
+        sub_id={this.state.sub_id}
         repeat={this.repeat}
         clickLeft={this.clickLeft}
         clickRight={this.clickRight}

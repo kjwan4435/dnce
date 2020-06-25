@@ -3,9 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import leftimage from "../../images/lottery_png/h20_p100.png";
 import rightimage from "../../images/lottery_png/h34_p25.png";
-import leftimage2 from "../../images/lottery_png/h13_p100.png";
-import rightimage2 from "../../images/lottery_png/h23_p75.png";
-import middle from "../../images/focus_I.png";
 
 const Container = styled.div`
   padding: 20px;
@@ -71,22 +68,9 @@ const RightImg = styled.div`
   background-size: cover;
   background-image: url(${rightimage});
 `;
-const LeftImg2 = styled.div`
-  width: 250px;
-  height: 250px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(${leftimage2});
-`;
-const RightImg2 = styled.div`
-  width: 250px;
-  height: 250px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(${rightimage2});
-`;
+
 const Middle = styled.div`
-  width: 100px;
+  width: 120px;
   height: 100px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -109,17 +93,6 @@ const Inst = styled.div`
   width: 100%;
   line-height: 40px;
 `;
-
-const Inst2 = styled.div`
-  font-size: 13px;
-  display: block;
-  color: black;
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-  line-height: 30px;
-`;
-
 const GameInfo = styled.div`
   padding: 18px;
   font-size: 20px;
@@ -159,15 +132,8 @@ const Button = styled.button`
   box-shadow: 0px 1px 5px 2px rgba(68, 114, 196, 0.4);
 `;
 
-const RangeCont = styled.div`
-  width: 500px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-const RangeInput = styled.input``;
-
 const Exp1Presenter = ({
+  sub_id,
   repeat,
   handleNext,
   clickLeft,
@@ -175,10 +141,10 @@ const Exp1Presenter = ({
   clickPeople
 }) => {
   const people1 = {
-    backgroundImage: `url(${require(`../../images/avatars/instruction/avataaars_inst1.png`)})`
+    backgroundImage: `url(${require(`../../images/avatars/instruction/partner1.png`)})`
   };
   const people2 = {
-    backgroundImage: `url(${require(`../../images/avatars/instruction/avataaars_inst2.png`)})`
+    backgroundImage: `url(${require(`../../images/avatars/instruction/partner2.png`)})`
   };
   const people6 = {
     backgroundImage: `url(${require(`../../images/avatars/instruction/avataaars_inst6.png`)})`
@@ -186,17 +152,11 @@ const Exp1Presenter = ({
   const door1 = {
     backgroundImage: `url(${require(`../../images/avatars/instruction/partner1_door.png`)})`
   };
-  const door2 = {
-    backgroundImage: `url(${require(`../../images/avatars/instruction/partner2_door.png`)})`
-  };
   const smallme = {
     backgroundImage: `url(${require(`../../images/avatars/instruction/self_small.png`)})`
   };
   const small1 = {
     backgroundImage: `url(${require(`../../images/avatars/instruction/partner1_small.png`)})`
-  };
-  const small2 = {
-    backgroundImage: `url(${require(`../../images/avatars/instruction/partner2_small.png`)})`
   };
   const opendoor = {
     backgroundImage: `url(${require(`../../images/avatars/open_door.png`)})`
@@ -428,7 +388,7 @@ const Exp1Presenter = ({
         </Inst>
         <ButtonContainer>
           <Button onClick={repeat}> 설명문 다시 읽기. </Button>
-          <Link to="/experiment3">
+          <Link to={`/${sub_id}/experiment3`}>
             <Button> 이해했습니다. </Button>
           </Link>
         </ButtonContainer>

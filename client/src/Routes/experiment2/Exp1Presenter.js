@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import middle from "../../images/focus_I.png";
-import { urlencoded } from "body-parser";
 
 const Container = styled.div`
   padding: 20px;
@@ -22,16 +20,9 @@ const ImageCont = styled.div`
 
 const PeopleImg = styled.div`
   width: 160px;
-  height: 160px;
+  height: 180px;
   background-repeat: no-repeat;
   background-size: cover;
-`;
-const PeopleImg2 = styled.div`
-  width: 160px;
-  height: 160px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 5px solid black;
 `;
 
 const LeftImg = styled.div`
@@ -47,11 +38,11 @@ const RightImg = styled.div`
   background-size: cover;
 `;
 const Middle = styled.div`
-  width: 100px;
+  width: 120px;
   height: 100px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(${middle});
+  margin: 50px;
 `;
 
 const Div = styled.div`
@@ -65,17 +56,6 @@ const Inst = styled.div`
   font-size: 24px;
   display: block;
   color: black;
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-  line-height: 40px;
-`;
-
-const GameInfo = styled.div`
-  padding: 18px;
-  font-size: 20px;
-  display: block;
-  color: rgb(68, 114, 196);
   font-weight: 600;
   text-align: center;
   width: 100%;
@@ -99,12 +79,54 @@ const Button = styled.button`
   box-shadow: 0px 1px 5px 2px rgba(68, 114, 196, 0.4);
 `;
 
+const Loader = styled.div`
+  padding: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+`;
+
+const LoaderHide = styled.div`
+  padding: 40px;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+`;
+const Inst2 = styled.div`
+  font-size: 13px;
+  display: block;
+  color: black;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  line-height: 40px;
+`;
+const RangeCont = styled.div`
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+const RangeInput = styled.input``;
+
 const Exp1Presenter = ({
+  sub_id,
   l_num,
   r_num,
   l_prob,
   r_prob,
+  partner,
+  partner1,
+  partner2,
   handleNext,
+  handle1Next,
+  handle2Next,
+  handle3Next,
+  handle2Next2,
   clickLeft,
   clickRight,
   setCharBorder,
@@ -113,7 +135,8 @@ const Exp1Presenter = ({
   clickPeople3,
   clickPeople4,
   clickPeople5,
-  clickPeople6
+  clickPeople6,
+  predict
 }) => {
   const left_image = {
     backgroundImage: `url(${require(`../../images/lottery_png/h${l_num}_p${
@@ -126,23 +149,24 @@ const Exp1Presenter = ({
     }.png`)})`
   };
   const people1 = {
-    backgroundImage: `url(${require(`../../images/avatars/instruction/avataaars_inst1.png`)})`
+    backgroundImage: `url(${require(`../../images/avatars/avatar_1.png`)})`
   };
   const people2 = {
-    backgroundImage: `url(${require(`../../images/avatars/instruction/avataaars_inst2.png`)})`
+    backgroundImage: `url(${require(`../../images/avatars/avatar_2.png`)})`
   };
   const people3 = {
-    backgroundImage: `url(${require(`../../images/avatars/instruction/avataaars_inst3.png`)})`
+    backgroundImage: `url(${require(`../../images/avatars/avatar_3.png`)})`
   };
   const people4 = {
-    backgroundImage: `url(${require(`../../images/avatars/instruction/avataaars_inst4.png`)})`
+    backgroundImage: `url(${require(`../../images/avatars/avatar_4.png`)})`
   };
   const people5 = {
-    backgroundImage: `url(${require(`../../images/avatars/instruction/avataaars_inst5.png`)})`
+    backgroundImage: `url(${require(`../../images/avatars/avatar_5.png`)})`
   };
   const people6 = {
-    backgroundImage: `url(${require(`../../images/avatars/instruction/avataaars_inst6.png`)})`
+    backgroundImage: `url(${require(`../../images/avatars/avatar_6.png`)})`
   };
+
   return (
     <Container>
       <Div id="0">
@@ -187,7 +211,7 @@ const Exp1Presenter = ({
         </ImageCont>
       </Div>
       <Div id="2">
-        <Inst>게임을 함께 할 파트너들을 기다리고 있습니다</Inst>
+        <Inst>게임에 함께 할 파트너를 기다리고 있습니다..</Inst>
         <ImageCont>
           <PeopleImg className="people1" style={people1}></PeopleImg>
           <PeopleImg className="people2" style={people2}></PeopleImg>
@@ -196,47 +220,108 @@ const Exp1Presenter = ({
           <PeopleImg className="people5" style={people5}></PeopleImg>
           <PeopleImg className="people6" style={people6}></PeopleImg>
         </ImageCont>
+
+        <Loader id="loader">
+          <span role="img" aria-label="Loading">
+            <i className="fas fa-spinner fa-spin"></i>
+          </span>
+        </Loader>
       </Div>
-      <Div id="7">
-        <Inst>파트너들을 찾았습니다.</Inst>
-        <ImageCont>
-          <PeopleImg2 className="people1" style={people1}></PeopleImg2>
-          <PeopleImg2 className="people2" style={people2}></PeopleImg2>
-          <PeopleImg className="people3" style={people3}></PeopleImg>
-          <PeopleImg className="people4" style={people4}></PeopleImg>
-          <PeopleImg className="people5" style={people5}></PeopleImg>
-          <PeopleImg className="people6" style={people6}></PeopleImg>
-        </ImageCont>
-        <GameInfo>
-          검은색 테두리로 표시된 두 명이 파트너가 되었습니다.
+      <Div id="3">
+        <Inst>
+          파트너들이 입장하셨습니다.<br></br>
           <br></br>
-        </GameInfo>
-        <ButtonContainer>
-          <Button onClick={handleNext}> 이해했습니다. </Button>
-        </ButtonContainer>
+          파트너가 어떤 캐릭터를 골랐는지는<br></br>
+          보여드리지 않습니다.<br></br>
+        </Inst>
       </Div>
-      <Div id="8">
-        <Inst>파트너가 입장했습니다.</Inst>
+      <Div id="4">
+        <Inst>파트너들이 입장했습니다.</Inst>
         <ImageCont>
-          <PeopleImg className="people2" style={people2}></PeopleImg>
-          <PeopleImg className="people1" style={people1}></PeopleImg>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner1}.png`)})`
+            }}
+          ></PeopleImg>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner2}.png`)})`
+            }}
+          ></PeopleImg>
         </ImageCont>
-        <GameInfo>
-          파트너들이 게임에 입장하여 파트너 1, 파트너 2로 결정되었습니다
-          <br></br>
-        </GameInfo>
-        <ButtonContainer>
-          <Button onClick={handleNext}> 이해했습니다. </Button>
-        </ButtonContainer>
       </Div>
-      <Div id="1">
+      <Div id="5">
+        <Inst>
+          지금부터는 파트너가 어떤 복권을 <br></br>
+          선택했는지 맞혀 주세요.<br></br>
+          <br></br>곧 게임을 시작합니다.<br></br>
+        </Inst>
+      </Div>
+      <Div id="1-1">
+        <ImageCont>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner}.png`)})`
+            }}
+          ></PeopleImg>
+        </ImageCont>
+        <Inst>위 파트너가 어떤 복권을 선택했을 지 맞혀주세요</Inst>
+      </Div>
+      <Div id="1-2">
         <ImageCont>
           <LeftImg
             onClick={clickLeft}
             className="left"
             style={left_image}
           ></LeftImg>
-          <Middle></Middle>
+          <Middle
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/small_avatar_${partner}.png`)})`
+            }}
+          ></Middle>
+          <RightImg
+            onClick={clickRight}
+            className="right"
+            style={right_image}
+          ></RightImg>
+        </ImageCont>
+        <LoaderHide id="loader1">
+          <span role="img" aria-label="Loading">
+            <i className="fas fa-spinner fa-spin"></i>
+          </span>
+        </LoaderHide>
+        <ButtonContainer id="hideNext1">
+          <Button onClick={handle1Next}> 다음 </Button>
+        </ButtonContainer>
+      </Div>
+      <Div id="6">
+        <Inst>
+          파트너가 어떤 복권을 선택했는지 맞혀 주세요.<br></br>
+          지금부터는 정답을 알려주지 않습니다.<br></br>
+        </Inst>
+      </Div>
+      <Div id="2-1">
+        <ImageCont>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner}.png`)})`
+            }}
+          ></PeopleImg>
+        </ImageCont>
+        <Inst>위 파트너가 어떤 복권을 선택했을 지 맞혀주세요</Inst>
+      </Div>
+      <Div id="2-2">
+        <ImageCont>
+          <LeftImg
+            onClick={clickLeft}
+            className="left"
+            style={left_image}
+          ></LeftImg>
+          <Middle
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/small_avatar_${partner}.png`)})`
+            }}
+          ></Middle>
           <RightImg
             onClick={clickRight}
             className="right"
@@ -244,10 +329,172 @@ const Exp1Presenter = ({
           ></RightImg>
         </ImageCont>
         <ButtonContainer>
-          <Button onClick={handleNext}> 다음 </Button>
+          <Button onClick={handle2Next2}> 다음 </Button>
         </ButtonContainer>
       </Div>
-      <Div id="2">
+      <Div id="2-3">
+        <Inst>정답을 맞혔을까요?</Inst>
+        <div className="slidecontainer">
+          <RangeInput
+            type="range"
+            min="1"
+            max="10"
+            value={predict}
+            className="slider"
+            id="myRange"
+          ></RangeInput>
+        </div>
+        <RangeCont>
+          <Inst2>
+            1{" "}
+            <span role="img" aria-label="arrow">
+              ⬅️
+            </span>{" "}
+            전혀 확실하지 않다.
+          </Inst2>
+          <Inst>
+            <span id="demo"></span>
+          </Inst>
+          <Inst2>
+            확실히 맞혔을 것이다{" "}
+            <span role="img" aria-label="arrow">
+              ➡️
+            </span>{" "}
+            10
+          </Inst2>
+        </RangeCont>
+        <LoaderHide id="loader2">
+          <span role="img" aria-label="Loading">
+            <i className="fas fa-spinner fa-spin"></i>
+          </span>
+        </LoaderHide>
+        <ButtonContainer id="hideNext2">
+          <Button onClick={handle2Next}> 다음 </Button>
+        </ButtonContainer>
+      </Div>
+      <Div id="7">
+        <Inst>
+          지금부터는 파트너에 대한 <br></br>
+          질문에 대답해주세요. <br></br>
+        </Inst>
+      </Div>
+
+      <Div id="3-1">
+        <ImageCont>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner1}.png`)})`
+            }}
+          ></PeopleImg>
+        </ImageCont>
+        <Inst>파트너 A에 대한 질문입니다.</Inst>
+      </Div>
+      <Div id="3-2">
+        <ImageCont>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner1}.png`)})`
+            }}
+          ></PeopleImg>
+        </ImageCont>
+        <Inst id="question"></Inst>
+        <div className="slidecontainer">
+          <RangeInput
+            type="range"
+            min="-10"
+            max="10"
+            value={predict}
+            className="slider"
+            id="myRange2"
+          ></RangeInput>
+        </div>
+        <RangeCont>
+          <Inst2>
+            -10{" "}
+            <span role="img" aria-label="arrow">
+              ⬅️
+            </span>{" "}
+            매우 그렇지 않다
+          </Inst2>
+          <Inst>
+            <span id="demo2"></span>
+          </Inst>
+          <Inst2>
+            매우 그렇다{" "}
+            <span role="img" aria-label="arrow">
+              ➡️
+            </span>{" "}
+            10
+          </Inst2>
+        </RangeCont>
+        <LoaderHide id="loader3">
+          <span role="img" aria-label="Loading">
+            <i className="fas fa-spinner fa-spin"></i>
+          </span>
+        </LoaderHide>
+        <ButtonContainer id="hideNext3">
+          <Button onClick={handle3Next}> 다음 </Button>
+        </ButtonContainer>
+      </Div>
+      <Div id="3-3">
+        <ImageCont>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner2}.png`)})`
+            }}
+          ></PeopleImg>
+        </ImageCont>
+        <Inst>파트너 B에 대한 질문입니다.</Inst>
+      </Div>
+      <Div id="3-4">
+        <ImageCont>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner2}.png`)})`
+            }}
+          ></PeopleImg>
+        </ImageCont>
+        <Inst id="question2"></Inst>
+        <div className="slidecontainer">
+          <RangeInput
+            type="range"
+            min="-10"
+            max="10"
+            value={predict}
+            className="slider"
+            id="myRange3"
+          ></RangeInput>
+        </div>
+        <RangeCont>
+          <Inst2>
+            -10{" "}
+            <span role="img" aria-label="arrow">
+              ⬅️
+            </span>{" "}
+            매우 그렇지 않다
+          </Inst2>
+          <Inst>
+            <span id="demo3"></span>
+          </Inst>
+          <Inst2>
+            매우 그렇다{" "}
+            <span role="img" aria-label="arrow">
+              ➡️
+            </span>{" "}
+            10
+          </Inst2>
+        </RangeCont>
+        <LoaderHide id="loader4">
+          <span role="img" aria-label="Loading">
+            <i className="fas fa-spinner fa-spin"></i>
+          </span>
+        </LoaderHide>
+        <ButtonContainer id="hideNext4">
+          <Button onClick={handle3Next}> 다음 </Button>
+        </ButtonContainer>
+      </Div>
+
+      <Div id="8">
         <Inst>
           이번 선택들로 받을 보너스금액이<br></br>
           결정되었습니다.<br></br>
@@ -255,7 +502,7 @@ const Exp1Presenter = ({
           최종 보너스금액은 모든 실험이 종료된 후 알려드립니다.<br></br>
         </Inst>
         <ButtonContainer>
-          <Link to="/explain2">
+          <Link to={`/${sub_id}/explain3`}>
             <Button> 확인 </Button>
           </Link>
         </ButtonContainer>

@@ -3,6 +3,7 @@ import Exp1Presenter from "./Exp1Presenter";
 
 export default class extends Component {
   state = {
+    sub_id: "",
     step: 1,
     lclick: 0,
     rclick: 0
@@ -12,25 +13,25 @@ export default class extends Component {
     let leftArray = await document.getElementsByClassName("left");
     let rightArray = await document.getElementsByClassName("right");
     if (this.state.lclick === 1) {
-      for (var i = 0; i < leftArray.length; i++) {
+      for (let i = 0; i < leftArray.length; i++) {
         leftArray[i].style.border = "5px solid";
       }
-      for (var i = 0; i < rightArray.length; i++) {
-        rightArray[i].style.border = "0px";
+      for (let j = 0; j < rightArray.length; j++) {
+        rightArray[j].style.border = "0px";
       }
     } else if (this.state.rclick === 1) {
-      for (var i = 0; i < leftArray.length; i++) {
+      for (let i = 0; i < leftArray.length; i++) {
         leftArray[i].style.border = "0px";
       }
-      for (var i = 0; i < rightArray.length; i++) {
-        rightArray[i].style.border = "5px solid";
+      for (let j = 0; j < rightArray.length; j++) {
+        rightArray[j].style.border = "5px solid";
       }
     } else {
-      for (var i = 0; i < leftArray.length; i++) {
+      for (let i = 0; i < leftArray.length; i++) {
         leftArray[i].style.border = "0px";
       }
-      for (var i = 0; i < rightArray.length; i++) {
-        rightArray[i].style.border = "0px";
+      for (let j = 0; j < rightArray.length; j++) {
+        rightArray[j].style.border = "0px";
       }
     }
   };
@@ -65,7 +66,11 @@ export default class extends Component {
     }
   };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
+    const href = await window.location.href.split("/");
+    await this.setState({
+      sub_id: href[href.length - 2]
+    });
     if (this.state.step === 1) {
       document.getElementById(`${this.state.step}`).style.display = "flex";
     }
@@ -74,6 +79,7 @@ export default class extends Component {
   render = () => {
     return (
       <Exp1Presenter
+        sub_id={this.state.sub_id}
         repeat={this.repeat}
         clickLeft={this.clickLeft}
         clickRight={this.clickRight}

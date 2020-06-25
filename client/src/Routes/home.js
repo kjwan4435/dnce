@@ -39,6 +39,17 @@ const Button = styled.button`
 `;
 
 export default class extends Component {
+  state = { sub_id: "" };
+
+  componentDidMount = (async) => {
+    const href = window.location.href.split("/");
+    let current_time = new Date();
+    current_time = current_time.getTime().toString();
+    this.setState({
+      sub_id: href[href.length - 1] + current_time
+    });
+  };
+
   render = () => {
     return (
       <Container>
@@ -50,7 +61,7 @@ export default class extends Component {
           게임에 대한 설명을 읽고 신중하게 선택해 주세요. <br></br>
         </GameInfo>
         <ButtonContainer>
-          <Link to="/explain1">
+          <Link to={`${this.state.sub_id}/explain1`}>
             <Button> 실험 설명 시작 </Button>
           </Link>
         </ButtonContainer>

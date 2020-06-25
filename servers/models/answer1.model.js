@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 
 const answer1Schema = new Schema(
   {
+    sub_id: {
+      type: String,
+      required: "ID REQUIRED"
+    },
     trial: {
       type: Number,
       required: "TRIAL REQUIRED"
@@ -52,5 +56,5 @@ const answer1Schema = new Schema(
   { timestamps: true }
 );
 
-const answer1 = mongoose.model("answer", answer1Schema);
+const answer1 = mongoose.model("answer1", answer1Schema);
 module.exports = answer1;

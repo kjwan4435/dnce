@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import middle from "../../images/focus_I.png";
-// import { h3_p100, h5_p100 } from "../../images/lottery_png";
-import { urlencoded } from "body-parser";
 
 const Container = styled.div`
   padding: 20px;
@@ -12,35 +10,66 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+const Cont2 = styled.div`
+  padding: 0;
+  width: 100%;
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 8px solid black;
+`;
 
 const ImageCont = styled.div`
-  padding: 50px;
+  padding: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 `;
-
+const WindowCont = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+const Window = styled.div`
+  width: 100px;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
 const LeftImg = styled.div`
-  width: 400px;
-  height: 400px;
+  width: 250px;
+  height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
 `;
 const RightImg = styled.div`
-  width: 400px;
-  height: 400px;
+  width: 250px;
+  height: 250px;
   background-repeat: no-repeat;
   background-size: cover;
 `;
 const Middle = styled.div`
-  width: 100px;
+  width: 120px;
   height: 100px;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(${middle});
 `;
-
+const PeopleImg = styled.div`
+  width: 160px;
+  height: 160px;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+const PeopleImg2 = styled.div`
+  width: 140px;
+  height: 140px;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
 const Div = styled.div`
   display: none;
   flex-direction: column;
@@ -49,44 +78,58 @@ const Div = styled.div`
 
 const Inst = styled.div`
   padding: 18px;
-  font-size: 30px;
+  font-size: 24px;
   display: block;
   color: black;
   font-weight: 600;
   text-align: center;
   width: 100%;
-  line-height: 50px;
-`;
-
-const GameInfo = styled.div`
-  padding: 18px;
-  font-size: 25px;
-  display: block;
-  color: rgb(68, 114, 196);
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-  line-height: 50px;
+  line-height: 40px;
 `;
 
 const ButtonContainer = styled.div`
-  padding: 30px;
+  padding: 20px;
   text-align: center;
 `;
 
 const Button = styled.button`
   padding: 10px 15px;
-  margin: 0px 30px;
+  margin: 0px 20px;
   border-radius: 8px;
   border-style: none;
   color: rgb(68, 114, 196);
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 900;
   box-shadow: 0px 1px 5px 2px rgba(68, 114, 196, 0.4);
 `;
+const LoaderHide = styled.div`
+  padding: 40px;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+`;
+const Loader = styled.div`
+  padding: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+`;
 
 const Exp1Presenter = ({
+  sub_id,
+  character,
+  partner,
+  partner_p,
+  partner1,
+  partner2,
+  bonus3,
+  bonus1,
+  bonus2,
   l_num,
   r_num,
   l_prob,
@@ -107,42 +150,129 @@ const Exp1Presenter = ({
   };
   return (
     <Container>
+      <Div id="-3">
+        <Inst>
+          이전의 데이터를 불러오는 중입니다.<br></br>
+          잠시만 기다려주세요 <br></br>
+        </Inst>
+        <Loader>
+          <span role="img" aria-label="Loading">
+            <i className="fas fa-spinner fa-spin"></i>
+          </span>
+        </Loader>
+      </Div>
+      <Div id="-2">
+        <Inst>세 번째 게임에 입장했습니다.</Inst>
+        <ImageCont>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${character}.png`)})`
+            }}
+          ></PeopleImg>
+        </ImageCont>
+      </Div>
+      <Div id="-1">
+        <Inst>파트너들이 다시 입장했습니다.</Inst>
+        <ImageCont>
+          <PeopleImg2
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner1}.png`)})`
+            }}
+          ></PeopleImg2>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${character}.png`)})`
+            }}
+          ></PeopleImg>
+          <PeopleImg2
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner2}.png`)})`
+            }}
+          ></PeopleImg2>
+        </ImageCont>
+      </Div>
       <Div id="0">
         <Inst>
           지금부터 복권 게임을 시작합니다.
           <br></br>
         </Inst>
       </Div>
-      <Div id="1">
+      <Div id="1-1">
         <ImageCont>
-          <LeftImg
-            onClick={clickLeft}
-            className="left"
-            style={left_image}
-          ></LeftImg>
-          <Middle></Middle>
-          <RightImg
-            onClick={clickRight}
-            className="right"
-            style={right_image}
-          ></RightImg>
+          <PeopleImg
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/${partner_p}.png`)})`
+            }}
+          ></PeopleImg>
         </ImageCont>
-        <ButtonContainer>
+      </Div>
+      <Div id="1-2">
+        <WindowCont>
+          <Window
+            style={{
+              backgroundImage: `url(${require(`../../images/avatars/small_avatar_${partner}.png`)})`
+            }}
+          ></Window>
+        </WindowCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg
+              onClick={clickLeft}
+              className="left"
+              style={left_image}
+            ></LeftImg>
+            <Middle
+              style={{
+                backgroundImage: `url(${require(`../../images/avatars/small_avatar_${character}.png`)})`
+              }}
+            ></Middle>
+            <RightImg
+              onClick={clickRight}
+              className="right"
+              style={right_image}
+            ></RightImg>
+          </ImageCont>
+        </Cont2>
+        <LoaderHide id="loader">
+          <span role="img" aria-label="Loading">
+            <i className="fas fa-spinner fa-spin"></i>
+          </span>
+        </LoaderHide>
+        <ButtonContainer id="hideNext">
           <Button onClick={handleNext}> 다음 </Button>
         </ButtonContainer>
       </Div>
-      <Div id="2">
+      <Div id="1">
         <Inst>
           이번 선택들로 받을 보너스금액이<br></br>
           결정되었습니다.<br></br>
           <br></br>
-          최종 보너스금액은 모든 실험이 종료된 후 알려드립니다.<br></br>
         </Inst>
         <ButtonContainer>
-          <Link to="/experiment2">
-            <Button> 확인 </Button>
-          </Link>
+          <Button onClick={handleNext}> 확인 </Button>
         </ButtonContainer>
+      </Div>
+      <Div id="2">
+        <Inst>
+          모든 게임이 끝났습니다.<br></br>
+          보너스는 아래와 같이 정해졌습니다.<br></br>
+          <br></br>
+          게임1 - {bonus1}원 <br></br>
+          게임2 - 정확도: {bonus2 / 3}%, {bonus2}원 <br></br>
+          게임3 - {bonus3}원<br></br>
+        </Inst>
+        <ButtonContainer>
+          <Button onClick={handleNext}> 확인 </Button>
+        </ButtonContainer>
+      </Div>
+      <Div id="3">
+        <Inst>
+          실험이 종료되었습니다.<br></br>
+          실험에 참가해주셔 감사합니다.<br></br>
+        </Inst>
+        {/* <ButtonContainer>
+          <Button onClick={handleNext}> 확인 </Button>
+        </ButtonContainer> */}
       </Div>
     </Container>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import middle from "../../images/focus_I.png";
-import { urlencoded } from "body-parser";
 
 const Container = styled.div`
   padding: 20px;
@@ -57,17 +56,6 @@ const Inst = styled.div`
   line-height: 40px;
 `;
 
-const GameInfo = styled.div`
-  padding: 18px;
-  font-size: 20px;
-  display: block;
-  color: rgb(68, 114, 196);
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-  line-height: 40px;
-`;
-
 const ButtonContainer = styled.div`
   padding: 20px;
   text-align: center;
@@ -84,8 +72,17 @@ const Button = styled.button`
   font-weight: 900;
   box-shadow: 0px 1px 5px 2px rgba(68, 114, 196, 0.4);
 `;
+const LoaderHide = styled.div`
+  padding: 40px;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+`;
 
 const Exp1Presenter = ({
+  sub_id,
   l_num,
   r_num,
   l_prob,
@@ -126,7 +123,12 @@ const Exp1Presenter = ({
             style={right_image}
           ></RightImg>
         </ImageCont>
-        <ButtonContainer>
+        <LoaderHide id="loader">
+          <span role="img" aria-label="Loading">
+            <i className="fas fa-spinner fa-spin"></i>
+          </span>
+        </LoaderHide>
+        <ButtonContainer id="hideNext">
           <Button onClick={handleNext}> 다음 </Button>
         </ButtonContainer>
       </Div>
@@ -138,7 +140,7 @@ const Exp1Presenter = ({
           최종 보너스금액은 모든 실험이 종료된 후 알려드립니다.<br></br>
         </Inst>
         <ButtonContainer>
-          <Link to="/explain2">
+          <Link to={`/${sub_id}/explain2`}>
             <Button> 확인 </Button>
           </Link>
         </ButtonContainer>
