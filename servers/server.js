@@ -19,7 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/answers", answerRouter);
-app.use("/subjects", subjectRouter);
 app.use("/exp", expRouter);
 
 // serve static assets if in production
