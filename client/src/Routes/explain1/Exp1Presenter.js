@@ -15,6 +15,16 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const Cont2 = styled.div`
+  padding: 0;
+  width: 100%;
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 8px solid black;
+`;
+
 const ImageCont = styled.div`
   padding: 30px;
   display: flex;
@@ -113,11 +123,13 @@ const Exp1Presenter = ({
 }) => (
   <Container>
     <Div id="1">
-      <ImageCont>
-        <LeftImg className="left"></LeftImg>
-        <Middle></Middle>
-        <RightImg className="right"></RightImg>
-      </ImageCont>
+      <Cont2>
+        <ImageCont>
+          <LeftImg className="left"></LeftImg>
+          <Middle></Middle>
+          <RightImg className="right"></RightImg>
+        </ImageCont>
+      </Cont2>
       <GameInfo>
         위 그림과 같이 화면에 나타나는 두 가지 복권 중 하나를 선택하게 됩니다.
         <br></br>
@@ -137,48 +149,57 @@ const Exp1Presenter = ({
       </ButtonContainer>
     </Div>
     <Div id="3">
-      <ImageCont>
-        <LeftImg onClick={clickLeft} className="left"></LeftImg>
-        <Middle></Middle>
-        <RightImg className="right"></RightImg>
-      </ImageCont>
+      <Cont2>
+        <ImageCont>
+          <LeftImg onClick={clickLeft} className="left"></LeftImg>
+          <Middle></Middle>
+          <RightImg className="right"></RightImg>
+        </ImageCont>
+      </Cont2>
       <GameInfo>
         왼쪽 복권을 클릭해보세요.
         <br></br>
       </GameInfo>
     </Div>
     <Div id="4">
-      <ImageCont>
-        <LeftImg className="left"></LeftImg>
-        <Middle></Middle>
-        <RightImg className="right"></RightImg>
-      </ImageCont>
+      <Cont2>
+        <ImageCont>
+          <LeftImg className="left"></LeftImg>
+          <Middle></Middle>
+          <RightImg className="right"></RightImg>
+        </ImageCont>
+      </Cont2>
       <GameInfo>
         이제 아래의 다음 버튼을 누르면 선택이 확정되고 <br></br>
         당신은 100%의 확률로 20 포인트를 받을 수 있습니다.
         <br></br>
       </GameInfo>
+
       <ButtonContainer>
         <Button onClick={handleNext}> 다음 </Button>
       </ButtonContainer>
     </Div>
     <Div id="5">
-      <ImageCont>
-        <LeftImg2 className="left"></LeftImg2>
-        <Middle></Middle>
-        <RightImg2 onClick={clickRight} className="right"></RightImg2>
-      </ImageCont>
+      <Cont2>
+        <ImageCont>
+          <LeftImg2 className="left"></LeftImg2>
+          <Middle></Middle>
+          <RightImg2 onClick={clickRight} className="right"></RightImg2>
+        </ImageCont>
+      </Cont2>
       <GameInfo>
         이번에는 오른쪽 복권을 클릭해보세요.
         <br></br>
       </GameInfo>
     </Div>
     <Div id="6">
-      <ImageCont>
-        <LeftImg2 className="left"></LeftImg2>
-        <Middle></Middle>
-        <RightImg2 className="right"></RightImg2>
-      </ImageCont>
+      <Cont2>
+        <ImageCont>
+          <LeftImg2 className="left"></LeftImg2>
+          <Middle></Middle>
+          <RightImg2 className="right"></RightImg2>
+        </ImageCont>
+      </Cont2>
       <GameInfo>
         이제 아래의 다음 버튼을 누르면 선택이 확정되고<br></br>
         당신은 75%의 확률로 23 포인트를, 25%로 0포인트를 받을 수 있습니다.

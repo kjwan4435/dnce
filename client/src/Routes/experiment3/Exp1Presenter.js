@@ -60,13 +60,13 @@ const Middle = styled.div`
 `;
 const PeopleImg = styled.div`
   width: 160px;
-  height: 160px;
+  height: 190px;
   background-repeat: no-repeat;
   background-size: cover;
 `;
 const PeopleImg2 = styled.div`
   width: 140px;
-  height: 140px;
+  height: 170px;
   background-repeat: no-repeat;
   background-size: cover;
 `;
@@ -152,8 +152,7 @@ const Exp1Presenter = ({
     <Container>
       <Div id="-3">
         <Inst>
-          이전의 데이터를 불러오는 중입니다.<br></br>
-          잠시만 기다려주세요 <br></br>
+          게임에 입장하는 중입니다.<br></br>
         </Inst>
         <Loader>
           <span role="img" aria-label="Loading">
@@ -270,9 +269,6 @@ const Exp1Presenter = ({
           실험이 종료되었습니다.<br></br>
           실험에 참가해주셔 감사합니다.<br></br>
         </Inst>
-        {/* <ButtonContainer>
-          <Button onClick={handleNext}> 확인 </Button>
-        </ButtonContainer> */}
       </Div>
     </Container>
   );

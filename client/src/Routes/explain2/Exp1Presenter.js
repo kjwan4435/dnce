@@ -12,6 +12,16 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const Cont2 = styled.div`
+  padding: 0;
+  width: 100%;
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 8px solid black;
+`;
+
 const ImageCont = styled.div`
   padding: 30px;
   display: flex;
@@ -64,13 +74,12 @@ const Inst = styled.div`
   line-height: 40px;
 `;
 const Inst2 = styled.div`
-  font-size: 13px;
+  font-size: 15px;
   display: block;
   color: black;
   font-weight: 600;
   text-align: center;
   width: 100%;
-  line-height: 40px;
 `;
 
 const GameInfo = styled.div`
@@ -296,22 +305,26 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="11">
-        <ImageCont>
-          <LeftImg onClick={clickLeft} className="left"></LeftImg>
-          <Middle style={partner1_small}></Middle>
-          <RightImg className="right"></RightImg>
-        </ImageCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg onClick={clickLeft} className="left"></LeftImg>
+            <Middle style={partner1_small}></Middle>
+            <RightImg className="right"></RightImg>
+          </ImageCont>
+        </Cont2>
         <GameInfo>
           두 복권 중 파트너가 어떤 것을 선택했는지 고르시면 됩니다.<br></br>
           왼쪽 복권을 클릭해보세요<br></br>
         </GameInfo>
       </Div>
       <Div id="12">
-        <ImageCont>
-          <LeftImg className="left"></LeftImg>
-          <Middle style={partner1_small}></Middle>
-          <RightImg className="right"></RightImg>
-        </ImageCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg className="left"></LeftImg>
+            <Middle style={partner1_small}></Middle>
+            <RightImg className="right"></RightImg>
+          </ImageCont>
+        </Cont2>
         <GameInfo>
           이제 아래의 다음 버튼을 누르면 선택이 확정되고 <br></br>
           실제로 파트너가 선택한 것이 무엇인지 정답을 확인 할 수 있습니다.
@@ -322,14 +335,16 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="13">
-        <ImageCont>
-          <LeftImg
-            className="left"
-            style={{ outline: "10px solid lightgreen" }}
-          ></LeftImg>
-          <Middle style={partner1_small}></Middle>
-          <RightImg className="right"></RightImg>
-        </ImageCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg
+              className="left"
+              style={{ outline: "10px solid lightgreen" }}
+            ></LeftImg>
+            <Middle style={partner1_small}></Middle>
+            <RightImg className="right"></RightImg>
+          </ImageCont>
+        </Cont2>
         <GameInfo>
           파트너의 실제 선택이 초록색 박스로 나타납니다.
           <br></br>
@@ -357,22 +372,26 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="15">
-        <ImageCont>
-          <LeftImg onClick={clickLeft} className="left"></LeftImg>
-          <Middle style={partner2_small}></Middle>
-          <RightImg className="right"></RightImg>
-        </ImageCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg onClick={clickLeft} className="left"></LeftImg>
+            <Middle style={partner2_small}></Middle>
+            <RightImg className="right"></RightImg>
+          </ImageCont>
+        </Cont2>
         <GameInfo>
           두 복권 중 파트너가 어떤 것을 선택했는지 고르시면 됩니다.<br></br>
           왼쪽 복권을 클릭해보세요<br></br>
         </GameInfo>
       </Div>
       <Div id="16">
-        <ImageCont>
-          <LeftImg className="left"></LeftImg>
-          <Middle style={partner2_small}></Middle>
-          <RightImg className="right"></RightImg>
-        </ImageCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg className="left"></LeftImg>
+            <Middle style={partner2_small}></Middle>
+            <RightImg className="right"></RightImg>
+          </ImageCont>
+        </Cont2>
         <GameInfo>
           이제 아래의 다음 버튼을 누르면 선택이 확정되고 <br></br>
           실제로 파트너가 선택한 것이 무엇인지 정답을 확인 할 수 있습니다.
@@ -383,14 +402,16 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="17">
-        <ImageCont>
-          <LeftImg className="left"></LeftImg>
-          <Middle style={partner2_small}></Middle>
-          <RightImg
-            className="right"
-            style={{ outline: "10px solid lightgreen" }}
-          ></RightImg>
-        </ImageCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg className="left"></LeftImg>
+            <Middle style={partner2_small}></Middle>
+            <RightImg
+              className="right"
+              style={{ outline: "10px solid lightgreen" }}
+            ></RightImg>
+          </ImageCont>
+        </Cont2>
         <GameInfo>
           파트너의 실제 선택이 초록색 박스로 나타납니다.
           <br></br>
@@ -433,22 +454,26 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="20">
-        <ImageCont>
-          <LeftImg onClick={clickLeft} className="left"></LeftImg>
-          <Middle style={partner1_small}></Middle>
-          <RightImg className="right"></RightImg>
-        </ImageCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg onClick={clickLeft} className="left"></LeftImg>
+            <Middle style={partner1_small}></Middle>
+            <RightImg className="right"></RightImg>
+          </ImageCont>
+        </Cont2>
         <GameInfo>
           두 복권 중 파트너가 어떤 것을 선택했는지 고르시면 됩니다.<br></br>
           왼쪽 복권을 클릭해보세요<br></br>
         </GameInfo>
       </Div>
       <Div id="21">
-        <ImageCont>
-          <LeftImg className="left"></LeftImg>
-          <Middle style={partner1_small}></Middle>
-          <RightImg className="right"></RightImg>
-        </ImageCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg className="left"></LeftImg>
+            <Middle style={partner1_small}></Middle>
+            <RightImg className="right"></RightImg>
+          </ImageCont>
+        </Cont2>
         <GameInfo>
           이제 아래의 다음 버튼을 누르면 선택이 확정되고 <br></br>
           실제로 파트너가 선택한 것이 무엇인지 정답을 확인 할 수 있습니다.
@@ -464,6 +489,7 @@ const Exp1Presenter = ({
           슬라이더바를 이용해 응답해 주시면 됩니다.<br></br>
         </GameInfo>
         <Inst>정답을 맞혔을까요?</Inst>
+        <Inst></Inst>
         <div className="slidecontainer">
           <RangeInput
             type="range"

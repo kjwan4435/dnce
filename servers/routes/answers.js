@@ -222,7 +222,7 @@ answerRouter.route("/exp3").post((req, res) => {
 });
 
 answerRouter.route("/exp/bonus/:id").get((req, res) => {
-  Answer.findOne({
+  Answer1.findOne({
     sub_id: req.params.id,
     trial: Math.floor(Math.random() * 30) + 1
   })
@@ -230,7 +230,7 @@ answerRouter.route("/exp/bonus/:id").get((req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 answerRouter.route("/exp2/bonus/:id").get((req, res) => {
-  Answer2_2.findOne({ sub_id: req.params.id, trial: 60 })
+  Answer2_2.findOne({ sub_id: req.params.id, trial: 20 })
     .then((answer) => res.json(answer))
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });

@@ -67,6 +67,7 @@ export default class extends Component {
       time_click_array: array
     });
     await this.setBorder();
+    document.getElementById("hideNext").style.display = "flex";
   };
 
   clickRight = async () => {
@@ -79,6 +80,7 @@ export default class extends Component {
       time_click_array: array
     });
     await this.setBorder();
+    document.getElementById("hideNext").style.display = "flex";
   };
 
   sleep = (delay) => {
@@ -169,7 +171,6 @@ export default class extends Component {
       const answer = await this.setAnswer();
       const res = await axios.post(`/answers/exp3`, qs.stringify(answer));
       console.log(res.data);
-      document.getElementById("hideNext").style.display = "flex";
       document.getElementById("loader").style.display = "none";
     }
 
@@ -287,6 +288,7 @@ export default class extends Component {
     await this.setState({
       sub_id: href[href.length - 2]
     });
+    document.getElementById("hideNext").style.display = "none";
     if (this.state.step === -3) {
       document.getElementById(`${this.state.step}`).style.display = "flex";
       await this.getExp(3);
@@ -310,7 +312,7 @@ export default class extends Component {
         r_num={this.state.r_num}
         l_prob={this.state.l_prob}
         r_prob={this.state.r_prob}
-        bonus3={this.state.bonus}
+        bonus3={this.state.bonus3}
         bonus1={this.state.bonus1}
         bonus2={this.state.bonus2}
         repeat={this.repeat}

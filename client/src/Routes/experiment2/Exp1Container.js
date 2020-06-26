@@ -23,6 +23,7 @@ export default class extends Component {
     time_click_array: [],
     time_next: 0,
     bonus: 0,
+    bonus1: 0,
     people1: 0,
     people2: 0,
     people3: 0,
@@ -201,6 +202,8 @@ export default class extends Component {
       time_click_array: array
     });
     await this.setBorder();
+    document.getElementById("hideNext1").style.display = "flex";
+    document.getElementById(`hide2Next2`).style.display = "flex";
   };
 
   clickRight = async () => {
@@ -213,6 +216,8 @@ export default class extends Component {
       time_click_array: array
     });
     await this.setBorder();
+    document.getElementById("hideNext1").style.display = "flex";
+    document.getElementById(`hide2Next2`).style.display = "flex";
   };
 
   sleep = (delay) => {
@@ -285,7 +290,7 @@ export default class extends Component {
       time_next: this.state.time_next,
       predict: this.state.predict,
       question: this.state.question[Math.floor((this.state.step3 - 1) / 2)]
-        .number
+        .question
     };
     return answer;
   };
@@ -334,10 +339,12 @@ export default class extends Component {
     ) {
       document.getElementById(`${this.state.step - 1}`).style.display = "none";
       document.getElementById(`${this.state.step}`).style.display = "flex";
+
       setTimeout(this.handleNext, 2000);
     }
     if (this.state.step === 6) {
       document.getElementById(`${this.state.step - 1}`).style.display = "none";
+      document.getElementById("hideNext1").style.display = "none";
       this.handle1Next();
     }
     if (this.state.step === 7) {
@@ -356,8 +363,28 @@ export default class extends Component {
       document.getElementById(`7`).style.display = "none";
       this.handle3Next();
     }
-    if (this.state.step === 11) {
+    if (this.state.step === 11 && this.state.bonus / 3 >= 50) {
       document.getElementById(`8`).style.display = "flex";
+    } else if (this.state.step === 11 && this.state.bonus / 3 < 50) {
+      document.getElementById(`9`).style.display = "flex";
+      try {
+        const bonus1 = await axios.get(
+          `/answers/exp/bonus/${this.state.sub_id}`
+        );
+        await this.setState({
+          bonus1: bonus1.data.bonus
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    if (this.state.step === 12) {
+      document.getElementById(`9`).style.display = "none";
+      document.getElementById(`10`).style.display = "flex";
+    }
+    if (this.state.step === 13) {
+      document.getElementById(`10`).style.display = "none";
+      document.getElementById(`11`).style.display = "flex";
     }
   };
 
@@ -431,7 +458,6 @@ export default class extends Component {
       const answer = await this.setAnswer();
       const res = await axios.post(`/answers/exp2`, qs.stringify(answer));
       console.log(res.data);
-      document.getElementById("hideNext1").style.display = "flex";
       document.getElementById("loader1").style.display = "none";
     }
     await this.setState({
@@ -443,6 +469,7 @@ export default class extends Component {
     });
     await this.setBorder();
     await this.setAnswerBorder();
+    this.sleep(2000);
 
     if (this.state.step1 > 0 && this.state.step1 < 41) {
       document.getElementById(`1-1`).style.display = "flex";
@@ -453,7 +480,7 @@ export default class extends Component {
       document.getElementById(`1-2`).style.display = "none";
       this.handleNext();
     }
-    if (this.state.step1 > 0 && this.state.step < 41) {
+    if (this.state.step1 > 0 && this.state.step1 < 41) {
       const l_num = this.state.data[this.state.step1 - 1][this.state.column[1]];
       const l_prob = this.state.data[this.state.step1 - 1][
         this.state.column[2]
@@ -508,6 +535,7 @@ export default class extends Component {
     if (this.state.step2 > 0 && this.state.step2 < 21) {
       document.getElementById(`2-1`).style.display = "flex";
       document.getElementById(`2-3`).style.display = "none";
+      document.getElementById(`hide2Next2`).style.display = "none";
 
       await this.setState({ predict: Math.floor(Math.random() * 10) + 1 });
       let slider = document.getElementById("myRange");
@@ -593,7 +621,6 @@ export default class extends Component {
     });
     await this.setBorder();
     await this.setAnswerBorder();
-    console.log(this.state.step3 % 2);
 
     if (
       this.state.step3 > 0 &&
@@ -718,6 +745,8 @@ export default class extends Component {
         partner={this.state.partner}
         partner1={this.state.partner1}
         partner2={this.state.partner2}
+        bonus1={this.state.bonus1}
+        bonus2={this.state.bonus}
         repeat={this.repeat}
         clickLeft={this.clickLeft}
         clickRight={this.clickRight}

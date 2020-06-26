@@ -10,6 +10,16 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const Cont2 = styled.div`
+  padding: 0;
+  width: 100%;
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 8px solid black;
+`;
+
 const ImageCont = styled.div`
   padding: 30px;
   display: flex;
@@ -97,7 +107,7 @@ const LoaderHide = styled.div`
   font-size: 30px;
 `;
 const Inst2 = styled.div`
-  font-size: 13px;
+  font-size: 15px;
   display: block;
   color: black;
   font-weight: 600;
@@ -122,6 +132,8 @@ const Exp1Presenter = ({
   partner,
   partner1,
   partner2,
+  bonus1,
+  bonus2,
   handleNext,
   handle1Next,
   handle2Next,
@@ -268,23 +280,25 @@ const Exp1Presenter = ({
         <Inst>위 파트너가 어떤 복권을 선택했을 지 맞혀주세요</Inst>
       </Div>
       <Div id="1-2">
-        <ImageCont>
-          <LeftImg
-            onClick={clickLeft}
-            className="left"
-            style={left_image}
-          ></LeftImg>
-          <Middle
-            style={{
-              backgroundImage: `url(${require(`../../images/avatars/small_avatar_${partner}.png`)})`
-            }}
-          ></Middle>
-          <RightImg
-            onClick={clickRight}
-            className="right"
-            style={right_image}
-          ></RightImg>
-        </ImageCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg
+              onClick={clickLeft}
+              className="left"
+              style={left_image}
+            ></LeftImg>
+            <Middle
+              style={{
+                backgroundImage: `url(${require(`../../images/avatars/small_avatar_${partner}.png`)})`
+              }}
+            ></Middle>
+            <RightImg
+              onClick={clickRight}
+              className="right"
+              style={right_image}
+            ></RightImg>
+          </ImageCont>
+        </Cont2>
         <LoaderHide id="loader1">
           <span role="img" aria-label="Loading">
             <i className="fas fa-spinner fa-spin"></i>
@@ -311,29 +325,32 @@ const Exp1Presenter = ({
         <Inst>위 파트너가 어떤 복권을 선택했을 지 맞혀주세요</Inst>
       </Div>
       <Div id="2-2">
-        <ImageCont>
-          <LeftImg
-            onClick={clickLeft}
-            className="left"
-            style={left_image}
-          ></LeftImg>
-          <Middle
-            style={{
-              backgroundImage: `url(${require(`../../images/avatars/small_avatar_${partner}.png`)})`
-            }}
-          ></Middle>
-          <RightImg
-            onClick={clickRight}
-            className="right"
-            style={right_image}
-          ></RightImg>
-        </ImageCont>
-        <ButtonContainer>
+        <Cont2>
+          <ImageCont>
+            <LeftImg
+              onClick={clickLeft}
+              className="left"
+              style={left_image}
+            ></LeftImg>
+            <Middle
+              style={{
+                backgroundImage: `url(${require(`../../images/avatars/small_avatar_${partner}.png`)})`
+              }}
+            ></Middle>
+            <RightImg
+              onClick={clickRight}
+              className="right"
+              style={right_image}
+            ></RightImg>
+          </ImageCont>
+        </Cont2>
+        <ButtonContainer id="hide2Next2">
           <Button onClick={handle2Next2}> 다음 </Button>
         </ButtonContainer>
       </Div>
       <Div id="2-3">
         <Inst>정답을 맞혔을까요?</Inst>
+        <Inst></Inst>
         <div className="slidecontainer">
           <RangeInput
             type="range"
@@ -346,7 +363,6 @@ const Exp1Presenter = ({
         </div>
         <RangeCont>
           <Inst2>
-            1{" "}
             <span role="img" aria-label="arrow">
               ⬅️
             </span>{" "}
@@ -359,8 +375,7 @@ const Exp1Presenter = ({
             확실히 맞혔을 것이다{" "}
             <span role="img" aria-label="arrow">
               ➡️
-            </span>{" "}
-            10
+            </span>
           </Inst2>
         </RangeCont>
         <LoaderHide id="loader2">
@@ -387,7 +402,7 @@ const Exp1Presenter = ({
             }}
           ></PeopleImg>
         </ImageCont>
-        <Inst>파트너 A에 대한 질문입니다.</Inst>
+        <Inst>위의 파트너에 대한 질문입니다.</Inst>
       </Div>
       <Div id="3-2">
         <ImageCont>
@@ -410,7 +425,6 @@ const Exp1Presenter = ({
         </div>
         <RangeCont>
           <Inst2>
-            -10{" "}
             <span role="img" aria-label="arrow">
               ⬅️
             </span>{" "}
@@ -423,8 +437,7 @@ const Exp1Presenter = ({
             매우 그렇다{" "}
             <span role="img" aria-label="arrow">
               ➡️
-            </span>{" "}
-            10
+            </span>
           </Inst2>
         </RangeCont>
         <LoaderHide id="loader3">
@@ -444,7 +457,7 @@ const Exp1Presenter = ({
             }}
           ></PeopleImg>
         </ImageCont>
-        <Inst>파트너 B에 대한 질문입니다.</Inst>
+        <Inst>위의 파트너에 대한 질문입니다.</Inst>
       </Div>
       <Div id="3-4">
         <ImageCont>
@@ -467,7 +480,6 @@ const Exp1Presenter = ({
         </div>
         <RangeCont>
           <Inst2>
-            -10{" "}
             <span role="img" aria-label="arrow">
               ⬅️
             </span>{" "}
@@ -480,8 +492,7 @@ const Exp1Presenter = ({
             매우 그렇다{" "}
             <span role="img" aria-label="arrow">
               ➡️
-            </span>{" "}
-            10
+            </span>
           </Inst2>
         </RangeCont>
         <LoaderHide id="loader4">
@@ -506,6 +517,35 @@ const Exp1Presenter = ({
             <Button> 확인 </Button>
           </Link>
         </ButtonContainer>
+      </Div>
+
+      <Div id="9">
+        <Inst>
+          이번 선택들로 받을 보너스금액이<br></br>
+          결정되었습니다.<br></br>
+          <br></br>
+        </Inst>
+        <ButtonContainer>
+          <Button onClick={handleNext}> 확인 </Button>
+        </ButtonContainer>
+      </Div>
+      <Div id="10">
+        <Inst>
+          모든 게임이 끝났습니다.<br></br>
+          보너스는 아래와 같이 정해졌습니다.<br></br>
+          <br></br>
+          게임1 - {bonus1}원 <br></br>
+          게임2 - 정확도: {(bonus2 / 3).toFixed(2)}%, {bonus2}원 <br></br>
+        </Inst>
+        <ButtonContainer>
+          <Button onClick={handleNext}> 확인 </Button>
+        </ButtonContainer>
+      </Div>
+      <Div id="11">
+        <Inst>
+          실험이 종료되었습니다.<br></br>
+          실험에 참가해주셔 감사합니다.<br></br>
+        </Inst>
       </Div>
     </Container>
   );

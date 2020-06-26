@@ -43,13 +43,13 @@ const Window = styled.div`
 `;
 const PeopleImg = styled.div`
   width: 160px;
-  height: 160px;
+  height: 190px;
   background-repeat: no-repeat;
   background-size: cover;
 `;
 const PeopleImg2 = styled.div`
   width: 140px;
-  height: 140px;
+  height: 170px;
   background-repeat: no-repeat;
   background-size: cover;
 `;

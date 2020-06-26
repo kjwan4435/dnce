@@ -11,6 +11,16 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const Cont2 = styled.div`
+  padding: 0;
+  width: 100%;
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 8px solid black;
+`;
+
 const ImageCont = styled.div`
   padding: 30px;
   display: flex;
@@ -110,19 +120,21 @@ const Exp1Presenter = ({
         </Inst>
       </Div>
       <Div id="1">
-        <ImageCont>
-          <LeftImg
-            onClick={clickLeft}
-            className="left"
-            style={left_image}
-          ></LeftImg>
-          <Middle></Middle>
-          <RightImg
-            onClick={clickRight}
-            className="right"
-            style={right_image}
-          ></RightImg>
-        </ImageCont>
+        <Cont2>
+          <ImageCont>
+            <LeftImg
+              onClick={clickLeft}
+              className="left"
+              style={left_image}
+            ></LeftImg>
+            <Middle></Middle>
+            <RightImg
+              onClick={clickRight}
+              className="right"
+              style={right_image}
+            ></RightImg>
+          </ImageCont>
+        </Cont2>
         <LoaderHide id="loader">
           <span role="img" aria-label="Loading">
             <i className="fas fa-spinner fa-spin"></i>
