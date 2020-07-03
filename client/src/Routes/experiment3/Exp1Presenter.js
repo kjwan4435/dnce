@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import middle from "../../images/focus_I.png";
 
 const Container = styled.div`
   padding: 20px;
@@ -54,9 +53,15 @@ const RightImg = styled.div`
 const Middle = styled.div`
   width: 120px;
   height: 100px;
+  margin: 10px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(${middle});
+`;
+const DoorImg = styled.div`
+  width: 160px;
+  height: 178.4px;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 const PeopleImg = styled.div`
   width: 160px;
@@ -127,6 +132,7 @@ const Exp1Presenter = ({
   partner_p,
   partner1,
   partner2,
+  partner_s,
   bonus3,
   bonus1,
   bonus2,
@@ -175,7 +181,9 @@ const Exp1Presenter = ({
         <ImageCont>
           <PeopleImg2
             style={{
-              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner1}.png`)})`
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${
+                partner1 - partner_s
+              }.png`)})`
             }}
           ></PeopleImg2>
           <PeopleImg
@@ -185,7 +193,9 @@ const Exp1Presenter = ({
           ></PeopleImg>
           <PeopleImg2
             style={{
-              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner2}.png`)})`
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${
+                partner2 + partner_s
+              }.png`)})`
             }}
           ></PeopleImg2>
         </ImageCont>
@@ -198,11 +208,11 @@ const Exp1Presenter = ({
       </Div>
       <Div id="1-1">
         <ImageCont>
-          <PeopleImg
+          <DoorImg
             style={{
               backgroundImage: `url(${require(`../../images/avatars/${partner_p}.png`)})`
             }}
-          ></PeopleImg>
+          ></DoorImg>
         </ImageCont>
       </Div>
       <Div id="1-2">

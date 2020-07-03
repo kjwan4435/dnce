@@ -44,6 +44,7 @@ const RightImg = styled.div`
 const Middle = styled.div`
   width: 100px;
   height: 100px;
+  margin: 10px;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(${middle});
@@ -116,7 +117,7 @@ const Exp1Presenter = ({
       <Div id="0">
         <Inst>
           지금부터 복권 게임을 시작합니다.
-          <br></br>
+          <br />
         </Inst>
       </Div>
       <Div id="1">
@@ -146,10 +147,13 @@ const Exp1Presenter = ({
       </Div>
       <Div id="2">
         <Inst>
-          이번 선택들로 받을 보너스금액이<br></br>
-          결정되었습니다.<br></br>
-          <br></br>
-          최종 보너스금액은 모든 실험이 종료된 후 알려드립니다.<br></br>
+          이번 선택들로 받을 보너스금액이
+          <br />
+          결정되었습니다.
+          <br />
+          <br />
+          최종 보너스금액은 모든 실험이 종료된 후 알려드립니다.
+          <br />
         </Inst>
         <ButtonContainer>
           <Link to={`/${sub_id}/explain2`}>

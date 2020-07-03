@@ -34,6 +34,7 @@ export default class extends Component {
     partner2: 1,
     partner: 1,
     partner_c: -1,
+    partner_s: 0,
     question: [],
     predict: -100,
     time_predict: 0,
@@ -45,18 +46,21 @@ export default class extends Component {
     if (partner === 0) {
       this.setState({
         partner1: 7 + partner_s,
-        partner2: 8 - partner_s
+        partner2: 8 - partner_s,
+        partner_s: partner_s
       });
     } else if (partner === 1) {
       this.setState({
         partner1: 9 + partner_s,
-        partner2: 10 - partner_s
+        partner2: 10 - partner_s,
+        partner_s: partner_s
       });
     }
     await this.handleNext();
   };
 
   setCharBorder = async () => {
+    document.getElementById("choose").style.display = "flex";
     let people1 = await document.getElementsByClassName("people1");
     let people2 = await document.getElementsByClassName("people2");
     let people3 = await document.getElementsByClassName("people3");
@@ -95,37 +99,104 @@ export default class extends Component {
         people6[i].style.border = "5px solid green";
       }
     }
+
+    if (this.state.people1 === 0) {
+      for (let i = 0; i < people1.length; i++) {
+        people1[i].style.border = "0px";
+      }
+    }
+    if (this.state.people2 === 0) {
+      for (let i = 0; i < people2.length; i++) {
+        people2[i].style.border = "0px";
+      }
+    }
+    if (this.state.people3 === 0) {
+      for (let i = 0; i < people3.length; i++) {
+        people3[i].style.border = "0px";
+      }
+    }
+    if (this.state.people4 === 0) {
+      for (let i = 0; i < people4.length; i++) {
+        people4[i].style.border = "0px";
+      }
+    }
+    if (this.state.people5 === 0) {
+      for (let i = 0; i < people5.length; i++) {
+        people5[i].style.border = "0px";
+      }
+    }
+    if (this.state.people6 === 0) {
+      for (let i = 0; i < people6.length; i++) {
+        people6[i].style.border = "0px";
+      }
+    }
   };
 
   clickPeople1 = async () => {
-    await this.setState({ people1: 1 });
+    await this.setState({
+      people1: 1,
+      people2: 0,
+      people3: 0,
+      people4: 0,
+      people5: 0,
+      people6: 0
+    });
     await this.setCharBorder();
-    await this.handleNext();
   };
   clickPeople2 = async () => {
-    await this.setState({ people2: 1 });
+    await this.setState({
+      people1: 0,
+      people2: 1,
+      people3: 0,
+      people4: 0,
+      people5: 0,
+      people6: 0
+    });
     await this.setCharBorder();
-    await this.handleNext();
   };
   clickPeople3 = async () => {
-    await this.setState({ people3: 1 });
+    await this.setState({
+      people1: 0,
+      people2: 0,
+      people3: 1,
+      people4: 0,
+      people5: 0,
+      people6: 0
+    });
     await this.setCharBorder();
-    await this.handleNext();
   };
   clickPeople4 = async () => {
-    await this.setState({ people4: 1 });
+    await this.setState({
+      people1: 0,
+      people2: 0,
+      people3: 0,
+      people4: 1,
+      people5: 0,
+      people6: 0
+    });
     await this.setCharBorder();
-    await this.handleNext();
   };
   clickPeople5 = async () => {
-    await this.setState({ people5: 1 });
+    await this.setState({
+      people1: 0,
+      people2: 0,
+      people3: 0,
+      people4: 0,
+      people5: 1,
+      people6: 0
+    });
     await this.setCharBorder();
-    await this.handleNext();
   };
   clickPeople6 = async () => {
-    await this.setState({ people6: 1 });
+    await this.setState({
+      people1: 0,
+      people2: 0,
+      people3: 0,
+      people4: 0,
+      people5: 0,
+      people6: 1
+    });
     await this.setCharBorder();
-    await this.handleNext();
   };
 
   setBorder = async () => {
@@ -349,7 +420,6 @@ export default class extends Component {
     }
     if (this.state.step === 7) {
       document.getElementById(`6`).style.display = "flex";
-      setTimeout(this.handleNext, 2000);
     }
     if (this.state.step === 8) {
       document.getElementById(`6`).style.display = "none";
@@ -357,7 +427,6 @@ export default class extends Component {
     }
     if (this.state.step === 9) {
       document.getElementById(`7`).style.display = "flex";
-      setTimeout(this.handleNext, 2000);
     }
     if (this.state.step === 10) {
       document.getElementById(`7`).style.display = "none";
@@ -438,8 +507,6 @@ export default class extends Component {
       await this.setState({
         time_next: time_next - this.state.time_show
       });
-      await this.showAnswer();
-      await this.bonusHandler();
     }
     document.getElementById(`2-2`).style.display = "none";
     document.getElementById(`2-3`).style.display = "flex";
@@ -469,7 +536,7 @@ export default class extends Component {
     });
     await this.setBorder();
     await this.setAnswerBorder();
-    this.sleep(2000);
+    this.sleep(1000);
 
     if (this.state.step1 > 0 && this.state.step1 < 41) {
       document.getElementById(`1-1`).style.display = "flex";
@@ -712,6 +779,7 @@ export default class extends Component {
 
     if (this.state.step === 0) {
       document.getElementById(`${this.state.step}`).style.display = "flex";
+      document.getElementById("choose").style.display = "none";
       await this.getExp(2);
       this.sleep(2000);
       const array = Object.keys(this.state.data[0]);
@@ -745,6 +813,7 @@ export default class extends Component {
         partner={this.state.partner}
         partner1={this.state.partner1}
         partner2={this.state.partner2}
+        partner_s={this.state.partner_s}
         bonus1={this.state.bonus1}
         bonus2={this.state.bonus}
         repeat={this.repeat}

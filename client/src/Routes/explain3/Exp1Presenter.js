@@ -41,6 +41,12 @@ const Window = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 `;
+const DoorImg = styled.div`
+  width: 160px;
+  height: 178.4px;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
 const PeopleImg = styled.div`
   width: 160px;
   height: 190px;
@@ -166,10 +172,12 @@ const Exp1Presenter = ({
     <Container>
       <Div id="1">
         <Inst>
-          이제 곧 세 번째 복권 게임이 시작됩니다.<br></br>
-          <br></br>세 번째 게임은 복권 게임으로 <br></br>
-          선택에 따라 추가로 보너스 금액을 받을 수도 있습니다.<br></br>
-          <br></br>게임에 대한 설명을 읽고 신중하게 선택해 주세요.<br></br>
+          이제 곧 세 번째 복권 게임이 시작됩니다. <br />
+          <br />
+          세 번째 게임은 복권 게임으로 <br />
+          선택에 따라 추가로 보너스 금액을 받을 수도 있습니다. <br />
+          <br />
+          게임에 대한 설명을 읽고 신중하게 선택해 주세요. <br />
         </Inst>
         <ButtonContainer>
           <Button onClick={handleNext}> 실험 설명 시작 </Button>
@@ -177,10 +185,10 @@ const Exp1Presenter = ({
       </Div>
       <Div id="2">
         <Inst>
-          이번 게임도 두 복권 중 귀하가 선호하는 하나를 선택하는 것으로<br></br>
-          두 번째 게임에서 함께하였던 파트너 두 명과 함께 진행됩니다<br></br>
-          <br></br>
-          이번에는 파트너들이 당신의 선택을 확인하게 됩니다.<br></br>
+          이번 게임도 두 복권 중 귀하가 선호하는 하나를 선택하는 것으로 <br />
+          두 번째 게임에서 함께하였던 파트너 두 명과 함께 진행됩니다 <br />
+          <br />
+          이번에는 파트너들이 당신의 선택을 확인하게 됩니다. <br />
         </Inst>
         <ButtonContainer>
           <Button onClick={handleNext}> 이해했습니다. </Button>
@@ -209,9 +217,9 @@ const Exp1Presenter = ({
         <Inst>파트너들이 다시 입장했습니다.</Inst>
         <GameInfo>파트너들이 입장하고 나면 본 실험이 시작 됩니다.</GameInfo>
         <ImageCont>
-          <PeopleImg2 style={people2}></PeopleImg2>
-          <PeopleImg style={people6}></PeopleImg>
           <PeopleImg2 style={people1}></PeopleImg2>
+          <PeopleImg style={people6}></PeopleImg>
+          <PeopleImg2 style={people2}></PeopleImg2>
         </ImageCont>
         <ButtonContainer>
           <Button onClick={handleNext}> 이해했습니다. </Button>
@@ -219,11 +227,10 @@ const Exp1Presenter = ({
       </Div>
       <Div id="6">
         <ImageCont>
-          <PeopleImg style={door1}></PeopleImg>
+          <DoorImg style={door1}></DoorImg>
         </ImageCont>
         <GameInfo>
-          복권이 나타나기 전, 귀하의 선택을 보게 될 파트너가 나타납니다.
-          <br></br>
+          복권이 나타나기 전, 귀하의 선택을 보게 될 파트너가 나타납니다. <br />
         </GameInfo>
         <ButtonContainer>
           <Button onClick={handleNext}> 이해했습니다. </Button>
@@ -240,10 +247,9 @@ const Exp1Presenter = ({
             <RightImg className="right"></RightImg>
           </ImageCont>
           <GameInfo2>
-            두 개의 복권을 보여주는 화면입니다.<br></br>두 복권의 가운데에는
-            귀하의 캐릭터가 나타나고, 화면의 위쪽에는 파트너1의 캐릭터가
-            나타납니다.
-            <br></br>
+            두 개의 복권을 보여주는 화면입니다. <br />
+            두 복권의 가운데에는 귀하의 캐릭터가 나타나고, <br />
+            화면의 위쪽에는 파트너의 캐릭터가 나타납니다. <br />
           </GameInfo2>
         </Cont2>
         <ButtonContainer>
@@ -261,9 +267,9 @@ const Exp1Presenter = ({
             <RightImg className="right"></RightImg>
           </ImageCont>
           <GameInfo2>
-            두 개의 복권들 중에서 더 선호하는 하나를 선택하시면 됩니다.
-            <br></br>
-            왼쪽 복권을 클릭해보세요.<br></br>
+            두 개의 복권들 중에서 더 선호하는 하나를 선택하시면 됩니다. <br />
+            왼쪽 복권을 클릭해보세요. <br />
+            <br />
           </GameInfo2>
         </Cont2>
       </Div>
@@ -278,8 +284,9 @@ const Exp1Presenter = ({
             <RightImg className="right"></RightImg>
           </ImageCont>
           <GameInfo2>
-            이제 아래의 다음 버튼을 누르면 선택이 확정되고 <br></br>
-            당신은 100%의 확률로 20 포인트를 받을 수 있습니다. <br></br>
+            이제 아래의 다음 버튼을 누르면 선택이 확정되고 <br />
+            당신은 100%의 확률로 20 포인트를 받을 수 있습니다. <br />
+            <br />
           </GameInfo2>
         </Cont2>
         <ButtonContainer>
@@ -288,12 +295,12 @@ const Exp1Presenter = ({
       </Div>
       <Div id="10">
         <ImageCont>
-          <PeopleImg style={opendoor}></PeopleImg>
+          <DoorImg style={opendoor}></DoorImg>
         </ImageCont>
         <GameInfo>
-          귀하의 선택을 볼 파트너가 아무도 입장하지 않을 수도 있습니다.<br></br>
+          귀하의 선택을 볼 파트너가 아무도 입장하지 않을 수도 있습니다. <br />
           아무도 입장하지 않았다면 위와 같이 화면에 파트너가 나타나지 않습니다.
-          <br></br>
+          <br />
         </GameInfo>
         <ButtonContainer>
           <Button onClick={handleNext}> 이해했습니다. </Button>
@@ -311,10 +318,9 @@ const Exp1Presenter = ({
             <RightImg className="right"></RightImg>
           </ImageCont>
           <GameInfo2>
-            두 개의 복권을 보여주는 화면입니다.<br></br>두 복권의 가운데에는
-            귀하의 캐릭터가 나타나고, 화면의 위쪽에는 캐릭터가 나타나지
-            않습니다.
-            <br></br>
+            두 개의 복권을 보여주는 화면입니다. <br />
+            두 복권의 가운데에는 귀하의 캐릭터가 나타나고, <br />
+            화면의 위쪽에는 캐릭터가 나타나지 않습니다. <br />
           </GameInfo2>
         </Cont2>
         <ButtonContainer>
@@ -332,9 +338,9 @@ const Exp1Presenter = ({
             <RightImg onClick={clickRight} className="right"></RightImg>
           </ImageCont>
           <GameInfo2>
-            두 개의 복권들 중에서 더 선호하는 하나를 선택하시면 됩니다.
-            <br></br>
-            이번에는 오른쪽 복권을 클릭해보세요.<br></br>
+            두 개의 복권들 중에서 더 선호하는 하나를 선택하시면 됩니다. <br />
+            이번에는 오른쪽 복권을 클릭해보세요. <br />
+            <br />
           </GameInfo2>
         </Cont2>
       </Div>
@@ -349,9 +355,10 @@ const Exp1Presenter = ({
             <RightImg className="right"></RightImg>
           </ImageCont>
           <GameInfo2>
-            이제 아래의 다음 버튼을 누르면 선택이 확정되고 <br></br>
+            이제 아래의 다음 버튼을 누르면 선택이 확정되고 <br />
             당신은 25%의 확률로 34 포인트를, 75%로 0포인트를 받을 수 있습니다.
-            <br></br>
+            <br />
+            <br />
           </GameInfo2>
         </Cont2>
         <ButtonContainer>
@@ -360,8 +367,8 @@ const Exp1Presenter = ({
       </Div>
       <Div id="14">
         <Inst>
-          연습이 끝났습니다. <br></br>연습과 같은 과정을 여러 번 반복하게
-          됩니다.<br></br>
+          연습이 끝났습니다. <br />
+          연습과 같은 과정을 여러 번 반복하게 됩니다. <br />
         </Inst>
         <ButtonContainer>
           <Button onClick={handleNext}> 이해했습니다. </Button>
@@ -369,11 +376,11 @@ const Exp1Presenter = ({
       </Div>
       <Div id="15">
         <Inst>
-          이번 게임의 보너스는 <br></br>
-          선택하신 모든 복권들 중 <br></br>
-          무작위로 결정된 하나의 포인트와 확률에 비례하여 결정됩니다.<br></br>
-          <br></br>
-          포인트를 많이 받을수록 보너스 금액이 커집니다!<br></br>
+          이번 게임의 보너스는 <br />
+          선택하신 모든 복권들 중 <br />
+          무작위로 결정된 하나의 포인트와 확률에 비례하여 결정됩니다. <br />
+          <br />
+          포인트를 많이 받을수록 보너스 금액이 커집니다! <br />
         </Inst>
         <ButtonContainer>
           <Button onClick={handleNext}> 이해했습니다. </Button>
@@ -381,10 +388,10 @@ const Exp1Presenter = ({
       </Div>
       <Div id="16">
         <Inst>
-          여기까지가 세 번째 게임에 대한 설명입니다<br></br>
-          <br></br>
-          이해하셨으면 ‘이해했습니다’ 버튼을 눌러주세요.<br></br>세 번째 본
-          게임이 곧 시작됩니다.<br></br>
+          여기까지가 세 번째 게임에 대한 설명입니다 <br />
+          <br />
+          이해하셨으면 ‘이해했습니다’ 버튼을 눌러주세요. <br />
+          세 번째 본 게임이 곧 시작됩니다. <br />
         </Inst>
         <ButtonContainer>
           <Button onClick={repeat}> 설명문 다시 읽기. </Button>

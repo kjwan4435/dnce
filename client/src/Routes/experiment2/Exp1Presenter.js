@@ -52,7 +52,7 @@ const Middle = styled.div`
   height: 100px;
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 50px;
+  margin: 10px;
 `;
 
 const Div = styled.div`
@@ -132,6 +132,7 @@ const Exp1Presenter = ({
   partner,
   partner1,
   partner2,
+  partner_s,
   bonus1,
   bonus2,
   handleNext,
@@ -183,8 +184,7 @@ const Exp1Presenter = ({
     <Container>
       <Div id="0">
         <Inst>
-          지금부터 두 번째 복권 게임을 시작합니다.
-          <br></br>
+          지금부터 두 번째 복권 게임을 시작합니다. <br />
         </Inst>
       </Div>
       <Div id="1">
@@ -221,6 +221,9 @@ const Exp1Presenter = ({
             style={people6}
           ></PeopleImg>
         </ImageCont>
+        <ButtonContainer id="choose">
+          <Button onClick={handleNext}> 선택 </Button>
+        </ButtonContainer>
       </Div>
       <Div id="2">
         <Inst>게임에 함께 할 파트너를 기다리고 있습니다..</Inst>
@@ -241,10 +244,10 @@ const Exp1Presenter = ({
       </Div>
       <Div id="3">
         <Inst>
-          파트너들이 입장하셨습니다.<br></br>
-          <br></br>
-          파트너가 어떤 캐릭터를 골랐는지는<br></br>
-          보여드리지 않습니다.<br></br>
+          파트너들이 입장하셨습니다. <br />
+          <br />
+          파트너가 어떤 캐릭터를 골랐는지는 <br />
+          보여드리지 않습니다. <br />
         </Inst>
       </Div>
       <Div id="4">
@@ -252,21 +255,26 @@ const Exp1Presenter = ({
         <ImageCont>
           <PeopleImg
             style={{
-              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner1}.png`)})`
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${
+                partner1 - partner_s
+              }.png`)})`
             }}
           ></PeopleImg>
           <PeopleImg
             style={{
-              backgroundImage: `url(${require(`../../images/avatars/avatar_${partner2}.png`)})`
+              backgroundImage: `url(${require(`../../images/avatars/avatar_${
+                partner2 + partner_s
+              }.png`)})`
             }}
           ></PeopleImg>
         </ImageCont>
       </Div>
       <Div id="5">
         <Inst>
-          지금부터는 파트너가 어떤 복권을 <br></br>
-          선택했는지 맞혀 주세요.<br></br>
-          <br></br>곧 게임을 시작합니다.<br></br>
+          지금부터는 파트너가 어떤 복권을 <br />
+          선택했는지 맞혀 주세요. <br />
+          <br />
+          곧 게임을 시작합니다. <br />
         </Inst>
       </Div>
       <Div id="1-1">
@@ -310,9 +318,12 @@ const Exp1Presenter = ({
       </Div>
       <Div id="6">
         <Inst>
-          파트너가 어떤 복권을 선택했는지 맞혀 주세요.<br></br>
-          지금부터는 정답을 알려주지 않습니다.<br></br>
+          파트너가 어떤 복권을 선택했는지 맞혀 주세요. <br />
+          지금부터는 정답을 알려주지 않습니다. <br />
         </Inst>
+        <ButtonContainer>
+          <Button onClick={handleNext}> 다음 </Button>
+        </ButtonContainer>
       </Div>
       <Div id="2-1">
         <ImageCont>
@@ -364,17 +375,17 @@ const Exp1Presenter = ({
         <RangeCont>
           <Inst2>
             <span role="img" aria-label="arrow">
-              ⬅️
-            </span>{" "}
+              ←
+            </span>
             전혀 확실하지 않다.
           </Inst2>
           <Inst>
             <span id="demo"></span>
           </Inst>
           <Inst2>
-            확실히 맞혔을 것이다{" "}
+            확실히 맞혔을 것이다.
             <span role="img" aria-label="arrow">
-              ➡️
+              →
             </span>
           </Inst2>
         </RangeCont>
@@ -389,11 +400,13 @@ const Exp1Presenter = ({
       </Div>
       <Div id="7">
         <Inst>
-          지금부터는 파트너에 대한 <br></br>
-          질문에 대답해주세요. <br></br>
+          지금부터는 파트너에 대한 <br />
+          질문에 대답해주세요. <br />
         </Inst>
+        <ButtonContainer>
+          <Button onClick={handleNext}> 다음 </Button>
+        </ButtonContainer>
       </Div>
-
       <Div id="3-1">
         <ImageCont>
           <PeopleImg
@@ -426,17 +439,17 @@ const Exp1Presenter = ({
         <RangeCont>
           <Inst2>
             <span role="img" aria-label="arrow">
-              ⬅️
-            </span>{" "}
-            매우 그렇지 않다
+              ←
+            </span>
+            매우 그렇지 않다.
           </Inst2>
           <Inst>
             <span id="demo2"></span>
           </Inst>
           <Inst2>
-            매우 그렇다{" "}
+            매우 그렇다.
             <span role="img" aria-label="arrow">
-              ➡️
+              →
             </span>
           </Inst2>
         </RangeCont>
@@ -481,17 +494,17 @@ const Exp1Presenter = ({
         <RangeCont>
           <Inst2>
             <span role="img" aria-label="arrow">
-              ⬅️
-            </span>{" "}
+              ←
+            </span>
             매우 그렇지 않다
           </Inst2>
           <Inst>
             <span id="demo3"></span>
           </Inst>
           <Inst2>
-            매우 그렇다{" "}
+            매우 그렇다.
             <span role="img" aria-label="arrow">
-              ➡️
+              →
             </span>
           </Inst2>
         </RangeCont>
@@ -507,10 +520,10 @@ const Exp1Presenter = ({
 
       <Div id="8">
         <Inst>
-          이번 선택들로 받을 보너스금액이<br></br>
-          결정되었습니다.<br></br>
-          <br></br>
-          최종 보너스금액은 모든 실험이 종료된 후 알려드립니다.<br></br>
+          이번 선택들로 받을 보너스금액이 <br />
+          결정되었습니다. <br />
+          <br />
+          최종 보너스금액은 모든 실험이 종료된 후 알려드립니다. <br />
         </Inst>
         <ButtonContainer>
           <Link to={`/${sub_id}/explain3`}>
@@ -521,9 +534,9 @@ const Exp1Presenter = ({
 
       <Div id="9">
         <Inst>
-          이번 선택들로 받을 보너스금액이<br></br>
-          결정되었습니다.<br></br>
-          <br></br>
+          이번 선택들로 받을 보너스금액이 <br />
+          결정되었습니다. <br />
+          <br />
         </Inst>
         <ButtonContainer>
           <Button onClick={handleNext}> 확인 </Button>
@@ -531,11 +544,11 @@ const Exp1Presenter = ({
       </Div>
       <Div id="10">
         <Inst>
-          모든 게임이 끝났습니다.<br></br>
-          보너스는 아래와 같이 정해졌습니다.<br></br>
-          <br></br>
-          게임1 - {bonus1}원 <br></br>
-          게임2 - 정확도: {(bonus2 / 3).toFixed(2)}%, {bonus2}원 <br></br>
+          모든 게임이 끝났습니다. <br />
+          보너스는 아래와 같이 정해졌습니다. <br />
+          <br />
+          게임1 - {bonus1}원 <br />
+          게임2 - 정확도: {(bonus2 / 3).toFixed(2)}%, {bonus2}원 <br />
         </Inst>
         <ButtonContainer>
           <Button onClick={handleNext}> 확인 </Button>
@@ -543,8 +556,10 @@ const Exp1Presenter = ({
       </Div>
       <Div id="11">
         <Inst>
-          실험이 종료되었습니다.<br></br>
-          실험에 참가해주셔 감사합니다.<br></br>
+          실험이 종료되었습니다.
+          <br />
+          실험에 참가해주셔 감사합니다.
+          <br />
         </Inst>
       </Div>
     </Container>

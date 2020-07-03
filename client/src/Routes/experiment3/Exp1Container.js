@@ -9,6 +9,7 @@ export default class extends Component {
     character: 1,
     partner1: 1,
     partner2: 1,
+    partner_s: 0,
     partner: 0,
     partner_c: -1,
     partner_p: "open_door",
@@ -27,7 +28,10 @@ export default class extends Component {
     time_next: 0,
     bonus1: 0,
     bonus2: 0,
-    bonus3: 0
+    bonus3: 0,
+    trial1: 0,
+    trial2: 0,
+    trial3: 0
   };
 
   setBorder = async () => {
@@ -154,6 +158,18 @@ export default class extends Component {
     return answer;
   };
 
+  setBonusAnswer = async () => {
+    const bonus = {
+      sub_id: this.state.sub_id,
+      trial1: this.state.trial1,
+      trial3: this.state.trial3,
+      bonus1: this.state.bonus1,
+      bonus2: this.state.bonus2,
+      bonus3: this.state.bonus3
+    };
+    return bonus;
+  };
+
   showComponent = async () => {
     document.getElementById(`1-1`).style.display = "none";
     document.getElementById(`1-2`).style.display = "flex";
@@ -214,7 +230,8 @@ export default class extends Component {
           `/answers/exp/bonus/${this.state.sub_id}`
         );
         await this.setState({
-          bonus1: bonus1.data.bonus
+          bonus1: bonus1.data.bonus,
+          trial1: bonus1.data.trial
         });
       } catch (error) {
         console.error(error);
@@ -234,7 +251,8 @@ export default class extends Component {
           `/answers/exp3/bonus/${this.state.sub_id}`
         );
         await this.setState({
-          bonus3: bonus3.data.bonus
+          bonus3: bonus3.data.bonus,
+          trial3: bonus3.data.trial
         });
       } catch (error) {
         console.error(error);
@@ -243,6 +261,10 @@ export default class extends Component {
     if (this.state.step === 92) {
       document.getElementById(`1`).style.display = "none";
       document.getElementById(`2`).style.display = "flex";
+
+      const bonus = await this.setBonusAnswer();
+      const bonus_res = await axios.post(`/answers/bonus`, qs.stringify(bonus));
+      console.log(bonus_res.data);
     }
     if (this.state.step === 93) {
       document.getElementById(`2`).style.display = "none";
@@ -278,6 +300,15 @@ export default class extends Component {
         partner1: answer2.data.partner1,
         partner2: answer2.data.partner2
       });
+      if (this.state.partner1 === 7 || this.state.partner1 === 9) {
+        await this.setState({
+          partner_s: 0
+        });
+      } else {
+        await this.setState({
+          partner_s: 1
+        });
+      }
     } catch (error) {
       console.error(error);
     }
@@ -307,6 +338,7 @@ export default class extends Component {
         partner_p={this.state.partner_p}
         partner1={this.state.partner1}
         partner2={this.state.partner2}
+        partner_s={this.state.partner_s}
         sub_id={this.state.sub_id}
         l_num={this.state.l_num}
         r_num={this.state.r_num}

@@ -64,6 +64,7 @@ const RightImg2 = styled.div`
 const Middle = styled.div`
   width: 100px;
   height: 100px;
+  margin: 10px;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(${middle});
@@ -132,7 +133,7 @@ const Exp1Presenter = ({
       </Cont2>
       <GameInfo>
         위 그림과 같이 화면에 나타나는 두 가지 복권 중 하나를 선택하게 됩니다.
-        <br></br>
+        <br />
       </GameInfo>
       <ButtonContainer>
         <Button onClick={handleNext}> 이해했습니다. </Button>
@@ -142,7 +143,7 @@ const Exp1Presenter = ({
       <Inst> 연습을 한 번 해보겠습니다. </Inst>
       <GameInfo>
         파란색 안내문은 본 게임에서는 나타나지 않습니다.
-        <br></br>
+        <br />
       </GameInfo>
       <ButtonContainer>
         <Button onClick={handleNext}> 연습시작 </Button>
@@ -158,7 +159,7 @@ const Exp1Presenter = ({
       </Cont2>
       <GameInfo>
         왼쪽 복권을 클릭해보세요.
-        <br></br>
+        <br />
       </GameInfo>
     </Div>
     <Div id="4">
@@ -170,9 +171,10 @@ const Exp1Presenter = ({
         </ImageCont>
       </Cont2>
       <GameInfo>
-        이제 아래의 다음 버튼을 누르면 선택이 확정되고 <br></br>
+        이제 아래의 다음 버튼을 누르면 선택이 확정되고
+        <br />
         당신은 100%의 확률로 20 포인트를 받을 수 있습니다.
-        <br></br>
+        <br />
       </GameInfo>
 
       <ButtonContainer>
@@ -189,7 +191,7 @@ const Exp1Presenter = ({
       </Cont2>
       <GameInfo>
         이번에는 오른쪽 복권을 클릭해보세요.
-        <br></br>
+        <br />
       </GameInfo>
     </Div>
     <Div id="6">
@@ -201,9 +203,10 @@ const Exp1Presenter = ({
         </ImageCont>
       </Cont2>
       <GameInfo>
-        이제 아래의 다음 버튼을 누르면 선택이 확정되고<br></br>
+        이제 아래의 다음 버튼을 누르면 선택이 확정되고
+        <br />
         당신은 75%의 확률로 23 포인트를, 25%로 0포인트를 받을 수 있습니다.
-        <br></br>
+        <br />
       </GameInfo>
       <ButtonContainer>
         <Button onClick={handleNext}> 다음 </Button>
@@ -211,8 +214,8 @@ const Exp1Presenter = ({
     </Div>
     <Div id="7">
       <Inst>
-        연습이 끝났습니다.<br></br>본 게임에서는 연습과 같은 과정을 여러 번
-        반복하게 됩니다.
+        연습이 끝났습니다.
+        <br />본 게임에서는 연습과 같은 과정을 여러 번 반복하게 됩니다.
       </Inst>
       <ButtonContainer>
         <Button onClick={handleNext}> 이해했습니다. </Button>
@@ -220,11 +223,13 @@ const Exp1Presenter = ({
     </Div>
     <Div id="8">
       <Inst>
-        이번 게임의 보너스는 <br></br>
-        선택하신 모든 복권들 중 <br></br>
-        무작위로 결정된 하나의 포인트와 확률에 비례하여 결정됩니다.<br></br>
-        <br></br>
-        포인트를 많이 받을수록 보너스 금액이 커집니다!<br></br>
+        이번 게임의 보너스는 <br />
+        선택하신 모든 복권들 중 <br />
+        무작위로 결정된 하나의 포인트와 확률에 비례하여 결정됩니다.
+        <br />
+        <br />
+        포인트를 많이 받을수록 보너스 금액이 커집니다!
+        <br />
       </Inst>
       <ButtonContainer>
         <Button onClick={handleNext}> 이해했습니다. </Button>
@@ -232,10 +237,13 @@ const Exp1Presenter = ({
     </Div>
     <Div id="9">
       <Inst>
-        여기까지가 첫 번째 게임에 대한 설명입니다<br></br>
-        <br></br>
-        이해하셨으면 ‘이해했습니다’ 버튼을 눌러주세요.<br></br>첫 번째 본 게임이
-        곧 시작됩니다.<br></br>
+        여기까지가 첫 번째 게임에 대한 설명입니다
+        <br />
+        <br />
+        이해하셨으면 ‘이해했습니다’ 버튼을 눌러주세요.
+        <br />
+        첫 번째 본 게임이 곧 시작됩니다.
+        <br />
       </Inst>
       <ButtonContainer>
         <Button onClick={repeat}> 설명문 다시 읽기. </Button>

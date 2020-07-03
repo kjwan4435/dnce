@@ -4,6 +4,7 @@ let Answer2 = require("../models/answer2.model");
 let Answer2_2 = require("../models/answer2_2.model");
 let Answer2_3 = require("../models/answer2_3.model");
 let Answer3 = require("../models/answer3.model");
+let Bonus = require("../models/bonus.model");
 
 answerRouter.route("/").get((req, res) => {
   Answer.find()
@@ -240,6 +241,29 @@ answerRouter.route("/exp3/bonus/:id").get((req, res) => {
     trial: Math.floor(Math.random() * 90) + 1
   })
     .then((answer) => res.json(answer))
+    .catch((err) => res.status(400).json(`Error: ${err}`));
+});
+
+answerRouter.route("/bonus").post((req, res) => {
+  const sub_id = req.body.sub_id;
+  const trial1 = req.body.trial1;
+  const trial3 = req.body.trial3;
+  const bonus1 = req.body.bonus1;
+  const bonus2 = req.body.bonus2;
+  const bonus3 = req.body.bonus3;
+
+  const newAnswer = new Bonus({
+    sub_id,
+    trial1,
+    trial3,
+    bonus1,
+    bonus2,
+    bonus3
+  });
+
+  newAnswer
+    .save()
+    .then(() => res.json(newAnswer))
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 

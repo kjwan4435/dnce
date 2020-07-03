@@ -15,7 +15,7 @@ const globalStyles = createGlobalStyle`
         font-size: 14px;
         background-color: rgba(244,244,244,1);
         color: black;
-        padding-top: 70px;
+        padding-top: 40px;
     }
 
     .slidecontainer {
