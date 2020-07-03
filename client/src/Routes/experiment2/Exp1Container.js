@@ -38,7 +38,8 @@ export default class extends Component {
     question: [],
     predict: -100,
     time_predict: 0,
-    character: 0
+    character: 0,
+    trial1: 0
   };
   enterPeople = async () => {
     let partner = await Math.floor(Math.random() * 2);
@@ -361,9 +362,19 @@ export default class extends Component {
       time_next: this.state.time_next,
       predict: this.state.predict,
       question: this.state.question[Math.floor((this.state.step3 - 1) / 2)]
-        .question
+        .number
     };
     return answer;
+  };
+
+  setBonusAnswer = async () => {
+    const bonus = {
+      sub_id: this.state.sub_id,
+      trial1: this.state.trial1,
+      bonus1: this.state.bonus1,
+      bonus2: this.state.bonus
+    };
+    return bonus;
   };
 
   showAnswer = async () => {
@@ -441,11 +452,16 @@ export default class extends Component {
           `/answers/exp/bonus/${this.state.sub_id}`
         );
         await this.setState({
-          bonus1: bonus1.data.bonus
+          bonus1: bonus1.data.bonus,
+          trial1: bonus1.data.trial
         });
       } catch (error) {
         console.error(error);
       }
+
+      const bonus = await this.setBonusAnswer();
+      const bonus_res = await axios.post(`/answers/bonus`, qs.stringify(bonus));
+      console.log(bonus_res.data);
     }
     if (this.state.step === 12) {
       document.getElementById(`9`).style.display = "none";

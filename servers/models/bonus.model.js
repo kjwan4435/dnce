@@ -10,11 +10,11 @@ const bonusSchema = new Schema(
     },
     trial1: {
       type: Number,
-      required: "TRIAL REQUIRED"
+      required: true
     },
     trial3: {
       type: Number,
-      required: "TRIAL REQUIRED"
+      required: false
     },
     bonus1: {
       type: Number,
@@ -26,7 +26,7 @@ const bonusSchema = new Schema(
     },
     bonus3: {
       type: Number,
-      required: true
+      required: false
     }
   },
   { timestamps: true }

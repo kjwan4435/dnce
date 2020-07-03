@@ -33,7 +33,7 @@ const answer2_3Schema = new Schema(
       required: true
     },
     question: {
-      type: String,
+      type: Number,
       required: true
     }
   },
