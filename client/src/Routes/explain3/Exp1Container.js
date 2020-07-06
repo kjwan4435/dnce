@@ -104,7 +104,7 @@ export default class extends Component {
 
   handleNext = async () => {
     await this.setState({ step: this.state.step + 1 });
-    if (this.state.step === 10) {
+    if (this.state.step === 10 || this.state.step === 16) {
       await this.setState({ lclick: 0, rclick: 0 });
       await this.setBorder();
     }

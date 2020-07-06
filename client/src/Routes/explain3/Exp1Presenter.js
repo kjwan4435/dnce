@@ -41,6 +41,7 @@ const Window = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 `;
+
 const DoorImg = styled.div`
   width: 160px;
   height: 178.4px;
@@ -99,6 +100,19 @@ const Inst = styled.div`
   width: 100%;
   line-height: 40px;
 `;
+
+const Inst4 = styled.div`
+  padding: 18px;
+  font-size: 20px;
+  display: block;
+  color: black;
+  text-align: right;
+  width: 100%;
+  position: absolute;
+  right: 20%;
+  top: 10px;
+`;
+
 const GameInfo = styled.div`
   padding: 18px;
   font-size: 20px;
@@ -175,7 +189,7 @@ const Exp1Presenter = ({
           이제 곧 세 번째 복권 게임이 시작됩니다. <br />
           <br />
           세 번째 게임은 복권 게임으로 <br />
-          선택에 따라 추가로 보너스 금액을 받을 수도 있습니다. <br />
+          선택에 따라 추가로 보너스 금액을 받을 수 있습니다. <br />
           <br />
           게임에 대한 설명을 읽고 신중하게 선택해 주세요. <br />
         </Inst>
@@ -188,7 +202,8 @@ const Exp1Presenter = ({
           이번 게임도 두 복권 중 귀하가 선호하는 하나를 선택하는 것으로 <br />
           두 번째 게임에서 함께하였던 파트너 두 명과 함께 진행됩니다 <br />
           <br />
-          이번에는 파트너들이 당신의 선택을 확인하게 됩니다. <br />
+          이번에는 파트너들이 당신의 선택을 확인하게 됩니다.
+          <br />
         </Inst>
         <ButtonContainer>
           <Button onClick={handleNext}> 이해했습니다. </Button>
@@ -202,6 +217,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="4">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Inst>세 번째 게임에 입장했습니다.</Inst>
         <GameInfo>
           먼저 게임에 입장하여 파트너들이 다시 게임에 입장하기를 기다립니다.
@@ -209,11 +225,15 @@ const Exp1Presenter = ({
         <ImageCont>
           <PeopleImg style={people6}></PeopleImg>
         </ImageCont>
+        <GameInfo>
+          연습화면에서는 귀하가 선택하신 캐릭터 대신 임의의 캐릭터가 나옵니다.
+        </GameInfo>
         <ButtonContainer>
           <Button onClick={handleNext}> 이해했습니다. </Button>
         </ButtonContainer>
       </Div>
       <Div id="5">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Inst>파트너들이 다시 입장했습니다.</Inst>
         <GameInfo>파트너들이 입장하고 나면 본 실험이 시작 됩니다.</GameInfo>
         <ImageCont>
@@ -221,11 +241,13 @@ const Exp1Presenter = ({
           <PeopleImg style={people6}></PeopleImg>
           <PeopleImg2 style={people2}></PeopleImg2>
         </ImageCont>
+        <GameInfo>연습화면에서는 파트너가 실제와 다를 수 있습니다.</GameInfo>
         <ButtonContainer>
           <Button onClick={handleNext}> 이해했습니다. </Button>
         </ButtonContainer>
       </Div>
       <Div id="6">
+        <Inst4>예시 화면 입니다.</Inst4>
         <ImageCont>
           <DoorImg style={door1}></DoorImg>
         </ImageCont>
@@ -237,6 +259,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="7">
+        <Inst4>예시 화면 입니다.</Inst4>
         <WindowCont>
           <Window style={small1}></Window>
         </WindowCont>
@@ -257,6 +280,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="8">
+        <Inst4>예시 화면 입니다.</Inst4>
         <WindowCont>
           <Window style={small1}></Window>
         </WindowCont>
@@ -274,6 +298,7 @@ const Exp1Presenter = ({
         </Cont2>
       </Div>
       <Div id="9">
+        <Inst4>예시 화면 입니다.</Inst4>
         <WindowCont>
           <Window style={small1}></Window>
         </WindowCont>
@@ -294,6 +319,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="10">
+        <Inst4>예시 화면 입니다.</Inst4>
         <ImageCont>
           <DoorImg style={opendoor}></DoorImg>
         </ImageCont>
@@ -308,6 +334,7 @@ const Exp1Presenter = ({
       </Div>
 
       <Div id="11">
+        <Inst4>예시 화면 입니다.</Inst4>
         <WindowCont>
           <Window></Window>
         </WindowCont>
@@ -328,6 +355,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="12">
+        <Inst4>예시 화면 입니다.</Inst4>
         <WindowCont>
           <Window></Window>
         </WindowCont>
@@ -345,6 +373,7 @@ const Exp1Presenter = ({
         </Cont2>
       </Div>
       <Div id="13">
+        <Inst4>예시 화면 입니다.</Inst4>
         <WindowCont>
           <Window></Window>
         </WindowCont>

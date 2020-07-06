@@ -78,8 +78,28 @@ const Inst2 = styled.div`
   display: block;
   color: black;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   width: 100%;
+`;
+const Inst3 = styled.div`
+  font-size: 15px;
+  display: block;
+  color: black;
+  font-weight: 600;
+  text-align: right;
+  width: 100%;
+`;
+
+const Inst4 = styled.div`
+  padding: 18px;
+  font-size: 20px;
+  display: block;
+  color: black;
+  text-align: right;
+  width: 100%;
+  position: absolute;
+  right: 20%;
+  top: 10px;
 `;
 
 const GameInfo = styled.div`
@@ -114,7 +134,7 @@ const RangeCont = styled.div`
   width: 500px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 const RangeInput = styled.input``;
 
@@ -175,7 +195,7 @@ const Exp1Presenter = ({
           이번 게임은 두 명의 파트너와 함께 진행됩니다. <br />
           이 파트너들 또한 귀하와 같이 복권 게임에 참여했던 분들입니다. <br />
           <br />
-          이번 게임의 목표는 파트너들이 각자 이전 게임에서 <br />
+          이번 게임의 목표는 파트너들이 각자 이전 게임에서 <br />
           어떤 복권을 골랐을지 맞히는 것입니다. <br />
           많이 맞힐수록 더 많은 보너스를 받을 수 있습니다. <br />
         </Inst>
@@ -191,6 +211,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="4">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Inst>게임에 사용될 자신의 캐릭터를 선택해 주세요!</Inst>
         <ImageCont>
           <PeopleImg className="people1" style={people1}></PeopleImg>
@@ -210,6 +231,7 @@ const Exp1Presenter = ({
         </GameInfo>
       </Div>
       <Div id="5">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Inst>게임에 사용될 자신의 캐릭터를 선택해 주세요!</Inst>
         <ImageCont>
           <PeopleImg className="people1" style={people1}></PeopleImg>
@@ -228,6 +250,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="6">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Inst>게임을 함께 할 파트너들을 기다리고 있습니다</Inst>
         <ImageCont>
           <PeopleImg className="people1" style={people1}></PeopleImg>
@@ -259,6 +282,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="8">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Inst>두 명의 파트너는 아래의 그림으로 구분하실 수 있습니다.</Inst>
         <ImageCont>
           <PeopleImg style={partner1}></PeopleImg>
@@ -284,6 +308,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="10">
+        <Inst4>예시 화면 입니다.</Inst4>
         <ImageCont>
           <PeopleImg style={partner1}></PeopleImg>
         </ImageCont>
@@ -298,6 +323,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="11">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Cont2>
           <ImageCont>
             <LeftImg onClick={clickLeft} className="left"></LeftImg>
@@ -311,6 +337,7 @@ const Exp1Presenter = ({
         </GameInfo>
       </Div>
       <Div id="12">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Cont2>
           <ImageCont>
             <LeftImg className="left"></LeftImg>
@@ -328,6 +355,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="13">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Cont2>
           <ImageCont>
             <LeftImg
@@ -347,6 +375,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="14">
+        <Inst4>예시 화면 입니다.</Inst4>
         <ImageCont>
           <PeopleImg className="people1" style={partner2}></PeopleImg>
         </ImageCont>
@@ -361,6 +390,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="15">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Cont2>
           <ImageCont>
             <LeftImg onClick={clickLeft} className="left"></LeftImg>
@@ -374,6 +404,7 @@ const Exp1Presenter = ({
         </GameInfo>
       </Div>
       <Div id="16">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Cont2>
           <ImageCont>
             <LeftImg className="left"></LeftImg>
@@ -391,6 +422,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="17">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Cont2>
           <ImageCont>
             <LeftImg className="left"></LeftImg>
@@ -424,6 +456,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="19">
+        <Inst4>예시 화면 입니다.</Inst4>
         <ImageCont>
           <PeopleImg style={partner1}></PeopleImg>
         </ImageCont>
@@ -439,6 +472,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="20">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Cont2>
           <ImageCont>
             <LeftImg onClick={clickLeft} className="left"></LeftImg>
@@ -452,6 +486,7 @@ const Exp1Presenter = ({
         </GameInfo>
       </Div>
       <Div id="21">
+        <Inst4>예시 화면 입니다.</Inst4>
         <Cont2>
           <ImageCont>
             <LeftImg className="left"></LeftImg>
@@ -469,6 +504,7 @@ const Exp1Presenter = ({
         </ButtonContainer>
       </Div>
       <Div id="22">
+        <Inst4>예시 화면 입니다.</Inst4>
         <GameInfo>
           대신 방금 전의 선택이 정답인지 확실한 정도를 <br />
           슬라이더바를 이용해 응답해 주시면 됩니다. <br />
@@ -492,16 +528,16 @@ const Exp1Presenter = ({
             </span>{" "}
             전혀 확실하지 않다.
           </Inst2>
-          <Inst>
-            <span id="demo"></span>
-          </Inst>
-          <Inst2>
+          <Inst3>
             확실히 맞혔을 것이다.
             <span role="img" aria-label="arrow">
               →
             </span>
-          </Inst2>
+          </Inst3>
         </RangeCont>
+        <Inst>
+          <span id="demo"></span>
+        </Inst>
         <GameInfo>슬라이더바를 움직여보세요.</GameInfo>
         <ButtonContainer>
           <Button onClick={handleNext}> 다음 </Button>

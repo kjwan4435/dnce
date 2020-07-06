@@ -116,8 +116,7 @@ const Exp1Presenter = ({
     <Container>
       <Div id="0">
         <Inst>
-          지금부터 복권 게임을 시작합니다.
-          <br />
+          지금부터 복권 게임을 시작합니다. <br />
         </Inst>
       </Div>
       <Div id="1">
@@ -136,6 +135,9 @@ const Exp1Presenter = ({
             ></RightImg>
           </ImageCont>
         </Cont2>
+        <Inst>
+          원하는 복권을 선택하세요. <br />
+        </Inst>
         <LoaderHide id="loader">
           <span role="img" aria-label="Loading">
             <i className="fas fa-spinner fa-spin"></i>

@@ -48,6 +48,11 @@ export default class extends Component {
         people6[i].style.border = "5px solid green";
       }
     }
+    if (this.state.people6 === 0) {
+      for (let i = 0; i < people6.length; i++) {
+        people6[i].style.border = "0px";
+      }
+    }
   };
 
   setBorder = async () => {
@@ -105,6 +110,12 @@ export default class extends Component {
     await this.setState({ step: this.state.step + 1 });
     if (this.state.step === 15 || this.state.step === 20) {
       await this.setState({ lclick: 0, rclick: 0 });
+      await this.setBorder();
+    }
+    if (this.state.step === 24) {
+      await this.setState({ lclick: 0, rclick: 0 });
+      await this.setState({ people6: 0 });
+      await this.setCharBorder();
       await this.setBorder();
     }
     if (this.state.step > 1) {

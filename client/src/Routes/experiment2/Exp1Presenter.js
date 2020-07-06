@@ -106,15 +106,24 @@ const LoaderHide = styled.div`
   align-items: center;
   font-size: 30px;
 `;
+
 const Inst2 = styled.div`
   font-size: 15px;
   display: block;
   color: black;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   width: 100%;
-  line-height: 40px;
 `;
+const Inst3 = styled.div`
+  font-size: 15px;
+  display: block;
+  color: black;
+  font-weight: 600;
+  text-align: right;
+  width: 100%;
+`;
+
 const RangeCont = styled.div`
   width: 500px;
   display: flex;
@@ -307,6 +316,9 @@ const Exp1Presenter = ({
             ></RightImg>
           </ImageCont>
         </Cont2>
+        <Inst>
+          파트너가 무엇을 골랐을까요? <br />
+        </Inst>
         <LoaderHide id="loader1">
           <span role="img" aria-label="Loading">
             <i className="fas fa-spinner fa-spin"></i>
@@ -355,6 +367,9 @@ const Exp1Presenter = ({
             ></RightImg>
           </ImageCont>
         </Cont2>
+        <Inst>
+          파트너가 무엇을 골랐을까요? <br />
+        </Inst>
         <ButtonContainer id="hide2Next2">
           <Button onClick={handle2Next2}> 다음 </Button>
         </ButtonContainer>
@@ -379,16 +394,16 @@ const Exp1Presenter = ({
             </span>
             전혀 확실하지 않다.
           </Inst2>
-          <Inst>
-            <span id="demo"></span>
-          </Inst>
-          <Inst2>
+          <Inst3>
             확실히 맞혔을 것이다.
             <span role="img" aria-label="arrow">
               →
             </span>
-          </Inst2>
+          </Inst3>
         </RangeCont>
+        <Inst>
+          <span id="demo"></span>
+        </Inst>
         <LoaderHide id="loader2">
           <span role="img" aria-label="Loading">
             <i className="fas fa-spinner fa-spin"></i>
@@ -443,16 +458,16 @@ const Exp1Presenter = ({
             </span>
             매우 그렇지 않다.
           </Inst2>
-          <Inst>
-            <span id="demo2"></span>
-          </Inst>
-          <Inst2>
+          <Inst3>
             매우 그렇다.
             <span role="img" aria-label="arrow">
               →
             </span>
-          </Inst2>
+          </Inst3>
         </RangeCont>
+        <Inst>
+          <span id="demo2"></span>
+        </Inst>
         <LoaderHide id="loader3">
           <span role="img" aria-label="Loading">
             <i className="fas fa-spinner fa-spin"></i>
@@ -498,16 +513,16 @@ const Exp1Presenter = ({
             </span>
             매우 그렇지 않다
           </Inst2>
-          <Inst>
-            <span id="demo3"></span>
-          </Inst>
-          <Inst2>
+          <Inst3>
             매우 그렇다.
             <span role="img" aria-label="arrow">
               →
             </span>
-          </Inst2>
+          </Inst3>
         </RangeCont>
+        <Inst>
+          <span id="demo3"></span>
+        </Inst>
         <LoaderHide id="loader4">
           <span role="img" aria-label="Loading">
             <i className="fas fa-spinner fa-spin"></i>
@@ -548,7 +563,7 @@ const Exp1Presenter = ({
           보너스는 아래와 같이 정해졌습니다. <br />
           <br />
           게임1 - {bonus1}원 <br />
-          게임2 - 정확도: {(bonus2 / 3).toFixed(2)}%, {bonus2}원 <br />
+          게임2 - 정확도: {(bonus2 / 3).toFixed(1)}%, {bonus2}원 <br />
         </Inst>
         <ButtonContainer>
           <Button onClick={handleNext}> 확인 </Button>

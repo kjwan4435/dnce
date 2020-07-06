@@ -87,6 +87,18 @@ const Inst = styled.div`
   line-height: 40px;
 `;
 
+const Inst4 = styled.div`
+  padding: 18px;
+  font-size: 20px;
+  display: block;
+  color: black;
+  text-align: right;
+  width: 100%;
+  position: absolute;
+  right: 20%;
+  top: 10px;
+`;
+
 const GameInfo = styled.div`
   padding: 18px;
   font-size: 20px;
@@ -124,6 +136,7 @@ const Exp1Presenter = ({
 }) => (
   <Container>
     <Div id="1">
+      <Inst4>예시 화면 입니다.</Inst4>
       <Cont2>
         <ImageCont>
           <LeftImg className="left"></LeftImg>
@@ -150,6 +163,7 @@ const Exp1Presenter = ({
       </ButtonContainer>
     </Div>
     <Div id="3">
+      <Inst4>예시 화면 입니다.</Inst4>
       <Cont2>
         <ImageCont>
           <LeftImg onClick={clickLeft} className="left"></LeftImg>
@@ -163,6 +177,7 @@ const Exp1Presenter = ({
       </GameInfo>
     </Div>
     <Div id="4">
+      <Inst4>예시 화면 입니다.</Inst4>
       <Cont2>
         <ImageCont>
           <LeftImg className="left"></LeftImg>
@@ -182,6 +197,7 @@ const Exp1Presenter = ({
       </ButtonContainer>
     </Div>
     <Div id="5">
+      <Inst4>예시 화면 입니다.</Inst4>
       <Cont2>
         <ImageCont>
           <LeftImg2 className="left"></LeftImg2>
@@ -195,6 +211,7 @@ const Exp1Presenter = ({
       </GameInfo>
     </Div>
     <Div id="6">
+      <Inst4>예시 화면 입니다.</Inst4>
       <Cont2>
         <ImageCont>
           <LeftImg2 className="left"></LeftImg2>

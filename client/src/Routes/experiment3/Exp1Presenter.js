@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const Container = styled.div`
   padding: 20px;
@@ -242,6 +241,9 @@ const Exp1Presenter = ({
             ></RightImg>
           </ImageCont>
         </Cont2>
+        <Inst>
+          원하는 복권을 선택하세요. <br />
+        </Inst>
         <LoaderHide id="loader">
           <span role="img" aria-label="Loading">
             <i className="fas fa-spinner fa-spin"></i>
@@ -267,9 +269,10 @@ const Exp1Presenter = ({
           보너스는 아래와 같이 정해졌습니다.<br></br>
           <br></br>
           게임1 - {bonus1}원 <br></br>
-          게임2 - 정확도: {bonus2 / 3}%, {bonus2}원 <br></br>
+          게임2 - 정확도: {(bonus2 / 3).toFixed(1)}%, {bonus2}원 <br></br>
           게임3 - {bonus3}원<br></br>
         </Inst>
+
         <ButtonContainer>
           <Button onClick={handleNext}> 확인 </Button>
         </ButtonContainer>
