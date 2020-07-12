@@ -227,7 +227,7 @@ const Exp1Presenter = ({
         </ImageCont>
         <GameInfo>
           실험 시작 전 귀하의 캐릭터를 정하게 됩니다. <br />
-          마지막 캐릭터를 클릭해보세요.
+          가장 오른쪽 캐릭터를 클릭해보세요.
         </GameInfo>
       </Div>
       <Div id="5">

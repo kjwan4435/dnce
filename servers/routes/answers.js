@@ -238,7 +238,7 @@ answerRouter.route("/exp2/bonus/:id").get((req, res) => {
 answerRouter.route("/exp3/bonus/:id").get((req, res) => {
   Answer3.findOne({
     sub_id: req.params.id,
-    trial: Math.floor(Math.random() * 90) + 1
+    trial: Math.floor(Math.random() * 120) + 1
   })
     .then((answer) => res.json(answer))
     .catch((err) => res.status(400).json(`Error: ${err}`));

@@ -216,13 +216,13 @@ export default class extends Component {
       document.getElementById(`${this.state.step - 1}`).style.display = "none";
     }
 
-    if (this.state.step > 0 && this.state.step < 91) {
+    if (this.state.step > 0 && this.state.step < 121) {
       document.getElementById(`1-1`).style.display = "flex";
       document.getElementById(`1-2`).style.display = "none";
 
       await setTimeout(this.showComponent, 1000);
     }
-    if (this.state.step === 91) {
+    if (this.state.step === 121) {
       document.getElementById(`1-2`).style.display = "none";
       document.getElementById(`1`).style.display = "flex";
       try {
@@ -258,7 +258,7 @@ export default class extends Component {
         console.error(error);
       }
     }
-    if (this.state.step === 92) {
+    if (this.state.step === 122) {
       document.getElementById(`1`).style.display = "none";
       document.getElementById(`2`).style.display = "flex";
 
@@ -266,12 +266,12 @@ export default class extends Component {
       const bonus_res = await axios.post(`/answers/bonus`, qs.stringify(bonus));
       console.log(bonus_res.data);
     }
-    if (this.state.step === 93) {
+    if (this.state.step === 123) {
       document.getElementById(`2`).style.display = "none";
       document.getElementById(`3`).style.display = "flex";
     }
 
-    if (this.state.step > 0 && this.state.step < 91) {
+    if (this.state.step > 0 && this.state.step < 121) {
       const l_num = this.state.data[this.state.step - 1][this.state.column[1]];
       const l_prob = this.state.data[this.state.step - 1][this.state.column[2]];
       const r_num = this.state.data[this.state.step - 1][this.state.column[3]];
